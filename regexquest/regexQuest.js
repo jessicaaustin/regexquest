@@ -11,14 +11,15 @@ rq.MatchResult = function(desiredText, matchedText) {
     };
 };
 
-rq.Zombie = function(zombieText, humanText) {
-
+rq.Zombie = function(zombieText, infection) {
+    this.zombieText = zombieText;
+    this.infection = infection;
     this.checkMatch = function(regex) {
         var match = zombieText.match(regex);
         var matchedText = "";
         if (match) {
             matchedText = match.join("");
         }
-        return new rq.MatchResult(humanText, matchedText);
+        return new rq.MatchResult(infection, matchedText);
     }
 };

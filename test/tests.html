@@ -28,16 +28,23 @@
             });
 
             test("get matched text", function() {
-                equal(new rq.MatchResult("cat", "a cat").matchedText, "a cat");
+                assertEquals("a cat", new rq.MatchResult("cat", "a cat").matchedText);
             });
 
             module("Test Zombie");
+
+            test("0.0 -- zombie class", function() {
+               var zombie = new rq.Zombie("zombie text", "text");
+                assertEquals("zombie text", zombie.zombieText);
+                assertEquals("text", zombie.infection);
+            });
 
             test("1.0 -- single word, exact match", function() {
                 var zombie = new rq.Zombie(" cat ", "cat");
                 assertFalse(zombie.checkMatch(/.*/).fullMatch());
                 assertFalse(zombie.checkMatch(/hat/).fullMatch());
                 assertTrue(zombie.checkMatch(/cat/).fullMatch());
+                assertTrue(zombie.checkMatch(/CAT/i).fullMatch());
             });
             test("1.1 -- multiple word, exact match", function() {
                 var zombie = new rq.Zombie(" cat boo cat ", "catcat");

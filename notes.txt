@@ -1,6 +1,18 @@
 
-baddies are zombies, which need to be transformed back into normal humans ?
+zombie:
+ - has a bunch of text, with "infectious" text interspersed 
+ - to "cure" a zombie, remove the infected text
+ - may take multiple hits to cure a zombie
+ - teaches basics of matching, since you don't have to replace
 
+mutant:
+ - similar to zombie, but you need to replace infectious text with something else, instead of just "removing" (matching) it
+
+
+normal mode:
+ - like a riddle, describe how to defeat
+hint mode:
+ - highlight the text that needs to be removed/changed
 
 one or more baddies
  - each has some text, with certain parts highlighted
@@ -18,6 +30,9 @@ bonus games:
  - timed stuff
  - opposite game: baddies have regexps, you need to write text
 
+
+look/feel:
+ - definitely use rounded corners =)  http://jquery.malsup.com/corner/
 
 game has different stages, with new types of baddies per stage
 - exact match
