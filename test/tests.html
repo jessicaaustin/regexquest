@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>RegexQuest Tests</title>
+    <script type="text/javascript" src="../lib/qunit.js"></script>
+    <script type="text/javascript" src="qunit-supp.js"></script>
+    <link rel="stylesheet" href="../lib/qunit.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="../lib/jquery-1.4.3.js"></script>
+    <script type="text/javascript" src="../lib/jquery.gamequery-0.5.1.js"></script>
+    <script type="text/javascript" src="../regexquest/regexQuest.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            module("Test Zombie");
+
+            test("1.0 -- single word, exact match", function() {
+                var zombie = new rq.Zombie(" cat ", "cat");
+                assertFalse(zombie.checkMatch(/.*/));
+                assertFalse(zombie.checkMatch(/hat/));
+                assertTrue(zombie.checkMatch(/cat/));
+            });
+            test("1.1 -- multiple word, exact match", function() {
+                var zombie = new rq.Zombie(" cat boo cat ", "catcat");
+                assertFalse(zombie.checkMatch(/.*/));
+                assertFalse(zombie.checkMatch(/hat/));
+                assertFalse(zombie.checkMatch(/cat/));
+                assertTrue(zombie.checkMatch(/cat/g));
+            });
+            test("1.1 -- multiple word, one char different", function() {var zombie = new rq.Zombie("It was a grey morning, a gray afternoon.", "greygray");
+                assertFalse(zombie.checkMatch(/.*/));
+                assertFalse(zombie.checkMatch(/grey/g));
+                assertFalse(zombie.checkMatch(/gray/g));
+                assertTrue(zombie.checkMatch(/gr[ea]y/g));
+            });
+            test("1.1 -- optional chars", function() {
+                var zombie = new rq.Zombie("You say color, I say colour.", "colorcolour");
+                assertFalse(zombie.checkMatch(/.*/));
+                assertFalse(zombie.checkMatch(/color/g));
+                assertFalse(zombie.checkMatch(/colour/g));
+                assertTrue(zombie.checkMatch(/colou?r/g));
+            });
+
+            module("Test MatchResult");
+        });
+    </script>
+</head>
+<body>
+    <h1 id="qunit-header">QUnit example</h1>
+
+    <h2 id="qunit-banner"></h2>
+
+    <div id="qunit-testrunner-toolbar"></div>
+    <h2 id="qunit-userAgent"></h2>
+    <ol id="qunit-tests"></ol>
+    <div id="qunit-fixture">test markup, will be hidden</div>
+</body>
+</html>

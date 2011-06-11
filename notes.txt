@@ -1,0 +1,36 @@
+
+baddies are zombies, which need to be transformed back into normal humans ?
+
+
+one or more baddies
+ - each has some text, with certain parts highlighted
+ - may or may not be able to get all baddies with single regexp
+to fight, type a regexp
+ - can narrow down the string with multiple regexps, beat it by narrowing down to selected text
+ - each time you "strike", the baddie strikes back
+
+
+bosses:
+ - transform a large piece of text into another (will definitely require multiple tries)
+
+bonus games:
+ - timed stuff
+ - opposite game: baddies have regexps, you need to write text
+
+
+game has different stages, with new types of baddies per stage
+- exact match
+- one or more chars
+- optional chars
+- digits / words / spaces
+
+
+problems:
+- need some way to discourage conditionals (/cat|hat/)
+   - maybe fewer characters => more hit points?
+
+
+Function.prototype.method = function (name, func) {
+    this.prototype[name] = func;
+    return this;
+}
