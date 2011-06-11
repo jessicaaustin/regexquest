@@ -2,12 +2,23 @@
 var rq = {};
 
 rq.MatchResult = function(desiredText, matchedText) {
-    this.matchedText = matchedText;
-    this.fullMatch = function() {
-        return desiredText === matchedText;
+
+    /** Helper functions **/
+
+    var stringArraysEqual = function(a, b) {
+        if (!a && b || !b && a) {
+            return false;
+        }
+        return a.join("") == b.join("");
     };
-    this.partialMatch = function() {
-        return matchedText.indexOf(desiredText) != -1;
+
+    /** Public functions **/
+
+    this.matchedText = function() {
+        return matchedText ? matchedText.join(" ") : "";
+    };
+    this.fullMatch = function() {
+        return stringArraysEqual(desiredText, matchedText);
     };
 };
 
@@ -15,11 +26,6 @@ rq.Zombie = function(zombieText, infection) {
     this.zombieText = zombieText;
     this.infection = infection;
     this.checkMatch = function(regex) {
-        var match = zombieText.match(regex);
-        var matchedText = "";
-        if (match) {
-            matchedText = match.join("");
-        }
-        return new rq.MatchResult(infection, matchedText);
+        return new rq.MatchResult(infection, zombieText.match(regex));
     }
 };

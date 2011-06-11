@@ -25,21 +25,19 @@ var runCheck = function(event) {
     var code = (event.keyCode ? event.keyCode : event.which);
     if (code == 13) {
         var result = zombie.checkMatch(createRegExp());
-        resultDiv.text(result.matchedText);
+        resultDiv.text(result.matchedText());
         if (result.fullMatch()) {
             showResult(true);
-        } else if (result.partialMatch()) {
-            showResult(false);
         } else {
-            $("#wrongAnswer").show();
-            $("#rightAnswer").hide();
+            showResult(false);
         }
     }
 };
 
 $(document).ready(function() {
-    var zombie = new rq.Zombie("My cat has a hat.", "cathat");
+    var zombie = new rq.Zombie("My cat has a hat.", ["cat", "hat"]);
     $("#zombieText").text(zombie.zombieText);
+    $("#infection").text(zombie.infection.join(" "));
 
     window.zombie = zombie;
 

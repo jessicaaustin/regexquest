@@ -1,11 +1,14 @@
 /** Make QUnit behave more like JUnit **/
 
-var assertTrue = function(state, message) {
-    return ok(state, message);
+var assertTrue = function(state) {
+    return ok(state, "");
 };
-var assertFalse = function(state, message) {
-    return ok(!state, message);
+var assertFalse = function(state) {
+    return ok(!state, "");
 };
-var assertEquals = function(expected, actual, message) {
-    return equal(actual, expected, message);
+var assertEquals = function(expected, actual) {
+    return equal(actual, expected, "");
+};
+var assertArrayEquals = function(expected, actual) {
+    return deepEqual(actual, expected, "");
 };
