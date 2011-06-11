@@ -17,15 +17,15 @@
 
             test("0.0 -- zombie class", function() {
                 var zombie = new rq.Zombie("zombie text", /zom/);
-                assertEquals("zombie text", zombie.cleanText());
-                assertEquals("zom", zombie.zombieText());
+                assertEquals("zombie text", zombie.fullText());
+                assertEquals("zom", zombie.infectedText());
             });
 
             test("0.1 -- what matched", function() {
                 var zombie = new rq.Zombie(" cat hat ", /cat/);
                 assertArrayEquals([" cat hat "], zombie.whatMatched(/.*/));
                 assertArrayEquals(["at", "at"], zombie.whatMatched(/at/g));
-                assertArrayEquals([] , zombie.whatMatched(/bat/));
+                assertArrayEquals([], zombie.whatMatched(/bat/));
             });
 
             test("1.0 -- single word, exact match", function() {
@@ -35,6 +35,7 @@
                 assertTrue(zombie.checkMatch(/cat/));
                 assertTrue(zombie.checkMatch(/CAT/i));
             });
+
             test("1.1 -- multiple word, exact match", function() {
                 var zombie = new rq.Zombie(" cat boo cat ", /cat/g);
                 assertFalse(zombie.checkMatch(/.*/));
@@ -43,7 +44,8 @@
                 assertTrue(zombie.checkMatch(/cat/g));
                 assertTrue(zombie.checkMatch(/(cat)+/));
             });
-            test("1.1 -- multiple word, one char different", function() {
+
+            test("1.2 -- multiple word, one char different", function() {
                 var zombie = new rq.Zombie("It was a grey morning, a gray afternoon.", /gr[ea]y/g);
                 assertFalse(zombie.checkMatch(/.*/));
                 assertFalse(zombie.checkMatch(/grey/g));
@@ -51,12 +53,36 @@
                 assertTrue(zombie.checkMatch(/gr[ea]y/g));
                 assertTrue(zombie.checkMatch(/gr(e|a)y/g));
             });
-            test("1.1 -- optional chars", function() {
+
+            test("1.3 -- optional chars", function() {
                 var zombie = new rq.Zombie("You say color, I say colour.", /colou?r/g);
                 assertFalse(zombie.checkMatch(/.*/));
                 assertFalse(zombie.checkMatch(/color/g));
                 assertFalse(zombie.checkMatch(/colour/g));
                 assertTrue(zombie.checkMatch(/colou?r/g));
+            });
+
+            test("2.0 -- zombie text", function() {
+                assertArrayEquals([
+                    {text: " ", infected: false},
+                    {text: "cat", infected: true}
+                ], new rq.Zombie(" cat", /cat/).zombieTextArray());
+                assertArrayEquals([
+                    {text: "My ", infected: false},
+                    {text: "cat", infected: true},
+                    {text: " has a hat.", infected: false}
+                ], new rq.Zombie("My cat has a hat.", /cat/).zombieTextArray());
+                assertArrayEquals([
+                    {text: " ", infected: true},
+                    {text: "cat", infected: false},
+                    {text: " ", infected: true}
+                ], new rq.Zombie(" cat ", /\s/g).zombieTextArray());
+                assertArrayEquals([
+                    {text: "M", infected: true},
+                    {text: "y cat has a ", infected: false},
+                    {text: "m", infected: true},
+                    {text: "at.", infected: false}
+                ], new rq.Zombie("My cat has a mat.", /m/gi).zombieTextArray());
             });
 
         });

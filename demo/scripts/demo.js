@@ -3,6 +3,7 @@ var showResult = function(good) {
         $("#wrongAnswer").hide();
         $("#rightAnswer").show();
         $("#result").css("color", "green");
+        $(".infected").fadeOut();
     } else {
         $("#wrongAnswer").show();
         $("#rightAnswer").hide();
@@ -36,8 +37,8 @@ var runCheck = function(event) {
 
 $(document).ready(function() {
     var zombie = new rq.Zombie("My cat has a hat.", /[c|h]at/g);
-    $("#infection").text(zombie.zombieText().join(" "));
-    $("#zombieText").text(zombie.cleanText());
+    $("#infection").text(zombie.infectedText().join(" "));
+    $("#zombieText").html(zombie.zombieText());
 
     // for debug purposes
     window.zombie = zombie;
