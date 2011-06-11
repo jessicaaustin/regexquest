@@ -1,23 +1,30 @@
-/** Utility stuff (todo: move to another file) **/
+
 Array.prototype.remove = function(from, to) {
     var rest = this.slice((to || from) + 1 || this.length);
     this.length = from < 0 ? this.length + from : from;
     return this.push.apply(this, rest);
 };
 
-escapeXml = function(string) {
+
+// define our namespace
+var rq = {};
+
+rq.util = {};
+
+rq.util.escapeXml = function(string) {
     return string.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 };
 
-stringArraysEqual = function(a, b) {
+rq.util.stringArraysEqual = function(a, b) {
     if (!a && b || !b && a) {
         return false;
     }
     return a.join("") == b.join("");
 };
 
-// define our namespace
-var rq = {};
+rq.util.randomInt = function(max) {
+    return Math.floor(Math.random() * max);
+};
 
 rq.Zombie = function(fullText, infection) {
 
@@ -31,7 +38,7 @@ rq.Zombie = function(fullText, infection) {
     };
 
     this.checkMatch = function(regex) {
-        return stringArraysEqual(this.infectedText(), fullText.match(regex));
+        return rq.util.stringArraysEqual(this.infectedText(), fullText.match(regex));
     };
 
     this.whatMatched = function(regex) {
@@ -86,7 +93,7 @@ rq.Zombie = function(fullText, infection) {
         for (var i = 0; i < zombieTextArray.length; i++) {
             var text = zombieTextArray[i].text;
             var infected = zombieTextArray[i].infected;
-            zombieText += "<span class='" + (infected ? "infected" : "uninfected") + "'>" + text + "</span>";
+            zombieText += "<span class='" + (infected ? "infected" : "uninfected") + "'>" + rq.util.escapeXml(text) + "</span>";
         }
         return zombieText;
     };
@@ -95,5 +102,15 @@ rq.Zombie = function(fullText, infection) {
 
 /** Construct Zombies out of random combinations of the given arrays **/
 rq.ZombieFactory = function(cleanStrings, infections) {
+    var ints = new Array();
+    for (var i = 0; i < cleanStrings.length; i++) {
+        ints[i] = i;
+    }
 
+    var zombies = new Array();
+    for (var i = 0; i < infections.length; i++) {
+        var string = cleanStrings[ints[rq.util.randomInt(cleanStrings.length)]];
+        zombies[i] = new rq.Zombie(string, infections[i]);
+    }
+    return zombies;
 };

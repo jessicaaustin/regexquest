@@ -1,3 +1,6 @@
+var zombies = new Array();
+var currentRound = 0;
+
 var showResult = function(good) {
     if (good) {
         $("#wrongAnswer").hide();
@@ -9,6 +12,11 @@ var showResult = function(good) {
         $("#rightAnswer").hide();
         $("#result").css("color", "red");
     }
+};
+
+var clearRegExp = function() {
+    var pattern = $("#regexp").val("");
+    var modifiers = $("#regexpFlags").val("");
 };
 
 var createRegExp = function() {
@@ -35,18 +43,40 @@ var runCheck = function(event) {
     }
 };
 
-$(document).ready(function() {
-    var zombie = new rq.Zombie("My cat has a hat.", /[c|h]at/g);
-    $("#infection").text(zombie.infectedText().join(" "));
+var setup = function() {
+    var zombie = zombies[currentRound];
+    if (!zombie) {
+        return;
+    }
     $("#zombieText").html(zombie.zombieText());
 
     // for debug purposes
     window.zombie = zombie;
 
+    clearRegExp();
+    $("#rounds").text("Round " + currentRound + " of " + (zombies.length-1));
     $("#regexp").keypress(function(event) {
         runCheck(event);
     });
     $("#regexpFlags").keypress(function(event) {
         runCheck(event);
     });
+    currentRound++;
+};
+
+$(document).ready(function() {
+    zombies = new rq.ZombieFactory([
+        "A cat with a hat sat on a mat",
+        "My cat, your cat, their cat.",
+        "hat Hat mat cat haTT"
+    ], [
+        /[c|h]at/g,
+        /[\w]at/g,
+        /cat/,
+        /hat/gi
+    ]);
+
+    $("#nextRound").click(setup);
+
+    setup();
 });
