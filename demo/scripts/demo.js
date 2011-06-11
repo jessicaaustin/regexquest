@@ -6,6 +6,7 @@ var showResult = function(good) {
     } else {
         $("#wrongAnswer").show();
         $("#rightAnswer").hide();
+        $("#result").css("color", "red");
     }
 };
 
@@ -24,9 +25,8 @@ var runCheck = function(event) {
     // check for enter key press
     var code = (event.keyCode ? event.keyCode : event.which);
     if (code == 13) {
-        var result = zombie.checkMatch(createRegExp());
-        resultDiv.text(result.matchedText());
-        if (result.fullMatch()) {
+        resultDiv.text(zombie.whatMatched(createRegExp()).join(" "));
+        if (zombie.checkMatch(createRegExp())) {
             showResult(true);
         } else {
             showResult(false);
@@ -35,10 +35,11 @@ var runCheck = function(event) {
 };
 
 $(document).ready(function() {
-    var zombie = new rq.Zombie("My cat has a hat.", ["cat", "hat"]);
-    $("#zombieText").text(zombie.zombieText);
-    $("#infection").text(zombie.infection.join(" "));
+    var zombie = new rq.Zombie("My cat has a hat.", /[c|h]at/g);
+    $("#infection").text(zombie.zombieText().join(" "));
+    $("#zombieText").text(zombie.cleanText());
 
+    // for debug purposes
     window.zombie = zombie;
 
     $("#regexp").keypress(function(event) {

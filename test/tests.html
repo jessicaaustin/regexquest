@@ -13,69 +13,50 @@
     <script type="text/javascript">
         $(document).ready(function() {
 
-            module("Test MatchResult");
-
-            test("check full match", function() {
-                assertTrue(new rq.MatchResult(["cat"], ["cat"]).fullMatch());
-                assertFalse(new rq.MatchResult(["cat"], ["hat"]).fullMatch());
-            });
-
-            test("check full match with multiple matches", function() {
-                assertTrue(new rq.MatchResult(["cat", "hat"], ["cat","hat"]).fullMatch());
-                assertFalse(new rq.MatchResult(["cat", "hat"], ["hat","cat"]).fullMatch());
-            });
-
-            test("get matched text", function() {
-                assertEquals("a cat", new rq.MatchResult(["cat"], ["a cat"]).matchedText());
-                assertEquals("at at", new rq.MatchResult(["cat"], ["at", "at"]).matchedText());
-            });
-
             module("Test Zombie");
 
             test("0.0 -- zombie class", function() {
-                var zombie = new rq.Zombie("zombie text", ["text"]);
-                assertEquals("zombie text", zombie.zombieText);
-                assertArrayEquals(["text"], zombie.infection);
+                var zombie = new rq.Zombie("zombie text", /zom/);
+                assertEquals("zombie text", zombie.cleanText());
+                assertEquals("zom", zombie.zombieText());
             });
 
-            // TODO add this functionality
-            test("0.1 -- updates to zombie text for partial match", function() {
-//                assertTrue(new rq.MatchResult(["cat"], ["cat"]).partialMatch());
-//                assertFalse(new rq.MatchResult(["cat"], ["hat"]).partialMatch());
-//                assertTrue(new rq.MatchResult(["cat", "cat"], ["cat"]).partialMatch());
-//                assertTrue(new rq.MatchResult(["cat", "cat", "hat"], ["cat", "cat"]).partialMatch());
-//                assertTrue(new rq.MatchResult(["11", "5", "12"], ["11", "12"]).partialMatch());
-//                assertFalse(new rq.MatchResult(["cat", "hat"], ["cat", "boo"]).partialMatch());
-//                assertFalse(new rq.MatchResult(["cat", "cat", "hat"], ["cat", "boo"]).partialMatch());
+            test("0.1 -- what matched", function() {
+                var zombie = new rq.Zombie(" cat hat ", /cat/);
+                assertArrayEquals([" cat hat "], zombie.whatMatched(/.*/));
+                assertArrayEquals(["at", "at"], zombie.whatMatched(/at/g));
+                assertArrayEquals([] , zombie.whatMatched(/bat/));
             });
 
             test("1.0 -- single word, exact match", function() {
-                var zombie = new rq.Zombie(" cat ", ["cat"]);
-                assertFalse(zombie.checkMatch(/.*/).fullMatch());
-                assertFalse(zombie.checkMatch(/hat/).fullMatch());
-                assertTrue(zombie.checkMatch(/cat/).fullMatch());
-                assertTrue(zombie.checkMatch(/CAT/i).fullMatch());
+                var zombie = new rq.Zombie(" cat ", /cat/);
+                assertFalse(zombie.checkMatch(/.*/));
+                assertFalse(zombie.checkMatch(/hat/));
+                assertTrue(zombie.checkMatch(/cat/));
+                assertTrue(zombie.checkMatch(/CAT/i));
             });
             test("1.1 -- multiple word, exact match", function() {
-                var zombie = new rq.Zombie(" cat boo cat ", ["cat","cat"]);
-                assertFalse(zombie.checkMatch(/.*/).fullMatch());
-                assertFalse(zombie.checkMatch(/hat/).fullMatch());
-                assertFalse(zombie.checkMatch(/cat/).fullMatch());
-                assertTrue(zombie.checkMatch(/cat/g).fullMatch());
+                var zombie = new rq.Zombie(" cat boo cat ", /cat/g);
+                assertFalse(zombie.checkMatch(/.*/));
+                assertFalse(zombie.checkMatch(/hat/));
+                assertFalse(zombie.checkMatch(/cat/));
+                assertTrue(zombie.checkMatch(/cat/g));
+                assertTrue(zombie.checkMatch(/(cat)+/));
             });
             test("1.1 -- multiple word, one char different", function() {
-                var zombie = new rq.Zombie("It was a grey morning, a gray afternoon.", ["grey","gray"]);
-                assertFalse(zombie.checkMatch(/.*/).fullMatch());
-                assertFalse(zombie.checkMatch(/grey/g).fullMatch());
-                assertFalse(zombie.checkMatch(/gray/g).fullMatch());
-                assertTrue(zombie.checkMatch(/gr[ea]y/g).fullMatch());
+                var zombie = new rq.Zombie("It was a grey morning, a gray afternoon.", /gr[ea]y/g);
+                assertFalse(zombie.checkMatch(/.*/));
+                assertFalse(zombie.checkMatch(/grey/g));
+                assertFalse(zombie.checkMatch(/gray/g));
+                assertTrue(zombie.checkMatch(/gr[ea]y/g));
+                assertTrue(zombie.checkMatch(/gr(e|a)y/g));
             });
             test("1.1 -- optional chars", function() {
-                var zombie = new rq.Zombie("You say color, I say colour.", ["color","colour"]);
-                assertFalse(zombie.checkMatch(/.*/).fullMatch());
-                assertFalse(zombie.checkMatch(/color/g).fullMatch());
-                assertFalse(zombie.checkMatch(/colour/g).fullMatch());
-                assertTrue(zombie.checkMatch(/colou?r/g).fullMatch());
+                var zombie = new rq.Zombie("You say color, I say colour.", /colou?r/g);
+                assertFalse(zombie.checkMatch(/.*/));
+                assertFalse(zombie.checkMatch(/color/g));
+                assertFalse(zombie.checkMatch(/colour/g));
+                assertTrue(zombie.checkMatch(/colou?r/g));
             });
 
         });

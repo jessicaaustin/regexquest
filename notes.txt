@@ -14,6 +14,10 @@ normal mode:
 hint mode:
  - highlight the text that needs to be removed/changed
 
+
+it's not exactly turn-based--the monster will attack you after a certain amount of time. so being able to create regexps faster is what matters.
+
+
 one or more baddies
  - each has some text, with certain parts highlighted
  - may or may not be able to get all baddies with single regexp

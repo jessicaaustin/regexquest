@@ -1,10 +1,9 @@
 // define our namespace
 var rq = {};
 
-rq.MatchResult = function(desiredText, matchedText) {
+rq.Zombie = function(cleanText, infection) {
 
     /** Helper functions **/
-
     var stringArraysEqual = function(a, b) {
         if (!a && b || !b && a) {
             return false;
@@ -13,19 +12,28 @@ rq.MatchResult = function(desiredText, matchedText) {
     };
 
     /** Public functions **/
+    this.cleanText = function() {
+        return cleanText;
+    };
 
-    this.matchedText = function() {
-        return matchedText ? matchedText.join(" ") : "";
+    this.zombieText = function() {
+        return cleanText.match(infection);
     };
-    this.fullMatch = function() {
-        return stringArraysEqual(desiredText, matchedText);
+
+    this.checkMatch = function(regex) {
+        return stringArraysEqual(this.zombieText(), cleanText.match(regex));
     };
+
+    this.whatMatched = function(regex) {
+        var matches = cleanText.match(regex);
+        if (!matches) {
+            return new Array();
+        }
+        return matches;
+    }
 };
 
-rq.Zombie = function(zombieText, infection) {
-    this.zombieText = zombieText;
-    this.infection = infection;
-    this.checkMatch = function(regex) {
-        return new rq.MatchResult(infection, zombieText.match(regex));
-    }
+/** Construct Zombies out of random combinations of the given arrays **/
+rq.ZombieFactory = function(cleanStrings, infections) {
+
 };
