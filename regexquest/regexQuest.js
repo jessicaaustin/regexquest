@@ -1,21 +1,24 @@
 // define our namespace
 var rq = {};
 
-rq.MatchResult = function(fullText, matchedText) {
-    this.fullText = fullText;
+rq.MatchResult = function(desiredText, matchedText) {
     this.matchedText = matchedText;
-    this.matched = fullText === matchedText;
+    this.fullMatch = function() {
+        return desiredText === matchedText;
+    };
+    this.partialMatch = function() {
+        return matchedText.indexOf(desiredText) != -1;
+    };
 };
 
 rq.Zombie = function(zombieText, humanText) {
-    this.zombieText = zombieText;
-    this.humanText = humanText;
-};
 
-rq.Zombie.prototype.checkMatch = function(regex) {
-    var match = this.zombieText.match(regex);
-    if (!match) {
-        return false;
+    this.checkMatch = function(regex) {
+        var match = zombieText.match(regex);
+        var matchedText = "";
+        if (match) {
+            matchedText = match.join("");
+        }
+        return new rq.MatchResult(humanText, matchedText);
     }
-    return this.humanText === match.join("");
 };

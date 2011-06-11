@@ -5,7 +5,7 @@
     <title>RegexQuest Tests</title>
     <script type="text/javascript" src="../lib/qunit.js"></script>
     <script type="text/javascript" src="qunit-supp.js"></script>
-    <link rel="stylesheet" href="../lib/qunit.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../lib/qunit.css" type="text/css" media="screen"/>
     <script type="text/javascript" src="../lib/jquery-1.4.3.js"></script>
     <script type="text/javascript" src="../lib/jquery.gamequery-0.5.1.js"></script>
     <script type="text/javascript" src="../regexquest/regexQuest.js"></script>
@@ -13,47 +13,65 @@
     <script type="text/javascript">
         $(document).ready(function() {
 
+            module("Test MatchResult");
+
+            test("check full match", function() {
+                assertTrue(new rq.MatchResult("cat", "cat").fullMatch());
+                assertFalse(new rq.MatchResult("cat", "hat").fullMatch());
+            });
+
+            test("check partial match", function() {
+                assertTrue(new rq.MatchResult("cat", "a cat").partialMatch());
+                assertTrue(new rq.MatchResult("cat", "catssss").partialMatch());
+                assertFalse(new rq.MatchResult("cat", "hat").partialMatch());
+                assertFalse(new rq.MatchResult("catcat", "cat").partialMatch());
+            });
+
+            test("get matched text", function() {
+                equal(new rq.MatchResult("cat", "a cat").matchedText, "a cat");
+            });
+
             module("Test Zombie");
 
             test("1.0 -- single word, exact match", function() {
                 var zombie = new rq.Zombie(" cat ", "cat");
-                assertFalse(zombie.checkMatch(/.*/));
-                assertFalse(zombie.checkMatch(/hat/));
-                assertTrue(zombie.checkMatch(/cat/));
+                assertFalse(zombie.checkMatch(/.*/).fullMatch());
+                assertFalse(zombie.checkMatch(/hat/).fullMatch());
+                assertTrue(zombie.checkMatch(/cat/).fullMatch());
             });
             test("1.1 -- multiple word, exact match", function() {
                 var zombie = new rq.Zombie(" cat boo cat ", "catcat");
-                assertFalse(zombie.checkMatch(/.*/));
-                assertFalse(zombie.checkMatch(/hat/));
-                assertFalse(zombie.checkMatch(/cat/));
-                assertTrue(zombie.checkMatch(/cat/g));
+                assertFalse(zombie.checkMatch(/.*/).fullMatch());
+                assertFalse(zombie.checkMatch(/hat/).fullMatch());
+                assertFalse(zombie.checkMatch(/cat/).fullMatch());
+                assertTrue(zombie.checkMatch(/cat/g).fullMatch());
             });
-            test("1.1 -- multiple word, one char different", function() {var zombie = new rq.Zombie("It was a grey morning, a gray afternoon.", "greygray");
-                assertFalse(zombie.checkMatch(/.*/));
-                assertFalse(zombie.checkMatch(/grey/g));
-                assertFalse(zombie.checkMatch(/gray/g));
-                assertTrue(zombie.checkMatch(/gr[ea]y/g));
+            test("1.1 -- multiple word, one char different", function() {
+                var zombie = new rq.Zombie("It was a grey morning, a gray afternoon.", "greygray");
+                assertFalse(zombie.checkMatch(/.*/).fullMatch());
+                assertFalse(zombie.checkMatch(/grey/g).fullMatch());
+                assertFalse(zombie.checkMatch(/gray/g).fullMatch());
+                assertTrue(zombie.checkMatch(/gr[ea]y/g).fullMatch());
             });
             test("1.1 -- optional chars", function() {
                 var zombie = new rq.Zombie("You say color, I say colour.", "colorcolour");
-                assertFalse(zombie.checkMatch(/.*/));
-                assertFalse(zombie.checkMatch(/color/g));
-                assertFalse(zombie.checkMatch(/colour/g));
-                assertTrue(zombie.checkMatch(/colou?r/g));
+                assertFalse(zombie.checkMatch(/.*/).fullMatch());
+                assertFalse(zombie.checkMatch(/color/g).fullMatch());
+                assertFalse(zombie.checkMatch(/colour/g).fullMatch());
+                assertTrue(zombie.checkMatch(/colou?r/g).fullMatch());
             });
 
-            module("Test MatchResult");
         });
     </script>
 </head>
 <body>
-    <h1 id="qunit-header">QUnit example</h1>
+<h1 id="qunit-header">QUnit example</h1>
 
-    <h2 id="qunit-banner"></h2>
+<h2 id="qunit-banner"></h2>
 
-    <div id="qunit-testrunner-toolbar"></div>
-    <h2 id="qunit-userAgent"></h2>
-    <ol id="qunit-tests"></ol>
-    <div id="qunit-fixture">test markup, will be hidden</div>
+<div id="qunit-testrunner-toolbar"></div>
+<h2 id="qunit-userAgent"></h2>
+<ol id="qunit-tests"></ol>
+<div id="qunit-fixture">test markup, will be hidden</div>
 </body>
 </html>

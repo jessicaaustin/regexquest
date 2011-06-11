@@ -5,7 +5,8 @@ baddies are zombies, which need to be transformed back into normal humans ?
 one or more baddies
  - each has some text, with certain parts highlighted
  - may or may not be able to get all baddies with single regexp
-to fight, type a regexp
+   - need special equipment to fight multiple at once
+ - to fight, type a regexp
  - can narrow down the string with multiple regexps, beat it by narrowing down to selected text
  - each time you "strike", the baddie strikes back
 
