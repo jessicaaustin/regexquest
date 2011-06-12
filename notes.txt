@@ -7,12 +7,7 @@ zombie:
 
 mutant:
  - similar to zombie, but you need to replace infectious text with something else, instead of just "removing" (matching) it
-
-
-normal mode:
- - like a riddle, describe how to defeat
-hint mode:
- - highlight the text that needs to be removed/changed
+ - more advanced, can basically increase the complexity by applying many regexes
 
 
 it's not exactly turn-based--the monster will attack you after a certain amount of time. so being able to create regexps faster is what matters.

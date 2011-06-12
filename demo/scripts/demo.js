@@ -11,7 +11,11 @@ var demo = {
     createRegExp: function() {
         var pattern = $("#regexp").val();
         var modifiers = $("#regexpFlags").val();
-        return new RegExp(pattern, modifiers);
+        try {
+            return new RegExp(pattern, modifiers);
+        } catch (err) {
+            demo.showResult(false);
+        }
     },
 
     showResult: function(good) {
@@ -69,6 +73,7 @@ var demo = {
 
 $(document).ready(function() {
     zombies = zombies.concat(
+            // basics
             new rq.ZombieFactory([
                 "A cat with a hat sat on a mat",
                 "A hat: My cat, your cat, their cat.",
@@ -79,12 +84,21 @@ $(document).ready(function() {
                 /cat/,
                 /hat/gi
             ]),
+            // optionals and negation
             new rq.ZombieFactory([
                 "<html><h1>Top Header</h1><p>Lorem ipsum dolor sit amet.</p><h2>Next Header</h2><p>Neque porro quisquam est </p><H1>Top header 2</H1><h2>Next Header 2</h2><h3>Low Header</h3></html>"
             ], [
                 /a|e|i|o|u/ig,
                 /<h1\b[^>]*>(.*?)<\/h1>/gi,
                 /<h\d\b[^>]*>(.*?)<\/h\d>/gi
+            ]),
+            // todo: start of line, end of line
+            // todo: multi-line
+            // more difficult
+            new rq.ZombieFactory([
+                "Right now it is 11:01am, we're leaving at 2:05 pm, and we'll be there by 4:15 PM."
+            ], [
+                /\d+/
             ])
     );
 

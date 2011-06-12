@@ -60,7 +60,7 @@ rq.Zombie = function(fullText, infection) {
 
         var zombieText = new Array();
 
-        var infectedGoesFirst = fullText.indexOf(infectedText[0]) == 0;
+        var infectedGoesFirst = fullText.indexOf(infectedText[0] + uninfectedText[0]) == 0;
 
         var j = 0;
         for (var i = 0; i < uninfectedText.length + infectedText.length; i++) {

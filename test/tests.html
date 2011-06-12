@@ -83,6 +83,10 @@
                     {text: "m", infected: true},
                     {text: "at.", infected: false}
                 ], new rq.Zombie("My cat has a mat.", /m/gi).zombieTextArray());
+                assertArrayEquals([
+                    {text: "cab", infected: false},
+                    {text: "c", infected: true}
+                ], new rq.Zombie("cabc", /c$/).zombieTextArray());
             });
 
         });
