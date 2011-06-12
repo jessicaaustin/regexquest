@@ -13,6 +13,8 @@
 
 <div>
     <h3 id="rounds"></h3>
+
+    <div><img src="img/zombie.jpg"/></div>
     <div id="zombieText" style="font-weight: bold;"></div>
     <div style="clear:left; float:left; height:35px;">
         <img src="img/wronganswer.png" id="wrongAnswer" style="display:none;"/>
@@ -21,11 +23,26 @@
     <div id="result" style="float:left; color:red;"></div>
     <div style="clear:left;">
         /
-        <input type="text" id="regexp" style="width:50px;" value=""/>
+        <input type="text" id="regexp" style="width:150px;" value=""/>
         /
         <input type="text" id="regexpFlags" style="width:15px;" value=""/>
+        <input type="button" id="nextRound" value="Next"/>
     </div>
-    <input type="button" id="nextRound" value="Next"/>
+
+    <div style="font-size: small; color:gray; line-height: 1.5">
+        <br/>
+        Defeat the zombie attack by matching the <span class="infected">infected</span> words.
+        <br/>
+        To match, type a regular expression in the first box, and modifiers in the second box, then hit &lt;enter&gt;.
+        <br/>
+        Available modifiers:
+        <ul>
+            <li>/g -- global matching</li>
+            <li>/i -- case insensitive</li>
+            <li>/m -- multi-line matching</li>
+        </ul>
+        <a href="http://www.regular-expressions.info/javascript.html" target="_blank">More info.</a>
+    </div>
 </div>
 
 </body>

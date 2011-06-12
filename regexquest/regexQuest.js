@@ -1,4 +1,3 @@
-
 Array.prototype.remove = function(from, to) {
     var rest = this.slice((to || from) + 1 || this.length);
     this.length = from < 0 ? this.length + from : from;
@@ -98,6 +97,10 @@ rq.Zombie = function(fullText, infection) {
         return zombieText;
     };
 
+
+    if (!this.infectedText()) {
+        console.error("no match for text='" + fullText + "' and regexp=" + infection);
+    }
 };
 
 /** Construct Zombies out of random combinations of the given arrays **/

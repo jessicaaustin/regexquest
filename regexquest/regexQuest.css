@@ -1,7 +1,9 @@
 .infected {
+    color: #000000;
     background-color: #ff6666;
 }
 
 .uninfected {
+    color: #000000;
     background-color: #ffffff;
 }

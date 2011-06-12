@@ -1,82 +1,94 @@
 var zombies = new Array();
 var currentRound = 0;
 
-var showResult = function(good) {
-    if (good) {
-        $("#wrongAnswer").hide();
-        $("#rightAnswer").show();
-        $("#result").css("color", "green");
-        $(".infected").fadeOut();
-    } else {
-        $("#wrongAnswer").show();
-        $("#rightAnswer").hide();
-        $("#result").css("color", "red");
-    }
-};
+var demo = {
 
-var clearRegExp = function() {
-    var pattern = $("#regexp").val("");
-    var modifiers = $("#regexpFlags").val("");
-};
+    clearRegExp: function() {
+        var pattern = $("#regexp").val("");
+        var modifiers = $("#regexpFlags").val("");
+    },
 
-var createRegExp = function() {
-    var pattern = $("#regexp").val();
-    var modifiers = $("#regexpFlags").val();
-    return new RegExp(pattern, modifiers);
-};
+    createRegExp: function() {
+        var pattern = $("#regexp").val();
+        var modifiers = $("#regexpFlags").val();
+        return new RegExp(pattern, modifiers);
+    },
 
-var runCheck = function(event) {
-    $("#wrongAnswer").hide();
-    $("#rightAnswer").hide();
-    var resultDiv = $("#result");
-    resultDiv.text("");
-
-    // check for enter key press
-    var code = (event.keyCode ? event.keyCode : event.which);
-    if (code == 13) {
-        resultDiv.text(zombie.whatMatched(createRegExp()).join(" "));
-        if (zombie.checkMatch(createRegExp())) {
-            showResult(true);
+    showResult: function(good) {
+        if (good) {
+            $("#wrongAnswer").hide();
+            $("#rightAnswer").show();
+            $("#result").css("color", "green");
+            $(".infected").fadeOut();
         } else {
-            showResult(false);
+            $("#wrongAnswer").show();
+            $("#rightAnswer").hide();
+            $("#result").css("color", "red");
         }
+    },
+
+    runCheck: function(event) {
+        $("#wrongAnswer").hide();
+        $("#rightAnswer").hide();
+        var resultDiv = $("#result");
+        resultDiv.text("");
+
+        // check for enter key press
+        var code = (event.keyCode ? event.keyCode : event.which);
+        if (code == 13) {
+            resultDiv.text(zombie.whatMatched(demo.createRegExp()).join(" "));
+            if (zombie.checkMatch(demo.createRegExp())) {
+                demo.showResult(true);
+            } else {
+                demo.showResult(false);
+            }
+        }
+    },
+
+    setup: function() {
+        var zombie = zombies[currentRound];
+        if (!zombie) {
+            return;
+        }
+        $("#zombieText").html(zombie.zombieText());
+
+        // for debug purposes
+        window.zombie = zombie;
+
+        demo.clearRegExp();
+        $("#rounds").text("Round " + (currentRound + 1) + " of " + zombies.length);
+        $("#regexp").keypress(function(event) {
+            demo.runCheck(event);
+        });
+        $("#regexpFlags").keypress(function(event) {
+            demo.runCheck(event);
+        });
+        currentRound++;
     }
-};
-
-var setup = function() {
-    var zombie = zombies[currentRound];
-    if (!zombie) {
-        return;
-    }
-    $("#zombieText").html(zombie.zombieText());
-
-    // for debug purposes
-    window.zombie = zombie;
-
-    clearRegExp();
-    $("#rounds").text("Round " + currentRound + " of " + (zombies.length-1));
-    $("#regexp").keypress(function(event) {
-        runCheck(event);
-    });
-    $("#regexpFlags").keypress(function(event) {
-        runCheck(event);
-    });
-    currentRound++;
 };
 
 $(document).ready(function() {
-    zombies = new rq.ZombieFactory([
-        "A cat with a hat sat on a mat",
-        "My cat, your cat, their cat.",
-        "hat Hat mat cat haTT"
-    ], [
-        /[c|h]at/g,
-        /[\w]at/g,
-        /cat/,
-        /hat/gi
-    ]);
+    zombies = zombies.concat(
+            new rq.ZombieFactory([
+                "A cat with a hat sat on a mat",
+                "A hat: My cat, your cat, their cat.",
+                "hat Hat mat cat haTT"
+            ], [
+                /[c|h]at/g,
+                /[\w]at/g,
+                /cat/,
+                /hat/gi
+            ]),
+            new rq.ZombieFactory([
+                "<html><h1>Top Header</h1><p>Lorem ipsum dolor sit amet.</p><h2>Next Header</h2><p>Neque porro quisquam est </p><H1>Top header 2</H1><h2>Next Header 2</h2><h3>Low Header</h3></html>"
+            ], [
+                /a|e|i|o|u/ig,
+                /<h1\b[^>]*>(.*?)<\/h1>/gi,
+                /<h\d\b[^>]*>(.*?)<\/h\d>/gi
+            ])
+    );
 
-    $("#nextRound").click(setup);
+    $("#nextRound").click(demo.setup);
 
-    setup();
+    demo.setup();
 });
