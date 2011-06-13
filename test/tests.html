@@ -89,6 +89,33 @@
                 ], new rq.Zombie("cabc", /c$/).zombieTextArray());
             });
 
+            module("Test RegexWithReplacement");
+
+            test("0.0 -- test class", function() {
+
+
+            });
+
+            module("Test Mutant");
+
+            test("0.0 -- mutant class", function() {
+                var mutant = new rq.Mutant("hi mom, how are you today?", [new rq.RegExWithReplacement("o", "0", "g")]);
+                assertEquals("hi mom, how are you today?", mutant.cleanText());
+            });
+
+            test("1.0 -- infected text, single infection", function() {
+                assertEquals("hi m0m, h0w are y0u t0day?", new rq.Mutant("hi mom, how are you today?",
+                        [new rq.RegExWithReplacement("o", "0", "g")]).infectedText());
+                assertEquals("__ 5 __", new rq.Mutant("11 5 12",
+                        [new rq.RegExWithReplacement("\\d\\d", "__", "g")]).infectedText());
+            });
+
+            test("1.0 -- infected text, multiple infections", function() {
+                assertEquals("hi m0m, h0w are y0u t0day?", new rq.Mutant("hi mom, how are you today?",
+                        [new rq.RegExWithReplacement("o", "0", "g")]).infectedText());
+                assertEquals("__ 5 __", new rq.Mutant("11 5 12",
+                        [new rq.RegExWithReplacement("\\d\\d", "__", "g")]).infectedText());
+            });
         });
     </script>
 </head>

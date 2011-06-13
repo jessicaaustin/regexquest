@@ -3,46 +3,16 @@
 <html>
 <head>
     <title>RegexQuest</title>
-    <script type="text/javascript" src="../lib/jquery-1.4.3.js"></script>
-    <script type="text/javascript" src="../lib/jquery.gamequery-0.5.1.js"></script>
-    <script type="text/javascript" src="../regexquest/regexQuest.js"></script>
-    <link rel="stylesheet" href="../regexquest/regexQuest.css" type="text/css" media="screen"/>
-    <script type="text/javascript" src="scripts/demo.js"></script>
+    <link rel="stylesheet" href="styles/demo.css" type="text/css" media="screen"/>
 </head>
 <body>
 
 <div>
-    <h3 id="rounds"></h3>
-
-    <div><img src="img/zombie.jpg"/></div>
-    <div id="zombieText" style="font-weight: bold;"></div>
-    <div style="clear:left; float:left; height:35px;">
-        <img src="img/wronganswer.png" id="wrongAnswer" style="display:none;"/>
-        <img src="img/rightanswer.png" id="rightAnswer" style="display:none;"/>
-    </div>
-    <div id="result" style="float:left; color:red;"></div>
-    <div style="clear:left;">
-        /
-        <input type="text" id="regexp" style="width:150px;" value=""/>
-        /
-        <input type="text" id="regexpFlags" style="width:15px;" value=""/>
-        <input type="button" id="nextRound" value="Next"/>
-    </div>
-
-    <div style="font-size: small; color:gray; line-height: 1.5">
-        <br/>
-        Defeat the zombie attack by matching the <span class="infected">infected</span> words.
-        <br/>
-        To match, type a regular expression in the first box, and modifiers in the second box, then hit &lt;enter&gt;.
-        <br/>
-        Available modifiers:
-        <ul>
-            <li>/g -- global matching</li>
-            <li>/i -- case insensitive</li>
-            <li>/m -- multi-line matching</li>
-        </ul>
-        <a href="http://www.regular-expressions.info/javascript.html" target="_blank">More info.</a>
-    </div>
+    <h1>RegexQuest</h1>
+    <h2><a href="zombie.html">Zombies</a></h2>
+    Learn the basics of Regular Expressions by matching text.
+    <h2><a href="mutant.html">Mutants</a></h2>
+    Return "mutated" text back to its regular form by applying one or more patterns.
 </div>
 
 </body>

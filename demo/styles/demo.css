@@ -1,0 +1,9 @@
+.notes {
+    font-size: small;
+    color: gray;
+    line-height: 1.5;
+}
+
+a, a:visited, a:active {
+    color: #000000;
+}

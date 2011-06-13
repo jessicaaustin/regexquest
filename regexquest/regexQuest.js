@@ -4,6 +4,12 @@ Array.prototype.remove = function(from, to) {
     return this.push.apply(this, rest);
 };
 
+String.prototype.remove = function(from, to) {
+    var rest = this.slice((to || from) + 1 || this.length);
+    this.length = from < 0 ? this.length + from : from;
+    return this.push.apply(this, rest);
+};
+
 
 // define our namespace
 var rq = {};
@@ -97,7 +103,6 @@ rq.Zombie = function(fullText, infection) {
         return zombieText;
     };
 
-
     if (!this.infectedText()) {
         console.error("no match for text='" + fullText + "' and regexp=" + infection);
     }
@@ -116,4 +121,51 @@ rq.ZombieFactory = function(cleanStrings, infections) {
         zombies[i] = new rq.Zombie(string, infections[i]);
     }
     return zombies;
+};
+
+rq.RegExWithReplacement = function(matchPattern, replacementPattern, modifiers) {
+    this.regex = function() {
+        return new RegExp(matchPattern, modifiers);
+    };
+
+    this.replacementPattern = function() {
+        return replacementPattern;
+    };
+};
+
+rq.Mutant = function(cleanText, infections) {
+    var currentInfectedText = cleanText;
+
+    this.cleanText = function() {
+        return cleanText;
+    };
+
+    this.infectedText = function() {
+        var infectedText = currentInfectedText;
+        for (var i = 0; i < infections.length; i++) {
+            var infection = infections[i];
+            infectedText = infectedText.replace(infection.regex(), infection.replacementPattern());
+        }
+        return infectedText;
+    };
+
+    // requires jsdiff.js
+    this.diffText = function() {
+        return diffString(this.infectedText(), this.cleanText());
+    };
+
+    this.applyRegex = function(regexWithReplacement) {
+        var candidate = currentInfectedText.replace(regexWithReplacement.regex(), regexWithReplacement.replacementPattern());
+        if (candidate == cleanText) {
+            // full match
+            return true;
+        } else if (candidate == currentInfectedText) {
+            // no match at all
+            return false;
+        } else {
+            // partial match
+            currentInfectedText = candidate;
+            return false;
+        }
+    };
 };
