@@ -1,8 +1,8 @@
 var zombies = new Array();
 var currentRound = 0;
 
-var patternElem = $("#pattern");
-var modifiersElem = $("#regexpFlags");
+var patternElem;
+var modifiersElem;
 
 var demo = {
 
@@ -75,6 +75,10 @@ var demo = {
 };
 
 $(document).ready(function() {
+
+    patternElem = $("#pattern");
+    modifiersElem = $("#regexpFlags");
+
     // todo: make sure to get everything in http://www.zytrax.com/tech/web/regex.htm
     zombies = zombies.concat(
             // basics
@@ -83,7 +87,7 @@ $(document).ready(function() {
                 "A hat: My cat, your cat, their cat.",
                 "hat Hat mat cat haTT"
             ], [
-                /[c|h]at/g,
+                /[ch]at/g,
                 /[\w]at/g,
                 /cat/,
                 /hat/gi

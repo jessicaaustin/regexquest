@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9ea9bcdf-b8a4-4b02-94cb-b9a51642931b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demo/img/mutant.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demo/styles" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demo/mutant.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demo/styles/demo.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demo/zombie.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/jsdiff.js" />
+    <list default="true" readonly="true" id="9ea9bcdf-b8a4-4b02-94cb-b9a51642931b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/index.html" afterPath="$PROJECT_DIR$/demo/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/scripts/demo.js" afterPath="$PROJECT_DIR$/demo/scripts/demo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/regexquest/regexQuest.js" afterPath="$PROJECT_DIR$/regexquest/regexQuest.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/tests.html" afterPath="$PROJECT_DIR$/test/tests.html" />
     </list>
     <ignored path="regexquest.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -97,10 +88,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tests.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="tests.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/tests.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="109" column="57" selection-start="5142" selection-end="5142" vertical-scroll-proportion="1.1860465">
+            <state line="96" column="76" selection-start="4450" selection-end="4450" vertical-scroll-proportion="-11.333333">
               <folding />
             </state>
           </provider>
@@ -118,16 +109,16 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="6" selection-start="252" selection-end="252" vertical-scroll-proportion="-4.375">
+            <state line="7" column="6" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="demo.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="demo.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/demo/scripts/demo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="49" selection-start="440" selection-end="440" vertical-scroll-proportion="0.0">
+            <state line="89" column="24" selection-start="2423" selection-end="2428" vertical-scroll-proportion="0.4269103">
               <folding />
             </state>
           </provider>
@@ -136,7 +127,7 @@
       <file leaf-file-name="zombie.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo/zombie.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="42" selection-start="676" selection-end="719" vertical-scroll-proportion="-4.875">
+            <state line="15" column="42" selection-start="676" selection-end="719" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -145,7 +136,7 @@
       <file leaf-file-name="mutant.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo/mutant.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="40" selection-start="819" selection-end="819" vertical-scroll-proportion="-5.0">
+            <state line="18" column="40" selection-start="819" selection-end="819" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -183,11 +174,11 @@
         <option value="$PROJECT_DIR$/regexquest/regexQuest.css" />
         <option value="$PROJECT_DIR$/demo/index.html" />
         <option value="$PROJECT_DIR$/demo/styles/demo.css" />
-        <option value="$PROJECT_DIR$/demo/scripts/demo.js" />
         <option value="$PROJECT_DIR$/demo/zombie.html" />
         <option value="$PROJECT_DIR$/demo/mutant.html" />
         <option value="$PROJECT_DIR$/regexquest/regexQuest.js" />
         <option value="$PROJECT_DIR$/test/tests.html" />
+        <option value="$PROJECT_DIR$/demo/scripts/demo.js" />
       </list>
     </option>
   </component>
@@ -415,7 +406,7 @@
     </configuration>
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
       <JSDebuggerConfigurationSettings>
-        <option name="engineId" />
+        <option name="engineId" value="embedded" />
         <option name="fileUrl" />
       </JSDebuggerConfigurationSettings>
       <method>
@@ -474,6 +465,7 @@
     <option name="FORCE_UPDATE" value="false" />
     <configuration useDefault="true">$USER_HOME$/.subversion_IDEA</configuration>
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+    <supportedVersion>125</supportedVersion>
   </component>
   <component name="SvnFileUrlMappingImpl">
     <option name="myMappingRoots">
@@ -494,18 +486,16 @@
     </option>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="293" width="1276" height="537" extended-state="0" />
+    <frame x="0" y="22" width="1920" height="1058" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.51789975" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3287234" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.60143197" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Code explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293556" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -514,8 +504,10 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.60143197" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293556" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
@@ -575,79 +567,61 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/qunit-supp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="20" selection-start="337" selection-end="337" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/regexquest/regexQuest.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="6" selection-start="252" selection-end="252" vertical-scroll-proportion="-4.375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/jquery-1.4.3.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="674" column="95" selection-start="17445" selection-end="17445" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/scripts/demo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="49" selection-start="440" selection-end="440" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/zombie.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="42" selection-start="676" selection-end="719" vertical-scroll-proportion="-4.875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/styles/demo.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="6" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/mutant.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="40" selection-start="819" selection-end="819" vertical-scroll-proportion="-5.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/jsdiff.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="158" column="56" selection-start="4290" selection-end="4290" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="674" column="95" selection-start="17445" selection-end="17445" vertical-scroll-proportion="0.33333334" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/regexquest/regexQuest.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="167" column="25" selection-start="5199" selection-end="5199" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="167" column="25" selection-start="5199" selection-end="5199" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/regexquest/regexQuest.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/tests.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="57" selection-start="5142" selection-end="5142" vertical-scroll-proportion="1.1860465">
+        <state line="96" column="76" selection-start="4450" selection-end="4450" vertical-scroll-proportion="-11.333333">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/qunit-supp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="20" selection-start="337" selection-end="337" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="6" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/zombie.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="42" selection-start="676" selection-end="719" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/mutant.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="40" selection-start="819" selection-end="819" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/jsdiff.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="158" column="56" selection-start="4290" selection-end="4290" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/styles/demo.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="6" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/scripts/demo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="89" column="24" selection-start="2423" selection-end="2428" vertical-scroll-proportion="0.4269103">
           <folding />
         </state>
       </provider>
