@@ -9,6 +9,7 @@ game.resources = [
      {name: "metatiles32x32",  type:"image", src: "data/img/map/metatiles32x32.png"},
      // sprites
      {name: "hero", type: "image", src: "data/img/sprite/hero.png"},
+     {name: "zombie", type: "image", src: "data/img/sprite/zombie.png"},
 
 	/* Atlases 
 	 * @example
