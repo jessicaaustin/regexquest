@@ -45,8 +45,9 @@ var game = {
 //        me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());
 
-       // register our player entity in the object pool
+       // register our entities
        me.pool.register("mainPlayer", game.PlayerEntity);
+       me.pool.register("EnemyEntity", game.EnemyEntity);
 
        // enable the keyboard
        me.input.bindKey(me.input.KEY.LEFT,  "left");
