@@ -3,6 +3,7 @@ var currentRound = 0;
 
 var patternElem;
 var modifiersElem;
+var resultDiv;
 
 var demo = {
 
@@ -34,21 +35,24 @@ var demo = {
         }
     },
 
-    runCheck: function(event) {
+    checkAnswer: function() {
+        resultDiv.text(zombie.whatMatched(demo.createRegExp()).join(" "));
+        if (zombie.checkMatch(demo.createRegExp())) {
+            demo.showResult(true);
+        } else {
+            demo.showResult(false);
+        }
+    },
+
+    userUpdate: function(event) {
         $("#wrongAnswer").hide();
         $("#rightAnswer").hide();
-        var resultDiv = $("#result");
         resultDiv.text("");
 
         // check for enter key press
         var code = (event.keyCode ? event.keyCode : event.which);
         if (code == 13) {
-            resultDiv.text(zombie.whatMatched(demo.createRegExp()).join(" "));
-            if (zombie.checkMatch(demo.createRegExp())) {
-                demo.showResult(true);
-            } else {
-                demo.showResult(false);
-            }
+            demo.checkAnswer();
         }
     },
 
@@ -65,10 +69,13 @@ var demo = {
         demo.clearRegExp();
         $("#rounds").text("Round " + (currentRound + 1) + " of " + zombies.length);
         patternElem.keypress(function(event) {
-            demo.runCheck(event);
+            demo.userUpdate(event);
         });
         modifiersElem.keypress(function(event) {
-            demo.runCheck(event);
+            demo.userUpdate(event);
+        });
+        $("#checkAnswer").click(function(event) {
+            demo.checkAnswer();
         });
         currentRound++;
     }
@@ -78,6 +85,7 @@ $(document).ready(function() {
 
     patternElem = $("#pattern");
     modifiersElem = $("#regexpFlags");
+    resultDiv = $("#result");
 
     // todo: make sure to get everything in http://www.zytrax.com/tech/web/regex.htm
     zombies = zombies.concat(
