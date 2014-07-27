@@ -23,12 +23,8 @@ game.PlayerEntity = me.ObjectEntity.extend({
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
  
     },
- 
-    /* -----
- 
-    update the player pos
- 
-    ------ */
+
+    // TODO use AnimationSheet for decent sprite animations
     update: function(dt) {
  
         if (me.input.isKeyPressed('left')) {
