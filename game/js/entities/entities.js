@@ -101,7 +101,7 @@ game.PlayerEntity = me.ObjectEntity.extend({
      },
 
      onCollision : function (res, obj) {
-//        me.audio.play("zombie3");
+        me.audio.play("zombie3");
      },
 
      // TODO use AnimationSheet for decent sprite animations
