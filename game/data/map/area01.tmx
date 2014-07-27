@@ -48,7 +48,7 @@
  <objectgroup name="EnemyEntities" width="40" height="40">
   <object name="EnemyEntity" x="864" y="896" width="256" height="32"/>
   <object name="EnemyEntity" x="832" y="192" width="224" height="32"/>
-  <object name="EnemyEntity" x="192" y="832" width="224" height="32"/>
+  <object name="EnemyEntity" x="256" y="768" width="160" height="32"/>
   <object name="EnemyEntity" x="768" y="512" width="224" height="32"/>
   <object name="EnemyEntity" x="448" y="1056" width="256" height="32"/>
   <object name="EnemyEntity" x="192" y="256" width="128" height="32"/>

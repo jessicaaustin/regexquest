@@ -4,7 +4,7 @@ TODOs:
 ======
 
 * Add fog effect to map
-
+* Add levels inside the houses
 
 
 Thoughts/Ideas:

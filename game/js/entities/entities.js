@@ -39,6 +39,18 @@ game.PlayerEntity = me.ObjectEntity.extend({
  
         // check & update player movement
         this.updateMovement();
+
+        // check for collision
+        var collision = me.game.world.collide(this);
+
+        if (collision) {
+            // if we collide with an enemy
+            if (collision.obj.type == me.game.ENEMY_OBJECT) {
+                // bounce back
+                this.vel.y = -1*collision.y*this.maxVel.y * me.timer.tick;
+                this.vel.x = -1*collision.x*this.maxVel.x * me.timer.tick;
+            }
+        }
  
         // update animation if necessary
         if (this.vel.x!=0 || this.vel.y!=0) {
@@ -83,15 +95,23 @@ game.PlayerEntity = me.ObjectEntity.extend({
          // walking & jumping speed
          this.setVelocity(1, 0);
 
+         // make it collidable
+         this.collidable = true;
          this.type = me.game.ENEMY_OBJECT;
+     },
+
+     onCollision : function (res, obj) {
+//        me.audio.play("zombie3");
      },
 
      // TODO use AnimationSheet for decent sprite animations
      update: function(dt) {
          // do nothing if not in viewport
-         if (!this.inViewport)
+         if (!this.inViewport) {
              return false;
+         }
 
+         // update position
          if (this.alive) {
              if (this.walkLeft && this.pos.x <= this.startX) {
                  this.walkLeft = false;

@@ -22,13 +22,15 @@ game.resources = [
  	 {name: "area01", type: "tmx", src: "data/map/area01.tmx"},
 
 	/**
-	 * Background music.
+	 * Background music
 	 */
-    {name: "dst-beyondtheseforests", type: "audio", src: "data/bgm/"}
+    {name: "dst-beyondtheseforests", type: "audio", src: "data/bgm/"},
 
 
-	/* Sound effects. 
-	 * @example
-	 * {name: "example_sfx", type: "audio", src: "data/sfx/"}
+	/**
+	 * Sound effects
 	 */
+	 {name: "zombie1", type: "audio", src: "data/sfx/"},
+	 {name: "zombie2", type: "audio", src: "data/sfx/"},
+	 {name: "zombie3", type: "audio", src: "data/sfx/"}
 ];
