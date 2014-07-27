@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>RegexQuest</title>
+		<link rel="stylesheet" type="text/css" media="screen" href="index.css">
+		<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	</head>
+	<body>
+		<!-- Canvas placeholder -->
+		<div id="screen"></div>
+
+		<!-- melonJS Library -->
+		<!-- build:js js/app.min.js -->
+		<script type="text/javascript" src="lib/melonJS-1.0.2.js"></script>
+
+		<!-- Plugin(s) -->
+		<script type="text/javascript" src="lib/plugins/debugPanel.js"></script>
+		
+		<!-- Game Scripts -->
+		<script type="text/javascript" src="js/game.js"></script>
+		<script type="text/javascript" src="js/resources.js"></script>
+
+		<script type="text/javascript" src="js/entities/entities.js"></script>
+		<script type="text/javascript" src="js/entities/HUD.js"></script>
+
+		<script type="text/javascript" src="js/screens/title.js"></script>
+		<script type="text/javascript" src="js/screens/play.js"></script>
+		<!-- /build -->
+		<!-- Bootstrap & Mobile optimization tricks -->
+		<script type="text/javascript">
+			window.onReady(function onReady() {
+				game.onload();
+
+				// Mobile browser hacks
+				if (me.device.isMobile && !navigator.isCocoonJS) {
+					// Prevent the webview from moving on a swipe
+					window.document.addEventListener("touchmove", function (e) {
+						e.preventDefault();
+						window.scroll(0, 0);
+						return false;
+					}, false);
+
+					// Scroll away mobile GUI
+					(function () {
+						window.scrollTo(0, 1);
+						me.video.onresize(null);
+					}).defer();
+
+					me.event.subscribe(me.event.WINDOW_ONRESIZE, function (e) {
+						window.scrollTo(0, 1);
+					});
+				}
+			});
+		</script>
+
+        <div id="credits">
+            <!--TODO: clean up this section-->
+            <h3>Credits</h3>
+            <h4>Game Engine</h4>
+            <a href="http://melonjs.org/">melonJS</a>
+            <h4>Sprites and Tilesets</h4>
+            <pre>
+            Title:
+            16x16 JRPG tilesets enlarged 2x
+
+            Author:
+            Multiple Artists (see description)
+
+            URL:
+            http://opengameart.org/content/16x16-jrpg-tilesets-enlarged-2x
+
+            License(s):
+            * CC-BY 3.0 ( http://creativecommons.org/licenses/by/3.0/legalcode )
+
+            Copyright/Attribution Notice:
+            Cave, desert, sewer, and overworld sets by MrBeast.  Interior tileset by RedShrike.  Town tiles by Surt, modified by Blarumyrran.  Snow town tiles are a modification of the town tileset by Sharm.  Forest tiles contained in the town set are by Sharm.  Some of these works were commissioned by OpenGameArt.org (http://opengameart.org).
+
+            File(s):
+            * classical_temple_tiles.png
+            * tilesetformattedupdate1.png
+            * town_snow.png
+            * desert.png
+            * cave.png
+            * sewer_1.png
+            * town_forest_tiles.png
+            </pre>
+        </div>
+	</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>RegexQuest</title>
+    <script type="text/javascript" src="../lib/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="../lib/jsdiff.js"></script>
+    <script type="text/javascript" src="../src/regexQuest.js"></script>
+    <link rel="stylesheet" href="../src/regexQuest.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="styles/demo.css" type="text/css" media="screen"/>
+</head>
+<body>
+
+<div>
+    <h2>Mutants <a href="index.html" class="notes">back</a></h2>
+    <h3 id="rounds"></h3>
+
+    <div><img src="img/mutant.png" width="45" height="70"/></div>
+    <div id="mutantText" style="font-weight: bold; clear:left; float:left;"></div>
+    <div id="diffText" style="font-weight: bold; float:left;"></div>
+    <div id="cleanText" style="font-weight: bold; float:left;"></div>
+    <div style="clear:left; float:left; height:35px;">
+        <img src="img/wronganswer.png" id="wrongAnswer" style="display:none;"/>
+        <img src="img/rightanswer.png" id="rightAnswer" style="display:none;"/>
+    </div>
+    <div id="result" style="float:left; color:red;"></div>
+    <div style="clear:left;">
+        <a href="#" id="showDiff" style="font-size: small;">show diff</a><br/>
+        s
+        /
+        <input type="text" id="pattern" style="width:150px;" value=""/>
+        /
+        <input type="text" id="replaceWith" style="width:150px;" value=""/>
+        /
+        <input type="text" id="regexpFlags" style="width:15px;" value=""/>
+        <input type="button" id="nextRound" value="Next"/>
+    </div>
+
+    <div class="notes">
+        <br/>
+        Defeat the mutant attack by turning the <span class="mutant">mutated</span> text into <span class="human">normal</span> text.
+        <br/>
+        To match, type a pattern in the first box, the replacement string in the second box, and modifiers in the third box, then hit &lt;enter&gt;.
+        <br/>
+        Back references:
+        <ul>
+            <li>$1 -- 1st match</li>
+            <li>$2 -- 2nd match</li>
+            <li>$n -- nth match</li>
+        </ul> Available modifiers:
+        <ul>
+            <li>/g -- global matching</li>
+            <li>/i -- case insensitive</li>
+            <li>/m -- multi-line matching</li>
+        </ul>
+        <a href="http://www.regular-expressions.info/javascript.html" target="_blank">More info</a><br/>
+        <a href="http://www.visibone.com/regular-expressions/" target="_blank">Quick reference</a>
+    </div>
+</div>
+
+</body>
+</html>
