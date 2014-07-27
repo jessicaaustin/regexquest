@@ -7,6 +7,9 @@ game.PlayScreen = me.ScreenObject.extend({
         // load a level
         me.levelDirector.loadLevel("area01");
 
+        // play the background music
+        me.audio.playTrack("dst-beyondtheseforests");
+
 		// reset the score
 		game.data.score = 0;
 
@@ -22,5 +25,8 @@ game.PlayScreen = me.ScreenObject.extend({
 	onDestroyEvent: function() {
 		// remove the HUD from the game world
 		me.game.world.removeChild(this.HUD);
+
+		// stop background music
+		me.audio.stopTrack();
 	}
 });

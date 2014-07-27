@@ -1,4 +1,15 @@
 
+
+TODOs:
+======
+
+* Add fog effect to map
+
+
+
+Thoughts/Ideas:
+===============
+
 zombie:
  - has a bunch of text, with "infectious" text interspersed 
  - to "cure" a zombie, remove the infected text
@@ -30,9 +41,6 @@ bonus games:
  - opposite game: baddies have regexps, you need to write text
 
 
-look/feel:
- - definitely use rounded corners =)  http://jquery.malsup.com/corner/
-
 game has different stages, with new types of baddies per stage
 - exact match
 - one or more chars
@@ -51,6 +59,8 @@ Function.prototype.method = function (name, func) {
 }
 
 
-free content:
+Resources:
+==========
+
 http://opengameart.org/
 http://www.nosoapradio.us/

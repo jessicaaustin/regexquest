@@ -18,12 +18,13 @@ game.resources = [
 	/**
 	 * Maps
  	 */
- 	 {name: "area01", type: "tmx", src: "data/map/area01.tmx"}
+ 	 {name: "area01", type: "tmx", src: "data/map/area01.tmx"},
 
-	/* Background music. 
-	 * @example
-	 * {name: "example_bgm", type: "audio", src: "data/bgm/"},
-	 */	
+	/**
+	 * Background music.
+	 */
+    {name: "dst-beyondtheseforests", type: "audio", src: "data/bgm/"}
+
 
 	/* Sound effects. 
 	 * @example
