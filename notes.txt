@@ -3,8 +3,16 @@
 TODOs:
 ======
 
+* Add zombie mechanic
+** Pop up regex puzzle when colliding when zombie
+** If correct: zombie => villager
+** If incorrect: lose health
+* Add health meter
+* Add "villagers saved" meter
+* Add title screen
 * Add fog effect to map
 * Add levels inside the houses
+* Reduce size of audio files for faster loading
 
 
 Thoughts/Ideas:
