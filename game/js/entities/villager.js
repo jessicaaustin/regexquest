@@ -2,7 +2,7 @@
 /**
  * ZOMBIE VILLAGER
  */
- game.EnemyEntity = me.ObjectEntity.extend({
+ game.ZombieVillager = me.ObjectEntity.extend({
      init: function(x, y, settings) {
 
         // sprite params
