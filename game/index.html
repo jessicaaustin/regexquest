@@ -3,6 +3,7 @@
 	<head>
 		<title>RegexQuest</title>
 		<link rel="stylesheet" type="text/css" media="screen" href="styles/style.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="../src/regexQuest.css">
 		<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="mobile-web-app-capable" content="yes">
@@ -22,12 +23,16 @@
         <!-- jQuery -->
         <script type="text/javascript" src="lib/jquery-1.11.1.js"></script>
 
+        <!-- regexquest lib -->
+        <script type="text/javascript" src="../src/regexQuest.js"></script>
+
         <!-- Game Scripts -->
 		<script type="text/javascript" src="js/game.js"></script>
 		<script type="text/javascript" src="js/resources.js"></script>
 
 		<script type="text/javascript" src="js/entities/entities.js"></script>
 		<script type="text/javascript" src="js/entities/HUD.js"></script>
+		<script type="text/javascript" src="js/entities/zombies.js"></script>
 		<script type="text/javascript" src="js/entities/puzzlegui.js"></script>
 
 		<script type="text/javascript" src="js/screens/title.js"></script>
@@ -61,12 +66,12 @@
 		</script>
 
         <div id="puzzleBox" style="display: none;">
-            <div id="zombieText">A cat with a hat sat on a mat</div>
-            <div>
+            <div id="zombieText"></div>
+            <div class="resultSection">
                 <img src="img/wronganswer.png" id="wrongAnswer" style="display:none;"/>
                 <img src="img/rightanswer.png" id="rightAnswer" style="display:none;"/>
+                <div class="result"></div>
             </div>
-
             <div>
                 /
                 <input type="text" class="pattern" value=""/>
