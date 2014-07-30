@@ -9,6 +9,7 @@ game.PlayerEntity = me.ObjectEntity.extend({
         this.parent(x, y, settings);
 
         // Set up the sprite animations
+        // TODO fix "sliding" walking style
         this.renderable.addAnimation("stand-up", [1]);
         this.renderable.addAnimation("up", [0, 1, 2]);
 
@@ -34,9 +35,17 @@ game.PlayerEntity = me.ObjectEntity.extend({
         // set the display to follow our position on both axis
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
 
+        // setup for puzzle
+        this.inPuzzle = false;
+
     },
 
     update: function(dt) {
+
+        if (this.inPuzzle) {
+            // prevent movement
+            return false;
+        }
 
         if (me.input.isKeyPressed('left')) {
             this.direction = "left";
@@ -70,15 +79,9 @@ game.PlayerEntity = me.ObjectEntity.extend({
         if (collision) {
             // if we collide with an enemy
             if (collision.obj.type == me.game.ENEMY_OBJECT) {
-
                 // bounce back
                 this.vel.y = -1*collision.y*this.maxVel.y * me.timer.tick;
                 this.vel.x = -1*collision.x*this.maxVel.x * me.timer.tick;
-
-                // set up a puzzle
-                game.puzzlegui.show();
-                game.puzzlegui.setupPuzzle();
-
             }
         }
  
@@ -92,12 +95,35 @@ game.PlayerEntity = me.ObjectEntity.extend({
         // else inform the engine we did not perform
         // any update (e.g. position, animation)
         return false;
+    },
+
+    startPuzzle: function() {
+        this.inPuzzle = true;
+    },
+
+    endPuzzle: function() {
+        this.inPuzzle = false;
+    },
+
+    onPuzzleSuccess: function() {
+        // TODO get points, update HUD
+        this.endPuzzle();
+    },
+
+    onPuzzleFail: function() {
+        // TODO lose health, update HUD
+        this.endPuzzle();
+    },
+
+    onPuzzleEscape: function() {
+        this.endPuzzle();
     }
- 
+
 });
 
 /**
  * ZOMBIE
+ * TODO: break out into its own file, maybe combine with game.puzzles?
  */
  game.EnemyEntity = me.ObjectEntity.extend({
      init: function(x, y, settings) {
@@ -130,17 +156,56 @@ game.PlayerEntity = me.ObjectEntity.extend({
          // make it collidable
          this.collidable = true;
          this.type = me.game.ENEMY_OBJECT;
+
+         // puzzle setup
+         this.inPuzzle = false;
      },
 
      onCollision : function (res, obj) {
-        me.audio.play("zombie3");
+        me.audio.play("zombie2");
+        this.startPuzzle(obj);
      },
 
-     // TODO use AnimationSheet for decent sprite animations
+    startPuzzle: function(player) {
+
+        this.inPuzzle = true;
+        this.collidable = false; // prevent collision loop
+
+        player.startPuzzle();
+
+        game.puzzlegui.setupPuzzle(player, this);
+    },
+
+    endPuzzle: function() {
+        this.inPuzzle = false;
+
+        // flicker and make un-collidable for a while to
+        // allow the player to escape if need be
+        var flickerTime = 2000;
+        this.renderable.flicker(flickerTime)
+        var thisObj = this;
+        setTimeout(function() {
+            thisObj.collidable = true;
+        }, flickerTime);
+    },
+
+    onPuzzleSuccess: function() {
+        // TODO turn into villager, play happy sfx, no longer an enemy
+        this.endPuzzle();
+    },
+
+    onPuzzleFail: function() {
+        // Do nothing until the player succeeds or runs away
+    },
+
+    onPuzzleEscape: function() {
+        this.endPuzzle();
+    },
+
      update: function(dt) {
-         // do nothing if not in viewport
-         if (!this.inViewport) {
-             return false;
+         if (!this.inViewport || this.inPuzzle) {
+            // prevent movement
+            return false;
          }
 
          // update position
