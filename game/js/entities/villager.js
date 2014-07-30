@@ -1,6 +1,6 @@
 
 /**
- * ZOMBIE VILLAGER
+ * Villagers, which have unfortunately been turned into zombies.
  */
  game.ZombieVillager = me.ObjectEntity.extend({
      init: function(x, y, settings) {

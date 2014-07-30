@@ -1,4 +1,6 @@
-
+/**
+ * Array of zombie puzzles to choose from.
+ */
 game.puzzles = {
 
     currentRound: 0,  // TODO move this into game logic
@@ -39,7 +41,6 @@ game.puzzles = {
     ),
 
     getCurrent: function() {
-        // TODO better way to reference?
         return game.puzzles.puzzles[game.puzzles.currentRound];
     }
 };

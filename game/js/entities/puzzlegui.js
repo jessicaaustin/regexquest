@@ -1,7 +1,7 @@
-
-game.puzzlegui = {
-
-    // TODO better way to access these variables?
+/**
+ * Dialog to show and handle the zombie puzzles.
+ */
+game.PuzzleGUI = Object.extend({
 
     puzzleBoxElem: null,
 
@@ -46,7 +46,7 @@ game.puzzlegui = {
         try {
             return new RegExp(pattern, modifiers);
         } catch (err) {
-            game.puzzlegui.showResult(false);
+            this.showResult(false);
         }
     },
 
@@ -57,29 +57,29 @@ game.puzzlegui = {
             resultElem.css("color", "green");
             $(".infected").fadeOut();
             puzzleBoxElem.delay( 2000 ).fadeOut( 800 );
-            game.puzzlegui.playerEntity.onPuzzleSuccess();
-            game.puzzlegui.zombieEntity.onPuzzleSuccess();
+            this.playerEntity.onPuzzleSuccess();
+            this.zombieEntity.onPuzzleSuccess();
         } else {
             $("#wrongAnswer").show();
             $("#rightAnswer").hide();
             resultElem.css("color", "red");
-            game.puzzlegui.playerEntity.onPuzzleFail();
-            game.puzzlegui.zombieEntity.onPuzzleFail();
+            this.playerEntity.onPuzzleFail();
+            this.zombieEntity.onPuzzleFail();
         }
     },
 
     runAway: function() {
-        game.puzzlegui.hide();
-        game.puzzlegui.playerEntity.onPuzzleEscape();
-        game.puzzlegui.zombieEntity.onPuzzleEscape();
+        this.hide();
+        this.playerEntity.onPuzzleEscape();
+        this.zombieEntity.onPuzzleEscape();
     },
 
     checkAnswer: function() {
-        resultElem.text(game.puzzlegui.puzzle.whatMatched(game.puzzlegui.createRegExp()).join(" "));
-        if (game.puzzlegui.puzzle.checkMatch(game.puzzlegui.createRegExp())) {
-            game.puzzlegui.showResult(true);
+        resultElem.text(this.puzzle.whatMatched(this.createRegExp()).join(" "));
+        if (this.puzzle.checkMatch(this.createRegExp())) {
+            this.showResult(true);
         } else {
-            game.puzzlegui.showResult(false);
+            this.showResult(false);
         }
     },
 
@@ -88,34 +88,34 @@ game.puzzlegui = {
         $("#rightAnswer").hide();
         resultElem.text("");
 
-        // check for enter key press
-        // TODO use global melonjs bindings instead
+        // check for enter or esc key press
         var code = (event.which);
         if (code == 13) {
-            game.puzzlegui.checkAnswer();
+            this.checkAnswer();
         } else if (code == 27) {
-            game.puzzlegui.runAway();
+            this.runAway();
         }
     },
 
     setupPuzzle: function(playerEntity, zombieEntity) {
-        game.puzzlegui.puzzle = game.puzzles.getCurrent();
-        if (!game.puzzlegui.puzzle) {
+        this.puzzle = game.puzzles.getCurrent();
+        if (!this.puzzle) {
             return;
         }
-        $("#zombieText").html(game.puzzlegui.puzzle.zombieText());
+        $("#zombieText").html(this.puzzle.zombieText());
 
-        game.puzzlegui.playerEntity = playerEntity;
-        game.puzzlegui.zombieEntity = zombieEntity;
+        this.playerEntity = playerEntity;
+        this.zombieEntity = zombieEntity;
 
-        game.puzzlegui.clearRegExp();
+        this.clearRegExp();
+        thisObj = this;
         patternElem.keydown(function(event) {
-            game.puzzlegui.userUpdate(event);
+            thisObj.userUpdate(event);
         });
         modifiersElem.keydown(function(event) {
-            game.puzzlegui.userUpdate(event);
+            thisObj.userUpdate(event);
         });
-        game.puzzlegui.show();
+        this.show();
     }
 
-};
+});

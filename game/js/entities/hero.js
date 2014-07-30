@@ -1,5 +1,5 @@
 /**
- * HERO
+ * The main player.
  */
 game.PlayerEntity = me.ObjectEntity.extend({
 

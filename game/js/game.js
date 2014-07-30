@@ -8,6 +8,8 @@ var game = {
     settings : {
         soundOn: false
     },
+
+    puzzlegui: null,
      
     // Run on page load.
     "onload" : function () {
@@ -62,7 +64,7 @@ var game = {
         me.input.bindKey(me.input.KEY.F1, "toggleHelpWindow");
 
         // initialize the PuzzleBox
-        game.puzzlegui.init();
+        game.puzzlegui = new game.PuzzleGUI();
 
         // Start the game.
         me.state.change(me.state.PLAY);

@@ -3,6 +3,7 @@
 /**
  * a HUD container and child items
  */
+ // TODO either use this class or get rid of it
 
 game.HUD = game.HUD || {};
 

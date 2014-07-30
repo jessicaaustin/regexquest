@@ -10,9 +10,9 @@ MVP:
 ** If incorrect: lose health
 * Add health meter
 * Add "villagers saved" meter
-* Add title screen?
 * add help/tutorial dialogs to explain how the game works
 ** and update help dialog to just be a quick reference
+* Add title screen?
 * figure out a story/narrative and use villagers/signs/artifacts to tell it
 * clean up javascript
 * look over TODOs
@@ -21,6 +21,8 @@ later:
 * Add fog effect to map
 * Add levels inside the houses
 * Reduce size of audio files for faster loading
+* add more levels
+* add mutants
 
 Thoughts/Ideas:
 ===============
