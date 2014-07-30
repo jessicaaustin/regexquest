@@ -61,13 +61,9 @@ a {
     text-align: center;
 }
 
-/** PuzzleBox **/
+/** Dialogs **/
 
-#puzzleBox {
-    width: 380px;
-    height: 100px;
-    padding: 10px;
-    text-align: center;
+.dialog {
     color: black;
     background-color: #66CC66;
     position: absolute;
@@ -75,8 +71,17 @@ a {
     border-right: 2px solid black;
 }
 
-#puzzleBox a {
+.dialog a {
     color: black;
+}
+
+/** PuzzleBox **/
+
+#puzzleBox {
+    width: 380px;
+    height: 100px;
+    padding: 10px;
+    text-align: center;
 }
 
 #puzzleBox #zombieText {
@@ -112,19 +117,9 @@ a {
 }
 
 /** Help Window **/
-/* TODO: dialog CSS class to handle common style */
 
 #help {
     width: 380px;
     height: 308px;
     padding: 10px;
-    color: black;
-    background-color: #66CC66;
-    position: absolute;
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
-}
-
-#help a {
-    color: black;
 }
