@@ -9,21 +9,22 @@ game.PlayerEntity = me.ObjectEntity.extend({
         this.parent(x, y, settings);
 
         // Set up the sprite animations
-        // TODO fix "sliding" walking style
-        this.renderable.addAnimation("stand-up", [1]);
-        this.renderable.addAnimation("up", [0, 1, 2]);
+        animationSpeed = 16;
 
-        this.renderable.addAnimation("stand-right", [4]);
-        this.renderable.addAnimation("right", [3, 4, 5]);
+        this.renderable.addAnimation("stand-up", [1]);
+        this.renderable.addAnimation("walk-up", [0, 0, 1, 1, 2, 2], animationSpeed);
+
+        this.renderable.addAnimation("stand-right", [5]);
+        this.renderable.addAnimation("walk-right", [3, 3, 4, 4, 5, 5], animationSpeed);
 
         this.renderable.addAnimation("stand-down", [7]);
-        this.renderable.addAnimation("down", [6, 7, 8]);
+        this.renderable.addAnimation("walk-down", [6, 6, 7, 7, 8, 8], animationSpeed);
 
         this.renderable.addAnimation("stand-left", [10]);
-        this.renderable.addAnimation("left", [9, 10, 11]);
+        this.renderable.addAnimation("walk-left", [9, 9, 10, 10, 11, 11], animationSpeed);
 
         // default direction at start
-        this.direction = "down";
+        this.direction = "right";
 
         // top-down, not side-scroller
         this.gravity = 0.0;
@@ -67,7 +68,7 @@ game.PlayerEntity = me.ObjectEntity.extend({
         if(this.vel.y == 0 && this.vel.x == 0) {
             this.renderable.setCurrentAnimation("stand-" + this.direction);
         } else {
-            this.renderable.setCurrentAnimation(this.direction);
+            this.renderable.setCurrentAnimation("walk-" + this.direction);
         }
 
         // check & update player movement
