@@ -1,3 +1,5 @@
+/** MelonJS **/
+
 body {
 	background-color: #000;
 	color: #fff;
@@ -30,4 +32,27 @@ body {
 	image-rendering: -webkit-optimize-contrast;
 	image-rendering: optimize-contrast;
 	-ms-interpolation-mode: nearest-neighbor;
+}
+
+/** PuzzleBox **/
+
+#puzzleBox {
+    width: 300px;
+    padding: 10px;
+    color: black;
+    background-color: #66CC66;
+    position: absolute;
+}
+
+#puzzleBox .notes {
+    font-size: small;
+    line-height: 1.5;
+}
+
+#puzzleBox .pattern {
+    width:150px;
+}
+
+#puzzleBox .regexpFlags {
+    width:15px;
 }
