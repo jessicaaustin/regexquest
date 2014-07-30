@@ -41,7 +41,7 @@
 		<!-- /build -->
 		<!-- Bootstrap & Mobile optimization tricks -->
 		<script type="text/javascript">
-			window.onReady(function onReady() {
+			$(document).ready(function() {
 				game.onload();
 
 				// Mobile browser hacks
@@ -63,6 +63,10 @@
 						window.scrollTo(0, 1);
 					});
 				}
+
+				$('#creditsLink').click(function() {
+			        $('#credits').toggle();
+				});
 			});
 		</script>
 
@@ -104,73 +108,69 @@
             </div>
         </div>
 
-        <div id="credits">
-            <!--TODO: clean up this section-->
-            <h3>Credits</h3>
-            <h4>Game Engine</h4>
-            <a href="http://melonjs.org/">melonJS</a>
-            <h4>Sprites and Tilesets</h4>
-            <pre>
-                Title:
-                16x16 JRPG tilesets enlarged 2x
+        <div id="instructions">
+            <p>Move: <span class="key">&#8592; &#8593; &#8594; &#8595;</span></p>
+            <p>Fighting zombies: <span class="key">Enter</span> to try regex, <span class="key">Esc</span> to run away</p>
+            <p>Toggle sound: <span class="key">s</span></p>
+            <br/>
+            <p>
+                <a href="#" id="creditsLink">Credits</a>
+                / <a href="https://github.com/jessicaaustin/regexquest" target="_blank">Code</a>
+                / <a href="http://jessicaaustin.net" target="_blank">&#169; 2014 Jessica Austin</a>
+            </p>
+        </div>
 
-                Author:
-                Multiple Artists (see description)
+        <div id="credits" style="display:none;">
 
-                URL:
-                http://opengameart.org/content/16x16-jrpg-tilesets-enlarged-2x
+            <h3>Code</h3>
+            This game was built using <a href="http://melonjs.org/" target="_blank">melonJS</a> and <a href="http://jquery.com/" target="_blank">jQuery</a>
 
-                License(s):
-                * CC-BY 3.0 ( http://creativecommons.org/licenses/by/3.0/legalcode )
+            <h3>Graphics</h3>
 
-                Copyright/Attribution Notice:
-                    Cave, desert, sewer, and overworld sets by MrBeast.
-                    Interior tileset by RedShrike.
-                    Town tiles by Surt, modified by Blarumyrran.
-                    Snow town tiles are a modification of the town tileset by Sharm.
-                    Forest tiles contained in the town set are by Sharm.
-                    Some of these works were commissioned by OpenGameArt.org (http://opengameart.org).
+            <h4>Tilesets</h4>
+            <p>
+                Cave, desert, sewer, and overworld sets by MrBeast.<br/>
+                Interior tileset by RedShrike.<br/>
+                Town tiles by Surt, modified by Blarumyrran.<br/>
+                Snow town tiles are a modification of the town tileset by Sharm.<br/>
+                Forest tiles contained in the town set are by Sharm.<br/>
+                Some of these works were commissioned by <a href="http://opengameart.org" target="_blank">OpenGameArt.org</a>.<br/>
 
-                File(s):
-                * classical_temple_tiles.png
-                * tilesetformattedupdate1.png
-                * town_snow.png
-                * desert.png
-                * cave.png
-                * sewer_1.png
-                * town_forest_tiles.png
+                <a href="http://creativecommons.org/licenses/by/3.0/legalcode" target="_blank">CC-BY 3.0</a> and available at
+                <a href="http://opengameart.org/content/16x16-jrpg-tilesets-enlarged-2x" target="_blank">OpenGameArt.org</a>
+            </p>
 
-                ----------------------
+            <h4>Character Sprites</h4>
+            <p>
+                Art by Charles Gabriel.<br/>
+                Commissioned by <a href="http://opengameart.org" target="_blank">OpenGameArt.org</a>.<br/>
+                Available at
+                <a href="http://opengameart.org/content/twelve-16x18-rpg-sprites-plus-base" target="_blank">OpenGameArt.org</a>
+            </p>
 
-                Character sprites ("hero", "zombie", "villager" etc)
+            <h4>Zombie Sprites</h4>
+            <p>
+                Art by Charles Gabriel. <br/>
+                Commissioned by <a href="http://opengameart.org" target="_blank">OpenGameArt.org</a>. <br/>
+                Available at
+                <a href="http://opengameart.org/content/16x18-zombie-characters-templates-extra-template" target="_blank">OpenGameArt.org</a>
+            </p>
 
-                Copyright/Attribution Notice:
-                Art by Charles Gabriel. Commissioned by OpenGameArt.org (http://opengameart.org)
+            <h3>Music</h3>
 
-                URL:
-                http://opengameart.org/content/twelve-16x18-rpg-sprites-plus-base
+            <h4>"Beyond the Forest"</h4>
+            Composer: DST<br/>
+            <a href="http://creativecommons.org/licenses/by/3.0/legalcode" target="_blank">CC-BY 3.0</a> and
+            available at <a href="http://www.nosoapradio.us/" target="_blank">NoSoapRadio.us/</a>
 
-                -----------------------
+            <h3>Sound Effects</h3>
 
-                Zombie sprites
+            <h4>Zombie Sound Effects</h4>
+            Composer: Jes&#250;s Lastra<br/>
+            Available at
+            <a href="http://opengameart.org/content/monster-and-creatures-sound-effects-pack-001" target="_blank">OpenGameArt.org</a>
 
-                Copyright/Attribution Notice:
-                Art by Charles Gabriel. Commissioned by OpenGameArt.org (http://opengameart.org)
-
-                URL:
-                http://opengameart.org/content/16x18-zombie-characters-templates-extra-template
-
-            </pre>
-            <h4>Music</h4>
-            "Beyond the Forest" from <a href="http://www.nosoapradio.us/">http://www.nosoapradio.us/</a>
-
-            <h4>Sound Effects</h4>
-            Zombie sound effects
-
-            Attribution Instructions:
-            Composer: Jesús Lastra
-
-            URL: http://opengameart.org/content/monster-and-creatures-sound-effects-pack-001
+            <br/><br/><br/>
         </div>
 	</body>
 </html>

@@ -19,6 +19,10 @@ body {
 	margin: 0;
 }
 
+#screen {
+    margin: 10px;
+}
+
 #screen canvas {
 	margin: auto;
 
@@ -34,10 +38,33 @@ body {
 	-ms-interpolation-mode: nearest-neighbor;
 }
 
+a {
+    color: #66CC66;
+}
+
+/** Instructions **/
+
+#instructions {
+    text-align: center;
+}
+
+#instructions p {
+    margin: 3px;
+}
+
+#instructions .key {
+    font-weight: bold;
+    color: #66CC66;
+}
+
+#credits {
+    text-align: center;
+}
+
 /** PuzzleBox **/
 
 #puzzleBox {
-    width: 360px;
+    width: 300px;
     padding: 10px;
     color: black;
     background-color: #66CC66;
