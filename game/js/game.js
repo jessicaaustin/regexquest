@@ -13,7 +13,7 @@ var game = {
     "onload" : function () {
  
         // Initialize the video.
-        if (!me.video.init("screen", 640, 480, true, 'auto')) {
+        if (!me.video.init("screen", 640, 480, true)) {
             alert("Your browser does not support HTML5 canvas.");
             return;
         }
@@ -45,15 +45,18 @@ var game = {
 //        me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());
 
-       // register our entities
-       me.pool.register("mainPlayer", game.PlayerEntity);
-       me.pool.register("EnemyEntity", game.EnemyEntity);
+        // register our entities
+        me.pool.register("mainPlayer", game.PlayerEntity);
+        me.pool.register("EnemyEntity", game.EnemyEntity);
 
-       // enable the keyboard
-       me.input.bindKey(me.input.KEY.LEFT,  "left");
-       me.input.bindKey(me.input.KEY.RIGHT, "right");
-       me.input.bindKey(me.input.KEY.UP,  "up");
-       me.input.bindKey(me.input.KEY.DOWN, "down");
+        // enable the keyboard
+        me.input.bindKey(me.input.KEY.LEFT,  "left");
+        me.input.bindKey(me.input.KEY.RIGHT, "right");
+        me.input.bindKey(me.input.KEY.UP,  "up");
+        me.input.bindKey(me.input.KEY.DOWN, "down");
+
+        // initialize the PuzzleBox
+        game.puzzlegui.init();
 
         // Start the game.
         me.state.change(me.state.PLAY);

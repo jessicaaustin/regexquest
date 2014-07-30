@@ -5,38 +5,62 @@ game.PlayerEntity = me.ObjectEntity.extend({
 
     init: function(x, y, settings) {
 
-        // TODO define settings (image, size, etc) here instead of in Tiled
-
         // call the constructor
         this.parent(x, y, settings);
+
+        // Set up the sprite animations
+        this.renderable.addAnimation("stand-up", [1]);
+        this.renderable.addAnimation("up", [0, 1, 2]);
+
+        this.renderable.addAnimation("stand-right", [4]);
+        this.renderable.addAnimation("right", [3, 4, 5]);
+
+        this.renderable.addAnimation("stand-down", [7]);
+        this.renderable.addAnimation("down", [6, 7, 8]);
+
+        this.renderable.addAnimation("stand-left", [10]);
+        this.renderable.addAnimation("left", [9, 10, 11]);
+
+        // default direction at start
+        this.direction = "down";
 
         // top-down, not side-scroller
         this.gravity = 0.0;
  
-        // set the default horizontal & vertical speed (accel vector)
+        // set the default horizontal & vertical speed
         this.setVelocity(3, 3);
- 
+        this.setFriction(0.8, 0.8);
+
         // set the display to follow our position on both axis
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
- 
+
     },
 
-    // TODO use AnimationSheet for decent sprite animations
     update: function(dt) {
- 
+
         if (me.input.isKeyPressed('left')) {
+            this.direction = "left";
             this.vel.x -= this.accel.x * me.timer.tick;
         } else if (me.input.isKeyPressed('right')) {
+            this.direction = "right";
             this.vel.x += this.accel.x * me.timer.tick;
         } else if (me.input.isKeyPressed('up')) {
+            this.direction = "up";
             this.vel.y -= this.accel.x * me.timer.tick;
         } else if (me.input.isKeyPressed('down')) {
+            this.direction = "down";
             this.vel.y += this.accel.x * me.timer.tick;
         } else {
             this.vel.x = 0;
             this.vel.y = 0;
         }
- 
+
+        if(this.vel.y == 0 && this.vel.x == 0) {
+            this.renderable.setCurrentAnimation("stand-" + this.direction);
+        } else {
+            this.renderable.setCurrentAnimation(this.direction);
+        }
+
         // check & update player movement
         this.updateMovement();
 
@@ -46,9 +70,15 @@ game.PlayerEntity = me.ObjectEntity.extend({
         if (collision) {
             // if we collide with an enemy
             if (collision.obj.type == me.game.ENEMY_OBJECT) {
+
                 // bounce back
                 this.vel.y = -1*collision.y*this.maxVel.y * me.timer.tick;
                 this.vel.x = -1*collision.x*this.maxVel.x * me.timer.tick;
+
+                // set up a puzzle
+                game.puzzlegui.show();
+                game.puzzlegui.setupPuzzle();
+
             }
         }
  
@@ -72,19 +102,21 @@ game.PlayerEntity = me.ObjectEntity.extend({
  game.EnemyEntity = me.ObjectEntity.extend({
      init: function(x, y, settings) {
 
-         settings.image = "zombie";
+        // sprite params
+        settings.image = "zombie";
+        settings.spritewidth = 32;
+        settings.spriteheight= 36;
 
-         // save the area size defined in Tiled
-         var width = settings.width;
-         var height = settings.height;
+        // save the area size defined in Tiled
+        var width = settings.width;
+        var height = settings.height;
 
-         // adjust the size setting information to match the sprite size
-         // so that the entity object is created with the right size
-         settings.spritewidth = settings.width = 32;
-         settings.spritewidth = settings.height = 36;
+        // call the parent constructor
+        this.parent(x, y , settings);
 
-         // call the parent constructor
-         this.parent(x, y , settings);
+        // Set up the sprite animations
+        this.renderable.addAnimation("right", [3, 4, 5]);
+        this.renderable.addAnimation("left", [9, 10, 11]);
 
          // set start/end position based on the initial area size
          x = this.pos.x;
@@ -92,7 +124,7 @@ game.PlayerEntity = me.ObjectEntity.extend({
          this.endX   = x + width - settings.spritewidth
          this.pos.x  = x + width - settings.spritewidth;
 
-         // walking & jumping speed
+         // walking speed
          this.setVelocity(1, 0);
 
          // make it collidable
@@ -115,8 +147,10 @@ game.PlayerEntity = me.ObjectEntity.extend({
          if (this.alive) {
              if (this.walkLeft && this.pos.x <= this.startX) {
                  this.walkLeft = false;
+                this.renderable.setCurrentAnimation("right");
              } else if (!this.walkLeft && this.pos.x >= this.endX) {
                  this.walkLeft = true;
+                this.renderable.setCurrentAnimation("left");
              }
              // make it walk
              this.vel.x += (this.walkLeft) ? -this.accel.x * me.timer.tick : this.accel.x * me.timer.tick;

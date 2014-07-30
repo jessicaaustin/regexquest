@@ -2,7 +2,8 @@
 <html>
 	<head>
 		<title>RegexQuest</title>
-		<link rel="stylesheet" type="text/css" media="screen" href="index.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="styles/style.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="../src/regexQuest.css">
 		<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="mobile-web-app-capable" content="yes">
@@ -18,13 +19,21 @@
 
 		<!-- Plugin(s) -->
 		<script type="text/javascript" src="lib/plugins/debugPanel.js"></script>
-		
-		<!-- Game Scripts -->
+
+        <!-- jQuery -->
+        <script type="text/javascript" src="lib/jquery-1.11.1.js"></script>
+
+        <!-- regexquest lib -->
+        <script type="text/javascript" src="../src/regexQuest.js"></script>
+
+        <!-- Game Scripts -->
 		<script type="text/javascript" src="js/game.js"></script>
 		<script type="text/javascript" src="js/resources.js"></script>
 
 		<script type="text/javascript" src="js/entities/entities.js"></script>
 		<script type="text/javascript" src="js/entities/HUD.js"></script>
+		<script type="text/javascript" src="js/entities/zombies.js"></script>
+		<script type="text/javascript" src="js/entities/puzzlegui.js"></script>
 
 		<script type="text/javascript" src="js/screens/title.js"></script>
 		<script type="text/javascript" src="js/screens/play.js"></script>
@@ -55,6 +64,44 @@
 				}
 			});
 		</script>
+
+        <div id="puzzleBox" style="display: none;">
+            <div id="zombieText"></div>
+            <div class="resultSection">
+                <img src="img/wronganswer.png" id="wrongAnswer" style="display:none;"/>
+                <img src="img/rightanswer.png" id="rightAnswer" style="display:none;"/>
+                <div class="result"></div>
+            </div>
+            <div>
+                /
+                <input type="text" class="pattern" value=""/>
+                /
+                <input type="text" class="regexpFlags" value=""/>
+                <input type="button" id="checkAnswer" value="Check"/>
+                <input type="button" id="runAway" value="Run Away!"/>
+            </div>
+
+            <div>
+                <a href="#" id="help">Help!</a>
+            </div>
+
+            <div class="notes" style="display:none;">
+                <br/>
+                Defeat the zombie attack by matching the <span class="infected">infected</span> words.
+                <br/>
+                To match, type a pattern in the first box, and modifiers in the second box, then hit &lt;enter&gt;.
+                <br/>
+                Available modifiers:
+                <ul>
+                    <li>/g -- global matching</li>
+                    <li>/i -- case insensitive</li>
+                    <li>/m -- multi-line matching</li>
+                </ul>
+                <a href="http://www.regular-expressions.info/javascript.html" target="_blank">Regular Expressions Overview</a><br/>
+                <a href="http://www.visibone.com/regular-expressions/" target="_blank">Quick reference</a>
+
+            </div>
+        </div>
 
         <div id="credits">
             <!--TODO: clean up this section-->
