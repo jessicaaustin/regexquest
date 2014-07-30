@@ -33,7 +33,7 @@ game.PlayerEntity = me.ObjectEntity.extend({
 
         // set the display to follow our position on both axis
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
- 
+
     },
 
     update: function(dt) {
@@ -70,9 +70,15 @@ game.PlayerEntity = me.ObjectEntity.extend({
         if (collision) {
             // if we collide with an enemy
             if (collision.obj.type == me.game.ENEMY_OBJECT) {
+
                 // bounce back
                 this.vel.y = -1*collision.y*this.maxVel.y * me.timer.tick;
                 this.vel.x = -1*collision.x*this.maxVel.x * me.timer.tick;
+
+                // set up a puzzle
+                game.puzzlegui.show();
+                game.puzzlegui.setupPuzzle();
+
             }
         }
  

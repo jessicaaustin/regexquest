@@ -57,8 +57,6 @@ var game = {
 
         // initialize the PuzzleBox
         game.puzzlegui.init();
-        game.puzzlegui.show();
-        game.puzzlegui.setupPuzzle();
 
         // Start the game.
         me.state.change(me.state.PLAY);

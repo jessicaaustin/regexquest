@@ -12,7 +12,7 @@ game.puzzlegui = {
 
         gameCanvasPos = me.video.getPos();
         puzzleBoxElem.css("top", gameCanvasPos.top + 100)
-                     .css("left", gameCanvasPos.left + 170);
+                     .css("left", gameCanvasPos.left + 140);
 
         patternElem = $("#puzzleBox .pattern");
         modifiersElem = $("#puzzleBox .regexpFlags");
@@ -27,6 +27,10 @@ game.puzzlegui = {
     show: function() {
         puzzleBoxElem.show();
         patternElem.focus();
+    },
+
+    hide: function() {
+        puzzleBoxElem.hide();
     },
 
     clearRegExp: function() {
@@ -50,6 +54,7 @@ game.puzzlegui = {
             $("#rightAnswer").show();
             resultElem.css("color", "green");
             $(".infected").fadeOut();
+            puzzleBoxElem.delay( 1500 ).fadeOut( 800 );
         } else {
             $("#wrongAnswer").show();
             $("#rightAnswer").hide();
@@ -94,6 +99,9 @@ game.puzzlegui = {
         });
         $("#checkAnswer").click(function(event) {
             game.puzzlegui.checkAnswer(zombie);
+        });
+        $("#runAway").click(function(event) {
+            game.puzzlegui.hide();
         });
     }
 

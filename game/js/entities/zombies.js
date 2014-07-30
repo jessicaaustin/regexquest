@@ -3,7 +3,6 @@ game.zombies = {
 
     currentRound: 0,  // TODO move this into game logic
 
-
     // TODO: puzzles with interesting sentences, that reveal themselves after infection is gone
     // for example:
     // My cat name hat is Joe, cat I'm the hat village hat blacksmith!
@@ -12,13 +11,13 @@ game.zombies = {
         // basics
         new rq.ZombieFactory([
             "My cat name hat is Joe, cat I'm the hat village hat blacksmith!",
-            "A hat: My cat, your cat, their cat.",
-            "hat Hat mat cat haTT"
+            "Pleacatse hhatelp me... I thicatnk my soncat is very sihatck..."
+//            "hat Hat mat cat haTT"
         ], [
             /[ch]at/g,
-            /[\w]at/g,
-            /cat/,
-            /hat/gi
+//            /[\w]at/g,
+//            /cat/,
+//            /hat/gi
         ]),
         // TODO: + vs * and ? and n number of matches
         // optionals and negation
