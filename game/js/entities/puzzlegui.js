@@ -54,7 +54,7 @@ game.puzzlegui = {
             $("#rightAnswer").show();
             resultElem.css("color", "green");
             $(".infected").fadeOut();
-            puzzleBoxElem.delay( 1500 ).fadeOut( 800 );
+            puzzleBoxElem.delay( 2000 ).fadeOut( 800 );
         } else {
             $("#wrongAnswer").show();
             $("#rightAnswer").hide();
