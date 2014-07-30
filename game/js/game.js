@@ -61,8 +61,6 @@ var game = {
         // Help window
         me.input.bindKey(me.input.KEY.F1, "toggleHelpWindow");
 
-        // TODO add esc, enter for puzzle gui as melonjs bindings
-
         // initialize the PuzzleBox
         game.puzzlegui.init();
 
