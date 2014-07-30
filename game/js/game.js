@@ -1,12 +1,12 @@
 /* game namespace */
 var game = {
  
-    /** 
-     * an object where to store game global data
-     */
     data : {
-        // score
         score : 0
+    },
+
+    settings : {
+        soundOn: false
     },
      
     // Run on page load.
@@ -49,11 +49,19 @@ var game = {
         me.pool.register("mainPlayer", game.PlayerEntity);
         me.pool.register("ZombieVillager", game.ZombieVillager);
 
-        // enable the keyboard
+        // player movement
         me.input.bindKey(me.input.KEY.LEFT,  "left");
         me.input.bindKey(me.input.KEY.RIGHT, "right");
         me.input.bindKey(me.input.KEY.UP,  "up");
         me.input.bindKey(me.input.KEY.DOWN, "down");
+
+        // toggle sound
+        me.input.bindKey(me.input.KEY.F2, "toggleSound");
+
+        // Help window
+        me.input.bindKey(me.input.KEY.F1, "toggleHelpWindow");
+
+        // TODO add esc, enter for puzzle gui as melonjs bindings
 
         // initialize the PuzzleBox
         game.puzzlegui.init();

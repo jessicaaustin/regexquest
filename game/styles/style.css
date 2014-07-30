@@ -64,28 +64,39 @@ a {
 /** PuzzleBox **/
 
 #puzzleBox {
-    width: 300px;
+    width: 380px;
+    height: 100px;
     padding: 10px;
+    text-align: center;
     color: black;
     background-color: #66CC66;
     position: absolute;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
 }
 
-#puzzleBox .notes {
-    font-size: small;
-    line-height: 1.5;
+#puzzleBox a {
+    color: black;
 }
 
-#puzzleBox .pattern {
-    width:150px;
-}
-
-#puzzleBox .regexpFlags {
-    width:15px;
+#puzzleBox #zombieText {
+    height: 48px;
 }
 
 #puzzleBox .resultSection {
     height: 24px;
+}
+
+#puzzleBox .inputSection {
+    height: 24px;
+}
+
+#puzzleBox .pattern {
+    width:200px;
+}
+
+#puzzleBox .regexpFlags {
+    width:20px;
 }
 
 #puzzleBox #rightAnswer,
@@ -98,4 +109,22 @@ a {
 #puzzleBox .result {
     float: left;
     padding-left: 5px;
+}
+
+/** Help Window **/
+/* TODO: dialog CSS class to handle common style */
+
+#help {
+    width: 380px;
+    height: 308px;
+    padding: 10px;
+    color: black;
+    background-color: #66CC66;
+    position: absolute;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+}
+
+#help a {
+    color: black;
 }

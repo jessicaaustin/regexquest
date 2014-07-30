@@ -18,17 +18,12 @@ game.puzzlegui = {
         puzzleBoxElem = $("#puzzleBox");
 
         gameCanvasPos = me.video.getPos();
-        puzzleBoxElem.css("top", gameCanvasPos.top + 100)
-                     .css("left", gameCanvasPos.left + 140);
+        puzzleBoxElem.css("top", gameCanvasPos.top + 340)
+                     .css("left", gameCanvasPos.left + 120);
 
         patternElem = $("#puzzleBox .pattern");
         modifiersElem = $("#puzzleBox .regexpFlags");
         resultElem = $("#puzzleBox .result");
-
-        $("#puzzleBox #help").click(function() {
-            $("#puzzleBox .notes").toggle();
-        });
-
     },
 
     show: function() {
@@ -73,6 +68,12 @@ game.puzzlegui = {
         }
     },
 
+    runAway: function() {
+        game.puzzlegui.hide();
+        game.puzzlegui.playerEntity.onPuzzleEscape();
+        game.puzzlegui.zombieEntity.onPuzzleEscape();
+    },
+
     checkAnswer: function() {
         resultElem.text(game.puzzlegui.puzzle.whatMatched(game.puzzlegui.createRegExp()).join(" "));
         if (game.puzzlegui.puzzle.checkMatch(game.puzzlegui.createRegExp())) {
@@ -88,9 +89,12 @@ game.puzzlegui = {
         resultElem.text("");
 
         // check for enter key press
-        var code = (event.keyCode ? event.keyCode : event.which);
+        // TODO use global melonjs bindings instead
+        var code = (event.which);
         if (code == 13) {
             game.puzzlegui.checkAnswer();
+        } else if (code == 27) {
+            game.puzzlegui.runAway();
         }
     },
 
@@ -105,19 +109,11 @@ game.puzzlegui = {
         game.puzzlegui.zombieEntity = zombieEntity;
 
         game.puzzlegui.clearRegExp();
-        patternElem.keypress(function(event) {
+        patternElem.keydown(function(event) {
             game.puzzlegui.userUpdate(event);
         });
-        modifiersElem.keypress(function(event) {
+        modifiersElem.keydown(function(event) {
             game.puzzlegui.userUpdate(event);
-        });
-        $("#checkAnswer").click(function(event) {
-            game.puzzlegui.checkAnswer();
-        });
-        $("#runAway").click(function(event) {
-            game.puzzlegui.hide();
-            game.puzzlegui.playerEntity.onPuzzleEscape();
-            game.puzzlegui.zombieEntity.onPuzzleEscape();
         });
         game.puzzlegui.show();
     }

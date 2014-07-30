@@ -4,17 +4,15 @@ TODOs:
 ======
 
 MVP:
-* "latch" zombie collision -- essentially want to pause the game while puzzle is happening
 * Add zombie mechanic
 ** Pop up regex puzzle when colliding when zombie
 ** If correct: zombie => villager
 ** If incorrect: lose health
 * Add health meter
 * Add "villagers saved" meter
-* Add title screen
-** controls guide
-** option to turn off sound
-* add help/tutorial screens to explain how the game works
+* Add title screen?
+* add help/tutorial dialogs to explain how the game works
+** and update help dialog to just be a quick reference
 * figure out a story/narrative and use villagers/signs/artifacts to tell it
 * clean up javascript
 * look over TODOs
