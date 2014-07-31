@@ -12,6 +12,8 @@ game.resources = [
     {name: "zombie", type: "image", src: "data/img/sprite/zombie.png"},
     // sprites
     {name: "heart", type: "image", src: "data/img/sprite/heart.png"},
+    {name: "heartBar", type: "image", src: "data/img/sprite/heartBar.png"},
+    {name: "zombieBar", type: "image", src: "data/img/sprite/zombieBar.png"},
     {name: "singleZombie", type: "image", src: "data/img/sprite/singleZombie.png"},
     {name: "singleVillager", type: "image", src: "data/img/sprite/singleVillager.png"},
 

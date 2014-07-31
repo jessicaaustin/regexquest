@@ -9,6 +9,14 @@ game.HUD.HealthBar = me.ObjectContainer.extend({
 
     initHearts: function(x, y) {
 
+        // add background bar
+        var heartBar = new me.SpriteObject(x, y, me.loader.getImage("heartBar"), 151, 47);
+        heartBar.floating = true;
+        heartBar.z = 2;
+        this.addChild(heartBar);
+        x += 7; // account for border
+        y += 6;
+
 		// local copy of the global health
 		// (we only want to update when health changes)
 		this.health = game.data.health;
@@ -29,7 +37,7 @@ game.HUD.HealthBar = me.ObjectContainer.extend({
 		    }
 		    var heartSprite = new me.SpriteObject(x+hx, y+hy, me.loader.getImage("heart"), spriteSize, spriteSize);
 		    heartSprite.floating = true;
-		    heartSprite.z = 2;
+		    heartSprite.z = 3;
 		    if (i<this.health) {
 		        heartSprite.alpha = this.fullAlpha;
 		    } else {
@@ -89,11 +97,19 @@ game.HUD.ZombieVillagerBar = me.ObjectContainer.extend({
     createSprite: function(imageName, x, y) {
         var sprite = new me.SpriteObject(x, y, me.loader.getImage(imageName), this.spriteWidth, this.spriteWidth);
         sprite.floating = true;
-        sprite.z = 2;
+        sprite.z = 3;
         return sprite;
     },
 
     initZombieVillagers: function(x, y) {
+
+        // add background bar
+        var zombieBar = new me.SpriteObject(x, y, me.loader.getImage("zombieBar"), 110, 66);
+        zombieBar.floating = true;
+        zombieBar.z = 2;
+        this.addChild(zombieBar);
+        x += 7; // account for border
+        y += 6;
 
 		// local copy of the global zombie kill count
 		// (we only want to update when health changes)
@@ -103,12 +119,12 @@ game.HUD.ZombieVillagerBar = me.ObjectContainer.extend({
 		this.spriteWidth = 24;
 		this.spriteHeight = 28;
 
-		// initialize hearts
+		// initialize zombie/villagers
 		this.zombieVillagers = new Array();
 		var hx = 0;
 		var hy = 0;
 		for (var i=0; i<game.data.numVillagers; i++) {
-		    if (i==game.data.numVillagers/2) {
+		    if (i==4) { // 2 rows of 4
 		        hx = 0;
 		        hy += this.spriteHeight + 1;
 		    }
@@ -152,6 +168,6 @@ game.HUD.ZombieVillagerBar = me.ObjectContainer.extend({
 		// make sure our object is always drawn on top
 		this.z = Infinity;
 
-        this.initZombieVillagers(530, 10);
+        this.initZombieVillagers(520, 8);
 	}
 });
