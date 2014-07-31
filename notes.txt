@@ -4,16 +4,13 @@ TODOs:
 ======
 
 MVP:
-* Add zombie mechanic
-** Pop up regex puzzle when colliding when zombie
-** If correct: zombie => villager
-* Add "villagers saved" meter
 * add help/tutorial dialogs to explain how the game works
 ** and update help dialog to just be a quick reference
 * Add title screen?
 * Add game over screen
 * Add hidden heart items to increase health
 * figure out a story/narrative and use villagers/signs/artifacts to tell it
+** also, build some more interesting puzzles and integrate into narrative
 * can some of the more complex logic be extracted into a library and tested?
 * clean up javascript
 * look over TODOs
