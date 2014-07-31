@@ -12,7 +12,7 @@ game.HUD.HealthBar = me.ObjectContainer.extend({
 
 		// local copy of the global health
 		// (we only want to update when health changes)
-		this.health = 0;
+		this.health = game.data.health;
 
 		// params
 		this.spriteSize = 16;
@@ -32,7 +32,11 @@ game.HUD.HealthBar = me.ObjectContainer.extend({
 		    var heartSprite = new me.SpriteObject(x+hx, y+hy, me.loader.getImage("heart"), spriteSize, spriteSize);
 		    heartSprite.floating = true;
 		    heartSprite.z = 2;
-		    heartSprite.alpha = this.emptyAlpha;
+		    if (i<this.health) {
+		        heartSprite.alpha = this.fullAlpha;
+		    } else {
+		        heartSprite.alpha = this.emptyAlpha;
+		    }
 		    this.hearts[i] = heartSprite;
 		    this.addChild(heartSprite);
 		    hx += spriteSize + 1;
@@ -47,13 +51,13 @@ game.HUD.HealthBar = me.ObjectContainer.extend({
 		    if (game.data.health > this.health) {
 		        // gained health
                 for (var i=this.health; i<game.data.health; i++) {
-                    // TODO add sound effect
+                    me.audio.play("heartIncrease", false, null, 0.2);
                     this.hearts[i].alpha = this.fullAlpha;
                 }
 		    } else {
 		        // lost health
                 for (var i=game.data.health; i<this.health; i++) {
-                    // TODO add sound effect
+                    me.audio.play("heartDecrease", false, null, 0.2);
                     this.hearts[i].alpha = this.emptyAlpha;
                 }
 		    }

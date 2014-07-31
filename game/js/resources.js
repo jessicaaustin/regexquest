@@ -29,5 +29,7 @@ game.resources = [
      */
     {name: "zombie1", type: "audio", src: "data/sfx/"},
     {name: "zombie2", type: "audio", src: "data/sfx/"},
-    {name: "zombie3", type: "audio", src: "data/sfx/"}
+    {name: "zombie3", type: "audio", src: "data/sfx/"},
+    {name: "heartIncrease", type: "audio", src: "data/sfx/"},
+    {name: "heartDecrease", type: "audio", src: "data/sfx/"}
 ];
