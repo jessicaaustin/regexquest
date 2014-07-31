@@ -61,6 +61,14 @@ a {
     text-align: center;
 }
 
+.notice {
+    color: #cc0000;
+}
+
+.notice a {
+    color: #cc0000;
+}
+
 /** Dialogs **/
 
 .dialog {

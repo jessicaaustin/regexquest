@@ -56,6 +56,8 @@
     endPuzzle: function() {
         this.inPuzzle = false;
 
+        me.audio.play("zombie3");
+
         // flicker and make un-collidable for a while to
         // allow the player to escape if need be
         var flickerTime = 2000;
