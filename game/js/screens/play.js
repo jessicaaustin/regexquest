@@ -17,6 +17,7 @@ game.PlayScreen = me.ScreenObject.extend({
         });
     },
 
+    // TODO: since the help dialog is available on any screen in the game, this should be moved to game.js or into its own file
     setupHelpDialog: function() {
         $("#help").css("top", gameCanvasPos.top + 10)
                   .css("left", gameCanvasPos.left + 120);
@@ -50,7 +51,7 @@ game.PlayScreen = me.ScreenObject.extend({
 	 *  action to perform when leaving this screen (state change)
 	 */
 	onDestroyEvent: function() {
-		me.game.world.removeChild(this.HUD);
+		me.game.world.removeChild(this.healthBar);
 
 		me.audio.stopTrack();
 	}

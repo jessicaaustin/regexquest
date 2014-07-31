@@ -112,8 +112,11 @@ game.PlayerEntity = me.ObjectEntity.extend({
     },
 
     onPuzzleFail: function() {
-        // TODO lose health, update HUD
-        this.endPuzzle();
+        // lose health, but stay in game until player runs away
+        game.data.health -= 1;
+        if (game.data.health == 0) {
+            me.state.change(me.state.GAMEOVER);
+        }
     },
 
     onPuzzleEscape: function() {

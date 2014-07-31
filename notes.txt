@@ -7,12 +7,11 @@ MVP:
 * Add zombie mechanic
 ** Pop up regex puzzle when colliding when zombie
 ** If correct: zombie => villager
-** If incorrect: lose health
-* Add health meter
 * Add "villagers saved" meter
 * add help/tutorial dialogs to explain how the game works
 ** and update help dialog to just be a quick reference
 * Add title screen?
+* Add game over screen
 * figure out a story/narrative and use villagers/signs/artifacts to tell it
 * clean up javascript
 * look over TODOs

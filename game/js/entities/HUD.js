@@ -5,7 +5,6 @@
 
 game.HUD = game.HUD || {};
 
-// TODO rename to heart container :)
 game.HUD.HealthBar = me.ObjectContainer.extend({
 
     initHearts: function(x, y) {
@@ -57,8 +56,9 @@ game.HUD.HealthBar = me.ObjectContainer.extend({
 		    } else {
 		        // lost health
                 for (var i=game.data.health; i<this.health; i++) {
-                    me.audio.play("heartDecrease", false, null, 0.2);
+                    me.audio.play("heartDecrease", false, null, 0.4);
                     this.hearts[i].alpha = this.emptyAlpha;
+                    // TODO add flickering
                 }
 		    }
 
