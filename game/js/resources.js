@@ -3,6 +3,9 @@ game.resources = [
     /**
      * Graphics
      */
+    // screens
+    {name: "title", type: "image", src: "data/img/title.png"},
+    {name: "gameover", type: "image", src: "data/img/gameover.png"},
     // tilesets
     {name: "town_forest_tiles",  type:"image", src: "data/img/map/town_forest_tiles.png"},
     // metatiles
