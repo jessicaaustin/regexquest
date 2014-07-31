@@ -10,9 +10,13 @@ game.resources = [
     // entities
     {name: "hero", type: "image", src: "data/img/sprite/hero.png"},
     {name: "zombie", type: "image", src: "data/img/sprite/zombie.png"},
+    {name: "villager1", type: "image", src: "data/img/sprite/villager1.png"},
+    {name: "villager2", type: "image", src: "data/img/sprite/villager2.png"},
+    {name: "villager3", type: "image", src: "data/img/sprite/villager3.png"},
+    {name: "villager4", type: "image", src: "data/img/sprite/villager4.png"},
     // sprites
-    {name: "heart", type: "image", src: "data/img/sprite/heart.png"},
     {name: "heartBar", type: "image", src: "data/img/sprite/heartBar.png"},
+    {name: "heart", type: "image", src: "data/img/sprite/heart.png"},
     {name: "zombieBar", type: "image", src: "data/img/sprite/zombieBar.png"},
     {name: "singleZombie", type: "image", src: "data/img/sprite/singleZombie.png"},
     {name: "singleVillager", type: "image", src: "data/img/sprite/singleVillager.png"},
@@ -35,5 +39,6 @@ game.resources = [
     {name: "zombie2", type: "audio", src: "data/sfx/"},
     {name: "zombie3", type: "audio", src: "data/sfx/"},
     {name: "heartIncrease", type: "audio", src: "data/sfx/"},
-    {name: "heartDecrease", type: "audio", src: "data/sfx/"}
+    {name: "heartDecrease", type: "audio", src: "data/sfx/"},
+    {name: "villagerHealed", type: "audio", src: "data/sfx/"}
 ];

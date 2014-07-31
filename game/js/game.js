@@ -4,7 +4,7 @@ var game = {
     data : {
         health: 10,
         maxHealth: 16,
-        numVillagers: 8,
+        numVillagers: 3,
         numVillagersSaved: 0
     },
 

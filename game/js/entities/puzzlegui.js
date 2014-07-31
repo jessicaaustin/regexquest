@@ -24,6 +24,14 @@ game.PuzzleGUI = Object.extend({
         patternElem = $("#puzzleBox .pattern");
         modifiersElem = $("#puzzleBox .regexpFlags");
         resultElem = $("#puzzleBox .result");
+
+        thisObj = this;
+        patternElem.keydown(function(event) {
+            thisObj.userUpdate(event);
+        });
+        modifiersElem.keydown(function(event) {
+            thisObj.userUpdate(event);
+        });
     },
 
     show: function() {
@@ -108,13 +116,6 @@ game.PuzzleGUI = Object.extend({
         this.zombieEntity = zombieEntity;
 
         this.clearRegExp();
-        thisObj = this;
-        patternElem.keydown(function(event) {
-            thisObj.userUpdate(event);
-        });
-        modifiersElem.keydown(function(event) {
-            thisObj.userUpdate(event);
-        });
         this.show();
     }
 

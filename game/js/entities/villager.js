@@ -53,7 +53,21 @@
         game.puzzlegui.setupPuzzle(player, this);
     },
 
-    endPuzzle: function() {
+    onPuzzleSuccess: function() {
+        // update the sprite to be a random villager
+        me.audio.play("villagerHealed");
+        this.renderable.image=me.loader.getImage("villager" + Math.randomInt(1,4));
+        // turn into a non-collidable sprite
+        this.inPuzzle = false;
+        this.collidable = false;
+        this.type = me.game.ACTION_OBJECT;
+    },
+
+    onPuzzleFail: function() {
+        // Do nothing until the player succeeds or runs away
+    },
+
+    onPuzzleEscape: function() {
         this.inPuzzle = false;
 
         me.audio.play("zombie3");
@@ -66,19 +80,6 @@
         setTimeout(function() {
             thisObj.collidable = true;
         }, flickerTime);
-    },
-
-    onPuzzleSuccess: function() {
-        // TODO turn into villager, play happy sfx, no longer an enemy
-        this.endPuzzle();
-    },
-
-    onPuzzleFail: function() {
-        // Do nothing until the player succeeds or runs away
-    },
-
-    onPuzzleEscape: function() {
-        this.endPuzzle();
     },
 
      update: function(dt) {

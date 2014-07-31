@@ -140,7 +140,7 @@ game.HUD.ZombieVillagerBar = me.ObjectContainer.extend({
 	    // only update when num villagers saved changes
 		if (this.numVillagersSaved !== game.data.numVillagersSaved) {
 
-            i = game.data.numVillagers - game.data.numVillagersSaved;
+            i = game.data.numVillagersSaved - 1;
 
             var zombieSprite = this.zombieVillagers[i];
 
@@ -149,9 +149,6 @@ game.HUD.ZombieVillagerBar = me.ObjectContainer.extend({
 		    this.addChild(villagerSprite);
 
 		    this.removeChild(zombieSprite);
-
-            // TODO add audio
-            // TODO add flickering
 
 			this.numVillagersSaved = game.data.numVillagersSaved;
 			return true;
