@@ -2,7 +2,10 @@
 var game = {
  
     data : {
-        score : 0
+        health: 10,
+        maxHealth: 16,
+        numVillagers: 3,
+        numVillagersSaved: 0
     },
 
     settings : {
@@ -46,6 +49,7 @@ var game = {
     "loaded" : function () {
 //        me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());
+        me.state.set(me.state.GAMEOVER, new game.GameOverScreen());
 
         // register our entities
         me.pool.register("mainPlayer", game.PlayerEntity);

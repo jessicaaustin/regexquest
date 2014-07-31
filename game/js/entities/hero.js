@@ -107,13 +107,17 @@ game.PlayerEntity = me.ObjectEntity.extend({
     },
 
     onPuzzleSuccess: function() {
-        // TODO get points, update HUD
         this.endPuzzle();
+        game.data.numVillagersSaved++;
+        // TODO: when all villagers saved, win the level
     },
 
     onPuzzleFail: function() {
-        // TODO lose health, update HUD
-        this.endPuzzle();
+        // lose health, but stay in game until player runs away
+        game.data.health -= 1;
+        if (game.data.health == 0) {
+            me.state.change(me.state.GAMEOVER);
+        }
     },
 
     onPuzzleEscape: function() {
