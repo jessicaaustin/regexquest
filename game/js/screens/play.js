@@ -42,9 +42,8 @@ game.PlayScreen = me.ScreenObject.extend({
 		// reset the score
 		game.data.score = 0;
 
-		// TODO use HUD or remove this code
-		this.HUD = new game.HUD.Container();
-		me.game.world.addChild(this.HUD);
+		this.healthBar = new game.HUD.HealthBar();
+		me.game.world.addChild(this.healthBar);
 	},
 
 	/**

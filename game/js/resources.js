@@ -7,9 +7,11 @@ game.resources = [
     {name: "town_forest_tiles",  type:"image", src: "data/img/map/town_forest_tiles.png"},
     // metatiles
     {name: "metatiles32x32",  type:"image", src: "data/img/map/metatiles32x32.png"},
-    // sprites
+    // entities
     {name: "hero", type: "image", src: "data/img/sprite/hero.png"},
     {name: "zombie", type: "image", src: "data/img/sprite/zombie.png"},
+    // sprites
+    {name: "heart", type: "image", src: "data/img/sprite/heart.png"},
 
     /**
      * Maps

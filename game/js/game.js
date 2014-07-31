@@ -2,7 +2,9 @@
 var game = {
  
     data : {
-        score : 0
+        score : 0,
+        health: 10,
+        maxHealth: 16
     },
 
     settings : {

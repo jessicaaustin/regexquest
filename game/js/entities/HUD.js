@@ -1,75 +1,82 @@
 
-
 /**
- * a HUD container and child items
+ * Heads-Up Display
  */
- // TODO either use this class or get rid of it
 
 game.HUD = game.HUD || {};
 
+// TODO rename to heart container :)
+game.HUD.HealthBar = me.ObjectContainer.extend({
 
-game.HUD.Container = me.ObjectContainer.extend({
+    initHearts: function(x, y) {
 
-	init: function() {
-		// call the constructor
-		this.parent();
-		
-		// persistent across level change
-		this.isPersistent = true;
-		
-		// non collidable
-		this.collidable = false;
-		
-		// make sure our object is always draw first
-		this.z = Infinity;
+		// local copy of the global health
+		// (we only want to update when health changes)
+		this.health = 0;
 
-		// give a name
-		this.name = "HUD";
-		
-		// add our child score object at the top left corner
-		this.addChild(new game.HUD.ScoreItem(5, 5));
-	}
-});
+		// params
+		this.spriteSize = 16;
+		this.emptyAlpha = 0.4;
+		this.fullAlpha = 1.0
 
+		// initialize hearts
+		this.hearts = new Array();
+		var spriteSize = 16;
+		var hx = 0;
+		var hy = 0;
+		for (var i=0; i<game.data.maxHealth; i++) {
+		    if (i==game.data.maxHealth/2) {
+		        hx = 0;
+		        hy += spriteSize + 1;
+		    }
+		    var heartSprite = new me.SpriteObject(x+hx, y+hy, me.loader.getImage("heart"), spriteSize, spriteSize);
+		    heartSprite.floating = true;
+		    heartSprite.z = 2;
+		    heartSprite.alpha = this.emptyAlpha;
+		    this.hearts[i] = heartSprite;
+		    this.addChild(heartSprite);
+		    hx += spriteSize + 1;
+		}
 
-/** 
- * a basic HUD item to display score
- */
-game.HUD.ScoreItem = me.Renderable.extend({	
-	/** 
-	 * constructor
-	 */
-	init: function(x, y) {
-		
-		// call the parent constructor 
-		// (size does not matter here)
-		this.parent(new me.Vector2d(x, y), 10, 10); 
-		
-		// local copy of the global score
-		this.score = -1;
+    },
 
-		// make sure we use screen coordinates
-		this.floating = true;
-	},
-
-	/**
-	 * update function
-	 */
 	update : function () {
-		// we don't do anything fancy here, so just
-		// return true if the score has been updated
-		if (this.score !== game.data.score) {	
-			this.score = game.data.score;
+	    // only update when health changes
+		if (this.health !== game.data.health) {
+
+		    if (game.data.health > this.health) {
+		        // gained health
+                for (var i=this.health; i<game.data.health; i++) {
+                    // TODO add sound effect
+                    this.hearts[i].alpha = this.fullAlpha;
+                }
+		    } else {
+		        // lost health
+                for (var i=game.data.health; i<this.health; i++) {
+                    // TODO add sound effect
+                    this.hearts[i].alpha = this.emptyAlpha;
+                }
+		    }
+
+			this.health = game.data.health;
 			return true;
 		}
 		return false;
 	},
 
-	/**
-	 * draw the score
-	 */
-	draw : function (context) {
-		// draw it baby !
-	}
+	init: function() {
 
+		this.parent();
+		
+		// persistent across level change
+		this.isPersistent = true;
+		
+		this.collidable = false;
+
+		// make sure our object is always drawn on top
+		this.z = Infinity;
+
+        this.initHearts(10, 10);
+	}
 });
+
