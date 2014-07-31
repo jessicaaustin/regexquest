@@ -14,13 +14,12 @@ game.HUD.HealthBar = me.ObjectContainer.extend({
 		this.health = game.data.health;
 
 		// params
-		this.spriteSize = 16;
+		var spriteSize = 16;
 		this.emptyAlpha = 0.4;
 		this.fullAlpha = 1.0
 
 		// initialize hearts
 		this.hearts = new Array();
-		var spriteSize = 16;
 		var hx = 0;
 		var hy = 0;
 		for (var i=0; i<game.data.maxHealth; i++) {
@@ -84,3 +83,75 @@ game.HUD.HealthBar = me.ObjectContainer.extend({
 	}
 });
 
+
+game.HUD.ZombieVillagerBar = me.ObjectContainer.extend({
+
+    createSprite: function(imageName, x, y) {
+        var sprite = new me.SpriteObject(x, y, me.loader.getImage(imageName), this.spriteWidth, this.spriteWidth);
+        sprite.floating = true;
+        sprite.z = 2;
+        return sprite;
+    },
+
+    initZombieVillagers: function(x, y) {
+
+		// local copy of the global zombie kill count
+		// (we only want to update when health changes)
+		this.numVillagersSaved = game.data.numVillagersSaved;
+
+		// params
+		this.spriteWidth = 24;
+		this.spriteHeight = 28;
+
+		// initialize hearts
+		this.zombieVillagers = new Array();
+		var hx = 0;
+		var hy = 0;
+		for (var i=0; i<game.data.numVillagers; i++) {
+		    if (i==game.data.numVillagers/2) {
+		        hx = 0;
+		        hy += this.spriteHeight + 1;
+		    }
+		    var zombieSprite = this.createSprite("singleZombie", x+hx, y+hy);
+		    this.zombieVillagers[i] = zombieSprite;
+		    this.addChild(zombieSprite);
+		    hx += this.spriteWidth + 1;
+		}
+
+    },
+
+	update : function () {
+	    // only update when num villagers saved changes
+		if (this.numVillagersSaved !== game.data.numVillagersSaved) {
+
+            i = game.data.numVillagers - game.data.numVillagersSaved;
+
+            var zombieSprite = this.zombieVillagers[i];
+
+		    var villagerSprite = this.createSprite("singleVillager", zombieSprite.pos.x, zombieSprite.pos.y);
+		    this.zombieVillagers[i] = villagerSprite;
+		    this.addChild(villagerSprite);
+
+		    this.removeChild(zombieSprite);
+
+            // TODO add audio
+            // TODO add flickering
+
+			this.numVillagersSaved = game.data.numVillagersSaved;
+			return true;
+		}
+		return false;
+	},
+
+	init: function() {
+
+		this.parent();
+
+		this.collidable = false;
+
+		// make sure our object is always drawn on top
+		this.z = Infinity;
+
+        this.initZombieVillagers(530, 10);
+	}
+});

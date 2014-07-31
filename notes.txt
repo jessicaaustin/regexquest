@@ -12,6 +12,7 @@ MVP:
 ** and update help dialog to just be a quick reference
 * Add title screen?
 * Add game over screen
+* Add hidden heart items to increase health
 * figure out a story/narrative and use villagers/signs/artifacts to tell it
 * clean up javascript
 * look over TODOs

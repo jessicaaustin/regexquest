@@ -107,8 +107,9 @@ game.PlayerEntity = me.ObjectEntity.extend({
     },
 
     onPuzzleSuccess: function() {
-        // TODO get points, update HUD
         this.endPuzzle();
+        game.data.numVillagersSaved += 1;
+        // TODO: when all villagers saved, win the level
     },
 
     onPuzzleFail: function() {

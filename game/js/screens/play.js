@@ -40,11 +40,11 @@ game.PlayScreen = me.ScreenObject.extend({
 
         this.setupHelpDialog();
 
-		// reset the score
-		game.data.score = 0;
-
 		this.healthBar = new game.HUD.HealthBar();
 		me.game.world.addChild(this.healthBar);
+
+		this.zombieVillagerBar = new game.HUD.ZombieVillagerBar();
+		me.game.world.addChild(this.zombieVillagerBar);
 	},
 
 	/**
@@ -52,6 +52,7 @@ game.PlayScreen = me.ScreenObject.extend({
 	 */
 	onDestroyEvent: function() {
 		me.game.world.removeChild(this.healthBar);
+		me.game.world.removeChild(this.zombieVillagerBar);
 
 		me.audio.stopTrack();
 	}
