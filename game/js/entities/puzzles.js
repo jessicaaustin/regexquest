@@ -1,5 +1,7 @@
-
-game.zombies = {
+/**
+ * Array of zombie puzzles to choose from.
+ */
+game.puzzles = {
 
     currentRound: 0,  // TODO move this into game logic
 
@@ -39,7 +41,6 @@ game.zombies = {
     ),
 
     getCurrent: function() {
-        // TODO better way to reference?
-        return game.zombies.puzzles[game.zombies.currentRound];
+        return game.puzzles.puzzles[game.puzzles.currentRound];
     }
 };

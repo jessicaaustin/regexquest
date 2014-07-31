@@ -19,6 +19,10 @@ body {
 	margin: 0;
 }
 
+#screen {
+    margin: 10px;
+}
+
 #screen canvas {
 	margin: auto;
 
@@ -34,31 +38,79 @@ body {
 	-ms-interpolation-mode: nearest-neighbor;
 }
 
-/** PuzzleBox **/
+a {
+    color: #66CC66;
+}
 
-#puzzleBox {
-    width: 360px;
-    padding: 10px;
+/** Instructions **/
+
+#instructions {
+    text-align: center;
+}
+
+#instructions p {
+    margin: 3px;
+}
+
+#instructions .key {
+    font-weight: bold;
+    color: #66CC66;
+}
+
+#credits {
+    text-align: center;
+}
+
+.notice {
+    color: #cc0000;
+    text-align: center;
+}
+
+.notice a {
+    color: #cc0000;
+}
+
+/** Dialogs **/
+
+.dialog {
     color: black;
     background-color: #66CC66;
     position: absolute;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
 }
 
-#puzzleBox .notes {
-    font-size: small;
-    line-height: 1.5;
+.dialog a {
+    color: black;
 }
 
-#puzzleBox .pattern {
-    width:150px;
+/** PuzzleBox **/
+
+#puzzleBox {
+    width: 380px;
+    height: 100px;
+    padding: 10px;
+    text-align: center;
 }
 
-#puzzleBox .regexpFlags {
-    width:15px;
+#puzzleBox #zombieText {
+    height: 48px;
 }
 
 #puzzleBox .resultSection {
     height: 24px;
+}
+
+#puzzleBox .inputSection {
+    height: 24px;
+}
+
+#puzzleBox .pattern {
+    width:200px;
+}
+
+#puzzleBox .regexpFlags {
+    width:20px;
 }
 
 #puzzleBox #rightAnswer,
@@ -71,4 +123,12 @@ body {
 #puzzleBox .result {
     float: left;
     padding-left: 5px;
+}
+
+/** Help Window **/
+
+#help {
+    width: 380px;
+    height: 308px;
+    padding: 10px;
 }

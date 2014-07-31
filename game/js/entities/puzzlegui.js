@@ -1,5 +1,7 @@
-
-game.puzzlegui = {
+/**
+ * Dialog to show and handle the zombie puzzles.
+ */
+game.PuzzleGUI = Object.extend({
 
     puzzleBoxElem: null,
 
@@ -7,21 +9,21 @@ game.puzzlegui = {
     modifiersElem: null,
     resultElem: null,
 
+    playerEntity: null,
+    zombieEntity: null,
+
+    puzzle: null,
+
     init: function() {
         puzzleBoxElem = $("#puzzleBox");
 
         gameCanvasPos = me.video.getPos();
-        puzzleBoxElem.css("top", gameCanvasPos.top + 100)
-                     .css("left", gameCanvasPos.left + 140);
+        puzzleBoxElem.css("top", gameCanvasPos.top + 340)
+                     .css("left", gameCanvasPos.left + 120);
 
         patternElem = $("#puzzleBox .pattern");
         modifiersElem = $("#puzzleBox .regexpFlags");
         resultElem = $("#puzzleBox .result");
-
-        $("#puzzleBox #help").click(function() {
-            $("#puzzleBox .notes").toggle();
-        });
-
     },
 
     show: function() {
@@ -44,7 +46,7 @@ game.puzzlegui = {
         try {
             return new RegExp(pattern, modifiers);
         } catch (err) {
-            game.puzzlegui.showResult(false);
+            this.showResult(false);
         }
     },
 
@@ -55,19 +57,29 @@ game.puzzlegui = {
             resultElem.css("color", "green");
             $(".infected").fadeOut();
             puzzleBoxElem.delay( 2000 ).fadeOut( 800 );
+            this.playerEntity.onPuzzleSuccess();
+            this.zombieEntity.onPuzzleSuccess();
         } else {
             $("#wrongAnswer").show();
             $("#rightAnswer").hide();
             resultElem.css("color", "red");
+            this.playerEntity.onPuzzleFail();
+            this.zombieEntity.onPuzzleFail();
         }
     },
 
-    checkAnswer: function(zombie) {
-        resultElem.text(zombie.whatMatched(game.puzzlegui.createRegExp()).join(" "));
-        if (zombie.checkMatch(game.puzzlegui.createRegExp())) {
-            game.puzzlegui.showResult(true);
+    runAway: function() {
+        this.hide();
+        this.playerEntity.onPuzzleEscape();
+        this.zombieEntity.onPuzzleEscape();
+    },
+
+    checkAnswer: function() {
+        resultElem.text(this.puzzle.whatMatched(this.createRegExp()).join(" "));
+        if (this.puzzle.checkMatch(this.createRegExp())) {
+            this.showResult(true);
         } else {
-            game.puzzlegui.showResult(false);
+            this.showResult(false);
         }
     },
 
@@ -76,33 +88,34 @@ game.puzzlegui = {
         $("#rightAnswer").hide();
         resultElem.text("");
 
-        // check for enter key press
-        var code = (event.keyCode ? event.keyCode : event.which);
+        // check for enter or esc key press
+        var code = (event.which);
         if (code == 13) {
-            game.puzzlegui.checkAnswer();
+            this.checkAnswer();
+        } else if (code == 27) {
+            this.runAway();
         }
     },
 
-    setupPuzzle: function() {
-        var zombie = game.zombies.getCurrent();
-        if (!zombie) {
+    setupPuzzle: function(playerEntity, zombieEntity) {
+        this.puzzle = game.puzzles.getCurrent();
+        if (!this.puzzle) {
             return;
         }
-        $("#zombieText").html(zombie.zombieText());
+        $("#zombieText").html(this.puzzle.zombieText());
 
-        game.puzzlegui.clearRegExp();
-        patternElem.keypress(function(event) {
-            game.puzzlegui.userUpdate(event);
+        this.playerEntity = playerEntity;
+        this.zombieEntity = zombieEntity;
+
+        this.clearRegExp();
+        thisObj = this;
+        patternElem.keydown(function(event) {
+            thisObj.userUpdate(event);
         });
-        modifiersElem.keypress(function(event) {
-            game.puzzlegui.userUpdate(event);
+        modifiersElem.keydown(function(event) {
+            thisObj.userUpdate(event);
         });
-        $("#checkAnswer").click(function(event) {
-            game.puzzlegui.checkAnswer(zombie);
-        });
-        $("#runAway").click(function(event) {
-            game.puzzlegui.hide();
-        });
+        this.show();
     }
 
-};
+});

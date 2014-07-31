@@ -46,9 +46,9 @@
   </object>
  </objectgroup>
  <objectgroup name="EnemyEntities" width="40" height="40">
-  <object name="EnemyEntity" x="256" y="768" width="128" height="32"/>
-  <object name="EnemyEntity" x="512" y="1056" width="128" height="32"/>
-  <object name="EnemyEntity" x="192" y="256" width="128" height="32"/>
+  <object name="ZombieVillager" x="256" y="768" width="128" height="32"/>
+  <object name="ZombieVillager" x="512" y="1056" width="128" height="32"/>
+  <object name="ZombieVillager" x="192" y="256" width="128" height="32"/>
  </objectgroup>
  <layer name="trees0" width="40" height="40">
   <data encoding="base64">

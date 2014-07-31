@@ -30,9 +30,10 @@
 		<script type="text/javascript" src="js/game.js"></script>
 		<script type="text/javascript" src="js/resources.js"></script>
 
-		<script type="text/javascript" src="js/entities/entities.js"></script>
+		<script type="text/javascript" src="js/entities/hero.js"></script>
+		<script type="text/javascript" src="js/entities/villager.js"></script>
 		<script type="text/javascript" src="js/entities/HUD.js"></script>
-		<script type="text/javascript" src="js/entities/zombies.js"></script>
+		<script type="text/javascript" src="js/entities/puzzles.js"></script>
 		<script type="text/javascript" src="js/entities/puzzlegui.js"></script>
 
 		<script type="text/javascript" src="js/screens/title.js"></script>
@@ -40,7 +41,7 @@
 		<!-- /build -->
 		<!-- Bootstrap & Mobile optimization tricks -->
 		<script type="text/javascript">
-			window.onReady(function onReady() {
+			$(document).ready(function() {
 				game.onload();
 
 				// Mobile browser hacks
@@ -62,114 +63,123 @@
 						window.scrollTo(0, 1);
 					});
 				}
+
+				$('#creditsLink').click(function() {
+			        $('#credits').toggle();
+				});
+
 			});
 		</script>
 
-        <div id="puzzleBox" style="display: none;">
+        <div id="puzzleBox" class="dialog" style="display:none;">
             <div id="zombieText"></div>
             <div class="resultSection">
                 <img src="img/wronganswer.png" id="wrongAnswer" style="display:none;"/>
                 <img src="img/rightanswer.png" id="rightAnswer" style="display:none;"/>
                 <div class="result"></div>
             </div>
-            <div>
+            <div class="inputSection">
                 /
                 <input type="text" class="pattern" value=""/>
                 /
                 <input type="text" class="regexpFlags" value=""/>
-                <input type="button" id="checkAnswer" value="Check"/>
-                <input type="button" id="runAway" value="Run Away!"/>
             </div>
+        </div>
 
-            <div>
-                <a href="#" id="help">Help!</a>
-            </div>
-
-            <div class="notes" style="display:none;">
-                <br/>
+        <div id="help" class="dialog" style="display:none;">
+            <h3>Regex Help</h3>
+            <p>
                 Defeat the zombie attack by matching the <span class="infected">infected</span> words.
-                <br/>
+            </p>
+            <p>
                 To match, type a pattern in the first box, and modifiers in the second box, then hit &lt;enter&gt;.
-                <br/>
+            </p>
+            <p>
                 Available modifiers:
                 <ul>
                     <li>/g -- global matching</li>
                     <li>/i -- case insensitive</li>
                     <li>/m -- multi-line matching</li>
                 </ul>
+            </p>
+            <p>
                 <a href="http://www.regular-expressions.info/javascript.html" target="_blank">Regular Expressions Overview</a><br/>
                 <a href="http://www.visibone.com/regular-expressions/" target="_blank">Quick reference</a>
+            </p>
 
-            </div>
         </div>
 
-        <div id="credits">
-            <!--TODO: clean up this section-->
-            <h3>Credits</h3>
-            <h4>Game Engine</h4>
-            <a href="http://melonjs.org/">melonJS</a>
-            <h4>Sprites and Tilesets</h4>
-            <pre>
-                Title:
-                16x16 JRPG tilesets enlarged 2x
-
-                Author:
-                Multiple Artists (see description)
-
-                URL:
-                http://opengameart.org/content/16x16-jrpg-tilesets-enlarged-2x
-
-                License(s):
-                * CC-BY 3.0 ( http://creativecommons.org/licenses/by/3.0/legalcode )
-
-                Copyright/Attribution Notice:
-                    Cave, desert, sewer, and overworld sets by MrBeast.
-                    Interior tileset by RedShrike.
-                    Town tiles by Surt, modified by Blarumyrran.
-                    Snow town tiles are a modification of the town tileset by Sharm.
-                    Forest tiles contained in the town set are by Sharm.
-                    Some of these works were commissioned by OpenGameArt.org (http://opengameart.org).
-
-                File(s):
-                * classical_temple_tiles.png
-                * tilesetformattedupdate1.png
-                * town_snow.png
-                * desert.png
-                * cave.png
-                * sewer_1.png
-                * town_forest_tiles.png
-
-                ----------------------
-
-                Character sprites ("hero", etc)
-
-                Copyright/Attribution Notice:
-                Art by Charles Gabriel. Commissioned by OpenGameArt.org (http://opengameart.org)
-
-                URL:
-                http://opengameart.org/content/twelve-16x18-rpg-sprites-plus-base
-
-                -----------------------
-
-                Zombie sprites
-
-                Copyright/Attribution Notice:
-                Art by Charles Gabriel. Commissioned by OpenGameArt.org (http://opengameart.org)
-
-                URL:
-                http://opengameart.org/content/16x18-zombie-characters-templates-extra-template
-
-            </pre>
-            <h4>Music</h4>
-            "Beyond the Forest" from <a href="http://www.nosoapradio.us/">http://www.nosoapradio.us/</a>
-
-            <h4>Sound Effects</h4>
-            Zombie sound effects
-
-            Attribution Instructions:
-            Composer: Jesús Lastra
-
-            URL: http://opengameart.org/content/monster-and-creatures-sound-effects-pack-001
+        <div id="instructions">
+            <p>Move: <span class="key">&#8592; &#8593; &#8594; &#8595;</span></p>
+            <p>Fighting zombies: <span class="key">Enter</span> to try regex, <span class="key">Esc</span> to run away</p>
+            <p>Regex help: <span class="key">F1</span></p>
+            <p>Toggle sound: <span class="key">F2</span></p>
+            <br/>
+            <p>
+                <a href="#" id="creditsLink">Credits</a>
+                / <a href="https://github.com/jessicaaustin/regexquest" target="_blank">Code</a>
+                / <a href="http://jessicaaustin.net" target="_blank">&#169; 2014 Jessica Austin</a>
+            </p>
         </div>
-	</body>
+
+        <div id="credits" style="display:none;">
+
+            <h3>Code</h3>
+            This game was built using <a href="http://melonjs.org/" target="_blank">melonJS</a> and <a href="http://jquery.com/" target="_blank">jQuery</a>
+
+            <h3>Graphics</h3>
+
+            <h4>Tilesets</h4>
+            <p>
+                Cave, desert, sewer, and overworld sets by MrBeast.<br/>
+                Interior tileset by RedShrike.<br/>
+                Town tiles by Surt, modified by Blarumyrran.<br/>
+                Snow town tiles are a modification of the town tileset by Sharm.<br/>
+                Forest tiles contained in the town set are by Sharm.<br/>
+                Some of these works were commissioned by <a href="http://opengameart.org" target="_blank">OpenGameArt.org</a>.<br/>
+
+                <a href="http://creativecommons.org/licenses/by/3.0/legalcode" target="_blank">CC-BY 3.0</a> and available at
+                <a href="http://opengameart.org/content/16x16-jrpg-tilesets-enlarged-2x" target="_blank">OpenGameArt.org</a>
+            </p>
+
+            <h4>Character Sprites</h4>
+            <p>
+                Art by Charles Gabriel.<br/>
+                Commissioned by <a href="http://opengameart.org" target="_blank">OpenGameArt.org</a>.<br/>
+                Available at
+                <a href="http://opengameart.org/content/twelve-16x18-rpg-sprites-plus-base" target="_blank">OpenGameArt.org</a>
+            </p>
+
+            <h4>Zombie Sprites</h4>
+            <p>
+                Art by Charles Gabriel. <br/>
+                Commissioned by <a href="http://opengameart.org" target="_blank">OpenGameArt.org</a>. <br/>
+                Available at
+                <a href="http://opengameart.org/content/16x18-zombie-characters-templates-extra-template" target="_blank">OpenGameArt.org</a>
+            </p>
+
+            <h3>Music</h3>
+
+            <h4>"Beyond the Forest"</h4>
+            Composer: DST<br/>
+            <a href="http://creativecommons.org/licenses/by/3.0/legalcode" target="_blank">CC-BY 3.0</a> and
+            available at <a href="http://www.nosoapradio.us/" target="_blank">NoSoapRadio.us/</a>
+
+            <h3>Sound Effects</h3>
+
+            <h4>Zombie Sound Effects</h4>
+            Composer: Jes&#250;s Lastra<br/>
+            Available at
+            <a href="http://opengameart.org/content/monster-and-creatures-sound-effects-pack-001" target="_blank">OpenGameArt.org</a>
+
+        </div>
+
+        <div class="notice">
+            <br/>
+            THIS GAME IS IN PROGRESS. <a href="https://github.com/jessicaaustin/regexquest" target="_blank">Follow RegexQuest on GitHub</a> for updates.
+
+            <br/><br/><br/>
+        </div>
+
+    </body>
 </html>
