@@ -17,6 +17,7 @@ game.resources = [
     {name: "villager2", type: "image", src: "data/img/sprite/villager2.png"},
     {name: "villager3", type: "image", src: "data/img/sprite/villager3.png"},
     {name: "villager4", type: "image", src: "data/img/sprite/villager4.png"},
+    {name: "heartItem", type: "image", src: "data/img/sprite/heartItem.png"},
     // sprites
     {name: "heartBar", type: "image", src: "data/img/sprite/heartBar.png"},
     {name: "heart", type: "image", src: "data/img/sprite/heart.png"},

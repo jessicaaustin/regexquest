@@ -6,11 +6,12 @@ TODOs:
 MVP:
 * add help/tutorial dialogs to explain how the game works
 ** and update help dialog to just be a quick reference
-* Add hidden heart items to increase health
 * figure out a story/narrative and use villagers/signs/artifacts to tell it
 ** also, build some more interesting puzzles and integrate into narrative
+** increase the number of zombies on this level to 8
 * can some of the more complex logic be extracted into a library and tested?
 * clean up javascript
+* Reduce size of audio files for faster loading
 * look over TODOs
 
 clean up demo/tests
@@ -20,9 +21,10 @@ clean up demo/tests
 later:
 * Add fog effect to map
 * Add levels inside the houses
-* Reduce size of audio files for faster loading
 * add more levels
 * add mutants
+
+
 
 Thoughts/Ideas:
 ===============
@@ -74,10 +76,3 @@ Function.prototype.method = function (name, func) {
     this.prototype[name] = func;
     return this;
 }
-
-
-Resources:
-==========
-
-http://opengameart.org/
-http://www.nosoapradio.us/

@@ -40,7 +40,6 @@ game.PlayScreen = me.ScreenObject.extend({
 
         this.setupHelpDialog();
 
-        // TODO remove duplication with game.js
         game.data.health = 10;
         game.data.numVillagersSaved = 0;
 
