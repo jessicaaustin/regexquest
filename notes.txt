@@ -4,15 +4,17 @@ TODOs:
 ======
 
 MVP:
-* add help/tutorial dialogs to explain how the game works
-** and update help dialog to just be a quick reference
-* figure out a story/narrative and use villagers/signs/artifacts to tell it
-** also, build some more interesting puzzles and integrate into narrative
-** increase the number of zombies on this level to 8
-* can some of the more complex logic be extracted into a library and tested?
-* clean up javascript
-* Reduce size of audio files for faster loading
-* look over TODOs
+* game
+** add help/tutorial dialogs to explain how the game works
+*** and update help dialog to just be a quick reference
+** figure out a story/narrative and use villagers/signs/artifacts to tell it
+*** also, build some more interesting puzzles and integrate into narrative
+*** increase the number of zombies on this level to 8
+* code
+** can some of the more complex logic be extracted into a library and tested?
+** clean up javascript
+** Reduce size of audio files for faster loading
+** look over TODOs
 
 clean up demo/tests
 * Have the github.io site go directly to the game (with link to tests)
