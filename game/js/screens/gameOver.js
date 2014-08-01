@@ -1,9 +1,20 @@
 game.GameOverScreen = me.ScreenObject.extend({
-	/**	
-	 *  action to perform on state change
-	 */
-	onResetEvent: function() {	
-		; // TODO
+
+	onResetEvent: function() {
+
+	    // TODO: can these events be handled by their respective classes instead?
+	    game.puzzlegui.hide();
+	    $("#help").hide();
+
+        me.game.world.addChild( new me.SpriteObject(0, 0, me.loader.getImage("gameover")), 1 );
+
+        // change to play state on press Enter
+        me.input.bindKey(me.input.KEY.ENTER, "enter", true);
+        this.enterHandler = me.event.subscribe(me.event.KEYDOWN, function (action, keyCode, edge) {
+            if (action === "enter") {
+                me.state.change(me.state.MENU);
+            }
+        });
 	},
 	
 	
@@ -11,6 +22,7 @@ game.GameOverScreen = me.ScreenObject.extend({
 	 *  action to perform when leaving this screen (state change)
 	 */
 	onDestroyEvent: function() {
-		; // TODO
+        me.input.unbindKey(me.input.KEY.ENTER);
+        me.event.unsubscribe(this.enterHandler);
 	}
 });

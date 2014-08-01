@@ -44,6 +44,9 @@
     <property name="spritewidth" value="32"/>
    </properties>
   </object>
+  <object name="HeartItem" x="512" y="352" width="32" height="32"/>
+  <object name="HeartItem" x="896" y="320" width="32" height="32"/>
+  <object name="HeartItem" x="1184" y="736" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="EnemyEntities" width="40" height="40">
   <object name="ZombieVillager" x="256" y="768" width="128" height="32"/>

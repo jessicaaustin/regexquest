@@ -63,7 +63,7 @@ game.HUD.HealthBar = me.ObjectContainer.extend({
 		    } else {
 		        // lost health
                 for (var i=game.data.health; i<this.health; i++) {
-                    me.audio.play("heartDecrease", false, null, 0.4);
+                    me.audio.play("heartDecrease", false, null, 0.8);
                     this.hearts[i].alpha = this.emptyAlpha;
                     // TODO add flickering
                 }
@@ -81,7 +81,7 @@ game.HUD.HealthBar = me.ObjectContainer.extend({
 		
 		// persistent across level change
 		this.isPersistent = true;
-		
+
 		this.collidable = false;
 
 		// make sure our object is always drawn on top

@@ -2,7 +2,7 @@
 var game = {
  
     data : {
-        health: 10,
+        health: 0,
         maxHealth: 16,
         numVillagers: 3,
         numVillagersSaved: 0
@@ -47,13 +47,14 @@ var game = {
 
     // Run on game resources loaded.
     "loaded" : function () {
-//        me.state.set(me.state.MENU, new game.TitleScreen());
+        me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());
         me.state.set(me.state.GAMEOVER, new game.GameOverScreen());
 
         // register our entities
         me.pool.register("mainPlayer", game.PlayerEntity);
         me.pool.register("ZombieVillager", game.ZombieVillager);
+        me.pool.register("HeartItem", game.HeartItem);
 
         // player movement
         me.input.bindKey(me.input.KEY.LEFT,  "left");
@@ -71,6 +72,6 @@ var game = {
         game.puzzlegui = new game.PuzzleGUI();
 
         // Start the game.
-        me.state.change(me.state.PLAY);
+        me.state.change(me.state.MENU);
     }
 };

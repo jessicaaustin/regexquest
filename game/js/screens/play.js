@@ -4,7 +4,7 @@ game.PlayScreen = me.ScreenObject.extend({
         me.audio.playTrack("dst-beyondtheseforests");
         game.settings.soundOn = true;
 
-        me.event.subscribe(me.event.KEYDOWN, function (action, keyCode, edge) {
+        this.soundHandler = me.event.subscribe(me.event.KEYDOWN, function (action, keyCode, edge) {
            if (action === "toggleSound") {
               if (game.settings.soundOn) {
                  me.audio.muteAll();
@@ -22,7 +22,7 @@ game.PlayScreen = me.ScreenObject.extend({
         $("#help").css("top", gameCanvasPos.top + 10)
                   .css("left", gameCanvasPos.left + 120);
 
-        me.event.subscribe(me.event.KEYDOWN, function (action, keyCode, edge) {
+        this.helpHandler = me.event.subscribe(me.event.KEYDOWN, function (action, keyCode, edge) {
             if (action === "toggleHelpWindow") {
                 $("#help").toggle();
             }
@@ -40,6 +40,9 @@ game.PlayScreen = me.ScreenObject.extend({
 
         this.setupHelpDialog();
 
+        game.data.health = 10;
+        game.data.numVillagersSaved = 0;
+
 		this.healthBar = new game.HUD.HealthBar();
 		me.game.world.addChild(this.healthBar);
 
@@ -55,5 +58,8 @@ game.PlayScreen = me.ScreenObject.extend({
 		me.game.world.removeChild(this.zombieVillagerBar);
 
 		me.audio.stopTrack();
+
+		me.event.unsubscribe(this.soundHandler);
+		me.event.unsubscribe(this.helpHandler);
 	}
 });
