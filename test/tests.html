@@ -115,6 +115,14 @@
                 assertEquals("__ 5 __", new rq.Mutant("11 5 12",
                         [new rq.RegExWithReplacement("\\d\\d", "__", "g")]).infectedText());
             });
+
+            test("1.1 -- check match", function() {
+                var mutant = new rq.Mutant("hi mom, how are you today?", [new rq.RegExWithReplacement("o", "0", "g")]);
+                assertTrue(mutant.checkMatch(new rq.RegExWithReplacement("0", "o", "g")));
+                assertFalse(mutant.checkMatch(new rq.RegExWithReplacement("0", "p", "g")));
+                assertFalse(mutant.checkMatch(new rq.RegExWithReplacement("0", "o", ""))); // partial
+            });
+
         });
     </script>
 </head>

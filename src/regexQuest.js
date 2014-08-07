@@ -34,6 +34,7 @@ rq.util.randomInt = function(max) {
 rq.Zombie = function(fullText, infection) {
 
     /** Public functions **/
+
     this.fullText = function() {
         return fullText;
     };
@@ -134,19 +135,23 @@ rq.RegExWithReplacement = function(matchPattern, replacementPattern, modifiers) 
 };
 
 rq.Mutant = function(cleanText, infections) {
-    var currentInfectedText = cleanText;
+
+    this.init = function() {
+        var infectedText = cleanText;
+        for (var i = 0; i < infections.length; i++) {
+            var infection = infections[i];
+            infectedText = infectedText.replace(infection.regex(), infection.replacementPattern());
+        }
+        return infectedText;
+    };
+    var currentInfectedText = this.init();
 
     this.cleanText = function() {
         return cleanText;
     };
 
     this.infectedText = function() {
-        var infectedText = currentInfectedText;
-        for (var i = 0; i < infections.length; i++) {
-            var infection = infections[i];
-            infectedText = infectedText.replace(infection.regex(), infection.replacementPattern());
-        }
-        return infectedText;
+        return currentInfectedText;
     };
 
     // requires jsdiff.js
@@ -154,7 +159,7 @@ rq.Mutant = function(cleanText, infections) {
         return diffString(this.infectedText(), this.cleanText());
     };
 
-    this.applyRegex = function(regexWithReplacement) {
+    this.checkMatch = function(regexWithReplacement) {
         var candidate = currentInfectedText.replace(regexWithReplacement.regex(), regexWithReplacement.replacementPattern());
         if (candidate == cleanText) {
             // full match
@@ -168,4 +173,5 @@ rq.Mutant = function(cleanText, infections) {
             return false;
         }
     };
+
 };
