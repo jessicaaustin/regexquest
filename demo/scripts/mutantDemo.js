@@ -47,14 +47,17 @@ var demo = {
         }
     },
 
-    userUpdate: function(event) {
+    clearAnswerArea: function() {
         $("#wrongAnswer").hide();
         $("#rightAnswer").hide();
         resultDiv.text("");
+    },
 
+    userUpdate: function(event) {
         // check for enter key press
         var code = (event.keyCode ? event.keyCode : event.which);
         if (code == 13) {
+            demo.clearAnswerArea();
             demo.checkAnswer();
         }
     },
@@ -65,6 +68,7 @@ var demo = {
             return;
         }
         $("#mutantText").html(mutant.infectedText());
+        demo.clearAnswerArea();
 
         // for debug purposes
         window.mutant = mutant;
@@ -95,7 +99,10 @@ $(document).ready(function() {
     resultDiv = $("#result");
 
     mutants = mutants.concat(
-        new rq.Mutant("hi mom, how are you today?", [new rq.RegExWithReplacement("o", "0", "g")])
+        new rq.Mutant("hi mom, how are you today?", [new rq.RegExWithReplacement("o", "0", "g")]),
+        new rq.Mutant("hi mom, how are you today?", [new rq.RegExWithReplacement("o", "0", "g"), new rq.RegExWithReplacement("a", "9", "g")]),
+        new rq.Mutant(" Help me, I've been infected! ", [new rq.RegExWithReplacement(" ", "g", "g")]),
+        new rq.Mutant("Have you seen my son? He was looking sick...", [new rq.RegExWithReplacement("\\.", "8", "g"), new rq.RegExWithReplacement("s", "5", "g")])
     );
 
     $("#nextRound").click(demo.setup);
