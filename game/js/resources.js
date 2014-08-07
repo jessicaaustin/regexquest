@@ -11,7 +11,7 @@ game.resources = [
     // metatiles
     {name: "metatiles32x32",  type:"image", src: "data/img/map/metatiles32x32.png"},
     // entities
-    {name: "hero", type: "image", src: "data/img/sprite/hero.png"},
+    {name: "player", type: "image", src: "data/img/sprite/player.png"},
     {name: "zombie", type: "image", src: "data/img/sprite/zombie.png"},
     {name: "villager1", type: "image", src: "data/img/sprite/villager1.png"},
     {name: "villager2", type: "image", src: "data/img/sprite/villager2.png"},

@@ -39,7 +39,7 @@
  <objectgroup name="entities" width="40" height="40">
   <object name="mainPlayer" x="134" y="1124" width="22" height="26">
    <properties>
-    <property name="image" value="hero"/>
+    <property name="image" value="player"/>
     <property name="spriteheight" value="36"/>
     <property name="spritewidth" value="32"/>
    </properties>
