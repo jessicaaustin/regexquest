@@ -4,7 +4,7 @@ var game = {
     data : {
         health: 0,
         maxHealth: 16,
-        numVillagers: 3,
+        numVillagers: 3, // TODO can we get this number from the Tiled data?
         numVillagersSaved: 0
     },
 

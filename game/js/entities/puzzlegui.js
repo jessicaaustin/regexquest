@@ -60,11 +60,12 @@ game.PuzzleGUI = Object.extend({
 
     showResult: function(good) {
         if (good) {
+            game.puzzles.puzzleSolved();
             $("#wrongAnswer").hide();
             $("#rightAnswer").show();
             resultElem.css("color", "green");
             $(".infected").fadeOut();
-            puzzleBoxElem.delay( 2000 ).fadeOut( 800 );
+            puzzleBoxElem.delay( 1800 ).fadeOut( 2000 );
             this.playerEntity.onPuzzleSuccess();
             this.zombieEntity.onPuzzleSuccess();
         } else {
