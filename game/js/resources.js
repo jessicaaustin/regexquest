@@ -6,6 +6,8 @@ game.resources = [
     // screens
     {name: "title", type: "image", src: "data/img/title.png"},
     {name: "gameover", type: "image", src: "data/img/gameover.png"},
+    // dialogs
+    {name: "help", type: "image", src: "data/img/help.png"},
     // tilesets
     {name: "town_forest_tiles",  type:"image", src: "data/img/map/town_forest_tiles.png"},
     // metatiles
