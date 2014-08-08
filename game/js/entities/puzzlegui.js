@@ -14,12 +14,14 @@ game.PuzzleGUI = Object.extend({
 
     puzzle: null,
 
+    locked: false,
+
     init: function() {
         puzzleBoxElem = $("#puzzleBox");
 
         gameCanvasPos = me.video.getPos();
         puzzleBoxElem.css("top", gameCanvasPos.top + 340)
-                     .css("left", gameCanvasPos.left + 120);
+                     .css("left", gameCanvasPos.left + 114);
 
         patternElem = $("#puzzleBox .pattern");
         modifiersElem = $("#puzzleBox .regexpFlags");
@@ -60,18 +62,26 @@ game.PuzzleGUI = Object.extend({
 
     showResult: function(good) {
         if (good) {
-            game.puzzles.puzzleSolved();
+
             $("#wrongAnswer").hide();
             $("#rightAnswer").show();
             resultElem.css("color", "green");
             $(".infected").fadeOut();
             puzzleBoxElem.delay( 1800 ).fadeOut( 2000 );
+
+            game.puzzles.puzzleSolved();
             this.playerEntity.onPuzzleSuccess();
             this.zombieEntity.onPuzzleSuccess();
+
+            // prevent multiple successes
+            this.locked = true;
+
         } else {
+
             $("#wrongAnswer").show();
             $("#rightAnswer").hide();
             resultElem.css("color", "red");
+
             this.playerEntity.onPuzzleFail();
             this.zombieEntity.onPuzzleFail();
         }
@@ -99,7 +109,7 @@ game.PuzzleGUI = Object.extend({
 
         // check for enter or esc key press
         var code = (event.which);
-        if (code == 13) {
+        if (code == 13 && !this.locked) {
             this.checkAnswer();
         } else if (code == 27) {
             this.runAway();
@@ -116,6 +126,7 @@ game.PuzzleGUI = Object.extend({
         this.playerEntity = playerEntity;
         this.zombieEntity = zombieEntity;
 
+        this.locked = false;
         this.clearRegExp();
         this.show();
     }
