@@ -37,6 +37,7 @@ game.PuzzleGUI = Object.extend({
     },
 
     show: function() {
+        puzzleBoxElem.clearQueue();
         puzzleBoxElem.show();
         patternElem.focus();
     },
@@ -67,7 +68,7 @@ game.PuzzleGUI = Object.extend({
             $("#rightAnswer").show();
             resultElem.css("color", "green");
             $(".infected").fadeOut();
-            puzzleBoxElem.delay( 1800 ).fadeOut( 2000 );
+            puzzleBoxElem.delay( 2500 ).fadeOut( 250 );
 
             game.puzzles.puzzleSolved();
             this.playerEntity.onPuzzleSuccess();
