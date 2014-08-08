@@ -76,6 +76,10 @@ a {
     color: black;
     background-color: #66CC66;
     position: absolute;
+
+    /* Need consistent font size to match the game */
+    font-family: "Arial";
+    font-size: 16px;
 }
 
 .dialog a {
@@ -95,6 +99,7 @@ a {
 
 #puzzleBox #zombieText {
     height: 48px;
+    margin: 2px;
 }
 
 #puzzleBox .resultSection {

@@ -2,9 +2,7 @@ game.GameOverScreen = me.ScreenObject.extend({
 
 	onResetEvent: function() {
 
-	    // TODO: can these events be handled by their respective classes instead?
 	    game.puzzlegui.hide();
-	    $("#help").hide();
 
         me.game.world.addChild( new me.SpriteObject(0, 0, me.loader.getImage("gameover")), 1 );
 
