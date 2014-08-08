@@ -4,7 +4,7 @@ var game = {
     data : {
         health: 0,
         maxHealth: 16,
-        numVillagers: 3,
+        numVillagers: 8, // TODO this is duplicated across Tiled and puzzles.js
         numVillagersSaved: 0
     },
 

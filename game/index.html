@@ -31,10 +31,11 @@
 		<script type="text/javascript" src="js/resources.js"></script>
 		<script type="text/javascript" src="js/util.js"></script>
 
-		<script type="text/javascript" src="js/entities/hero.js"></script>
+		<script type="text/javascript" src="js/entities/player.js"></script>
 		<script type="text/javascript" src="js/entities/villager.js"></script>
 		<script type="text/javascript" src="js/entities/heartitem.js"></script>
 		<script type="text/javascript" src="js/entities/HUD.js"></script>
+		<script type="text/javascript" src="js/entities/helpDialog.js"></script>
 		<script type="text/javascript" src="js/entities/puzzles.js"></script>
 		<script type="text/javascript" src="js/entities/puzzlegui.js"></script>
 
@@ -74,7 +75,7 @@
 			});
 		</script>
 
-        <!--TODO: update UI to match RPG style-->
+        <!--TODO: handle box position when screen size is not the default-->
         <div id="puzzleBox" class="dialog" style="display:none;">
             <div id="zombieText"></div>
             <div class="resultSection">
@@ -90,35 +91,16 @@
             </div>
         </div>
 
-        <!--TODO: update UI to match RPG style-->
-        <div id="help" class="dialog" style="display:none;">
-            <h3>Regex Help</h3>
-            <p>
-                Defeat the zombie attack by matching the <span class="infected">infected</span> words.
-            </p>
-            <p>
-                To match, type a pattern in the first box, and modifiers in the second box, then hit &lt;enter&gt;.
-            </p>
-            <p>
-                Available modifiers:
-                <ul>
-                    <li>/g -- global matching</li>
-                    <li>/i -- case insensitive</li>
-                    <li>/m -- multi-line matching</li>
-                </ul>
-            </p>
-            <p>
-                <a href="http://www.regular-expressions.info/javascript.html" target="_blank">Regular Expressions Overview</a><br/>
-                <a href="http://www.visibone.com/regular-expressions/" target="_blank">Quick reference</a>
-            </p>
-
-        </div>
-
         <div id="instructions">
             <p>Move: <span class="key">&#8592; &#8593; &#8594; &#8595;</span></p>
             <p>Fighting zombies: <span class="key">Enter</span> to try regex, <span class="key">Esc</span> to run away</p>
             <p>Regex help: <span class="key">F1</span></p>
             <p>Toggle sound: <span class="key">F2</span></p>
+            <p>
+                Help:
+                <a href="http://www.regular-expressions.info/javascript.html" target="_blank">Regex Overview</a> /
+                <a href="http://www.visibone.com/regular-expressions/" target="_blank">Quick reference</a>
+            </p>
             <br/>
             <p>
                 <a href="#" id="creditsLink">Credits</a>

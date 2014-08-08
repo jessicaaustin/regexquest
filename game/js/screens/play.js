@@ -17,18 +17,6 @@ game.PlayScreen = me.ScreenObject.extend({
         });
     },
 
-    // TODO: since the help dialog is available on any screen in the game, this should be moved to game.js or into its own file
-    setupHelpDialog: function() {
-        $("#help").css("top", gameCanvasPos.top + 10)
-                  .css("left", gameCanvasPos.left + 120);
-
-        this.helpHandler = me.event.subscribe(me.event.KEYDOWN, function (action, keyCode, edge) {
-            if (action === "toggleHelpWindow") {
-                $("#help").toggle();
-            }
-        });
-    },
-
 	/**
 	 *  action to perform on state change
 	 */
@@ -38,8 +26,6 @@ game.PlayScreen = me.ScreenObject.extend({
 
         this.setupBackgroundMusic();
 
-        this.setupHelpDialog();
-
         game.data.health = 10;
         game.data.numVillagersSaved = 0;
 
@@ -48,6 +34,15 @@ game.PlayScreen = me.ScreenObject.extend({
 
 		this.zombieVillagerBar = new game.HUD.ZombieVillagerBar();
 		me.game.world.addChild(this.zombieVillagerBar);
+
+		this.helpDialog = new game.HelpDialog();
+		me.game.world.addChild(this.helpDialog);
+		var thisObj = this;
+        this.helpHandler = me.event.subscribe(me.event.KEYDOWN, function (action, keyCode, edge) {
+            if (action === "toggleHelpWindow") {
+                thisObj.helpDialog.toggle();
+            }
+        });
 	},
 
 	/**

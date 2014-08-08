@@ -1,5 +1,5 @@
 /**
- * The main player.
+ * The main player, controlled by the user.
  */
 game.PlayerEntity = me.ObjectEntity.extend({
 
@@ -108,8 +108,6 @@ game.PlayerEntity = me.ObjectEntity.extend({
 
     onPuzzleSuccess: function() {
         this.endPuzzle();
-        game.data.numVillagersSaved++;
-        // TODO: when all villagers saved, win the level
     },
 
     onPuzzleFail: function() {

@@ -39,19 +39,28 @@
  <objectgroup name="entities" width="40" height="40">
   <object name="mainPlayer" x="134" y="1124" width="22" height="26">
    <properties>
-    <property name="image" value="hero"/>
+    <property name="image" value="player"/>
     <property name="spriteheight" value="36"/>
     <property name="spritewidth" value="32"/>
    </properties>
   </object>
-  <object name="HeartItem" x="512" y="352" width="32" height="32"/>
+  <object name="HeartItem" x="192" y="160" width="32" height="32"/>
   <object name="HeartItem" x="896" y="320" width="32" height="32"/>
   <object name="HeartItem" x="1184" y="736" width="32" height="32"/>
+  <object name="HeartItem" x="512" y="352" width="32" height="32"/>
+  <object name="HeartItem" x="1152" y="64" width="32" height="32"/>
+  <object name="HeartItem" x="832" y="672" width="32" height="32"/>
+  <object name="HeartItem" x="544" y="672" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="EnemyEntities" width="40" height="40">
   <object name="ZombieVillager" x="256" y="768" width="128" height="32"/>
   <object name="ZombieVillager" x="512" y="1056" width="128" height="32"/>
   <object name="ZombieVillager" x="192" y="256" width="128" height="32"/>
+  <object name="ZombieVillager" x="928" y="96" width="128" height="32"/>
+  <object name="ZombieVillager" x="768" y="512" width="128" height="32"/>
+  <object name="ZombieVillager" x="896" y="896" width="128" height="32"/>
+  <object name="ZombieVillager" x="576" y="864" width="128" height="32"/>
+  <object name="ZombieVillager" x="768" y="192" width="128" height="32"/>
  </objectgroup>
  <layer name="trees0" width="40" height="40">
   <data encoding="base64">

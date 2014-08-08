@@ -57,6 +57,8 @@
         // update the sprite to be a random villager
         me.audio.play("villagerHealed");
         this.renderable.image=me.loader.getImage("villager" + Math.randomInt(1,4));
+        game.data.numVillagersSaved++; // TODO: when all villagers saved, win the level
+
         // turn into a non-collidable sprite
         this.inPuzzle = false;
         this.collidable = false;

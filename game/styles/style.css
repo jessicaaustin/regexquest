@@ -76,8 +76,10 @@ a {
     color: black;
     background-color: #66CC66;
     position: absolute;
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
+
+    /* Need consistent font size to match the game */
+    font-family: "Arial";
+    font-size: 16px;
 }
 
 .dialog a {
@@ -87,14 +89,17 @@ a {
 /** PuzzleBox **/
 
 #puzzleBox {
-    width: 380px;
-    height: 100px;
+    width: 392px;
+    height: 112px;
     padding: 10px;
     text-align: center;
+    background-image: url('../img/puzzleBox.png');
+    background-color: transparent;
 }
 
 #puzzleBox #zombieText {
     height: 48px;
+    margin: 2px;
 }
 
 #puzzleBox .resultSection {
@@ -123,12 +128,4 @@ a {
 #puzzleBox .result {
     float: left;
     padding-left: 5px;
-}
-
-/** Help Window **/
-
-#help {
-    width: 380px;
-    height: 308px;
-    padding: 10px;
 }

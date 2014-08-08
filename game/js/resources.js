@@ -6,12 +6,14 @@ game.resources = [
     // screens
     {name: "title", type: "image", src: "data/img/title.png"},
     {name: "gameover", type: "image", src: "data/img/gameover.png"},
+    // dialogs
+    {name: "help", type: "image", src: "data/img/help.png"},
     // tilesets
     {name: "town_forest_tiles",  type:"image", src: "data/img/map/town_forest_tiles.png"},
     // metatiles
     {name: "metatiles32x32",  type:"image", src: "data/img/map/metatiles32x32.png"},
     // entities
-    {name: "hero", type: "image", src: "data/img/sprite/hero.png"},
+    {name: "player", type: "image", src: "data/img/sprite/player.png"},
     {name: "zombie", type: "image", src: "data/img/sprite/zombie.png"},
     {name: "villager1", type: "image", src: "data/img/sprite/villager1.png"},
     {name: "villager2", type: "image", src: "data/img/sprite/villager2.png"},

@@ -165,6 +165,6 @@ game.HUD.ZombieVillagerBar = me.ObjectContainer.extend({
 		// make sure our object is always drawn on top
 		this.z = Infinity;
 
-        this.initZombieVillagers(520, 8);
+        this.initZombieVillagers(520, 11);
 	}
 });
