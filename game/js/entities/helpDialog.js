@@ -16,9 +16,9 @@ game.HelpDialog = me.ObjectContainer.extend({
 		this.z = Infinity;
 
         // add image
-        var x = 125;
-        var y = 25;
-        this.dialog = new me.SpriteObject(x, y, me.loader.getImage("help"), 380, 308);
+        var x = 30;
+        var y = 12;
+        this.dialog = new me.SpriteObject(x, y, me.loader.getImage("bookOfHealing"), 569, 326);
         this.dialog.floating = true;
         this.dialog.z = 2;
 
