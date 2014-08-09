@@ -6,6 +6,7 @@ game.resources = [
     // screens
     {name: "title", type: "image", src: "data/img/title.png"},
     {name: "gameover", type: "image", src: "data/img/gameover.png"},
+    {name: "openingLetter", type: "image", src: "data/img/openingLetter.png"},
     // dialogs
     {name: "bookOfHealing", type: "image", src: "data/img/bookOfHealing.png"},
     // tilesets

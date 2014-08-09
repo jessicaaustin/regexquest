@@ -41,13 +41,16 @@ var game = {
  
         // Initialize melonJS and display a loading screen.
         me.state.change(me.state.LOADING);
-    },
 
+        // add a state for the the opening cutscene
+        this.STATE_OPENING_CUTSCENE = me.state.USER + 0;
+    },
 
 
     // Run on game resources loaded.
     "loaded" : function () {
         me.state.set(me.state.MENU, new game.TitleScreen());
+        me.state.set(this.STATE_OPENING_CUTSCENE, new game.OpeningCutscene());
         me.state.set(me.state.PLAY, new game.PlayScreen());
         me.state.set(me.state.GAMEOVER, new game.GameOverScreen());
 
@@ -73,5 +76,8 @@ var game = {
 
         // Start the game.
         me.state.change(me.state.MENU);
+
+        // enable fading state transitions
+        me.state.transition("fade", "000000", 1000);
     }
 };
