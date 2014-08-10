@@ -70,7 +70,6 @@ game.PuzzleGUI = Object.extend({
             $(".infected").fadeOut();
             puzzleBoxElem.delay( 2500 ).fadeOut( 250 );
 
-            game.puzzles.puzzleSolved();
             this.playerEntity.onPuzzleSuccess();
             this.zombieEntity.onPuzzleSuccess();
 
@@ -122,10 +121,8 @@ game.PuzzleGUI = Object.extend({
     },
 
     setupPuzzle: function(playerEntity, zombieEntity) {
-        this.puzzle = game.puzzles.getCurrent();
-        if (!this.puzzle) {
-            return;
-        }
+        this.puzzle = game.puzzles.getByZombie(zombieEntity.GUID);
+
         $("#zombieText").html(this.puzzle.zombieText());
 
         this.playerEntity = playerEntity;
