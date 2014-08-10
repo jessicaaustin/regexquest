@@ -67,8 +67,9 @@ var game = {
         me.pool.register("Sign", game.Sign);
 
         // player movement
-        me.input.bindKey(me.input.KEY.LEFT,  "left");
-        me.input.bindKey(me.input.KEY.RIGHT, "right");
+        var preventDefault = false; // allow user to move left/right arrow keys while in the puzzle box
+        me.input.bindKey(me.input.KEY.LEFT,  "left", false, preventDefault);
+        me.input.bindKey(me.input.KEY.RIGHT, "right", false, preventDefault);
         me.input.bindKey(me.input.KEY.UP,  "up");
         me.input.bindKey(me.input.KEY.DOWN, "down");
 
