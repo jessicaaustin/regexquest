@@ -7,7 +7,7 @@ game.resources = [
     {name: "title", type: "image", src: "data/img/title.png"},
     {name: "gameover", type: "image", src: "data/img/gameover.png"},
     {name: "toBeContinued", type: "image", src: "data/img/toBeContinued.png"},
-    {name: "openingLetter", type: "image", src: "data/img/openingLetter.png"},
+    {name: "openingLetter", type: "image", src: "data/img/openingLetter.jpg"},
     // dialogs
     {name: "bookOfHealing", type: "image", src: "data/img/bookOfHealing.png"},
     // tilesets
