@@ -6,6 +6,7 @@ game.resources = [
     // screens
     {name: "title", type: "image", src: "data/img/title.png"},
     {name: "gameover", type: "image", src: "data/img/gameover.png"},
+    {name: "toBeContinued", type: "image", src: "data/img/toBeContinued.png"},
     {name: "openingLetter", type: "image", src: "data/img/openingLetter.png"},
     // dialogs
     {name: "bookOfHealing", type: "image", src: "data/img/bookOfHealing.png"},
@@ -24,6 +25,9 @@ game.resources = [
     // sprites
     {name: "heartBar", type: "image", src: "data/img/sprite/heartBar.png"},
     {name: "heart", type: "image", src: "data/img/sprite/heart.png"},
+    {name: "doorClosed", type: "image", src: "data/img/sprite/doorClosed.png"},
+    {name: "doorAnimation", type: "image", src: "data/img/sprite/doorAnimation.png"},
+    {name: "doorOpen", type: "image", src: "data/img/sprite/doorOpen.png"},
     {name: "zombieBar", type: "image", src: "data/img/sprite/zombieBar.png"},
     {name: "singleZombie", type: "image", src: "data/img/sprite/singleZombie.png"},
     {name: "singleVillager", type: "image", src: "data/img/sprite/singleVillager.png"},

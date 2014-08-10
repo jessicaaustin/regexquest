@@ -43,8 +43,9 @@ var game = {
         // Initialize melonJS and display a loading screen.
         me.state.change(me.state.LOADING);
 
-        // add a state for the the opening cutscene
+        // add custom states
         this.STATE_OPENING_CUTSCENE = me.state.USER + 0;
+        this.STATE_TO_BE_CONTINUED = me.state.USER + 1;
     },
 
 
@@ -53,12 +54,14 @@ var game = {
         me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(this.STATE_OPENING_CUTSCENE, new game.OpeningCutscene());
         me.state.set(me.state.PLAY, new game.PlayScreen());
+        me.state.set(this.STATE_TO_BE_CONTINUED, new game.ToBeContinuedScreen());
         me.state.set(me.state.GAMEOVER, new game.GameOverScreen());
 
         // register our entities
         me.pool.register("mainPlayer", game.PlayerEntity);
         me.pool.register("ZombieVillager", game.ZombieVillager);
         me.pool.register("HeartItem", game.HeartItem);
+        me.pool.register("Door", game.Door);
 
         // player movement
         me.input.bindKey(me.input.KEY.LEFT,  "left");
