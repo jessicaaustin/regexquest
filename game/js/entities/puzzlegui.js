@@ -20,7 +20,7 @@ game.PuzzleGUI = Object.extend({
         puzzleBoxElem = $("#puzzleBox");
 
         gameCanvasPos = me.video.getPos();
-        puzzleBoxElem.css("top", gameCanvasPos.top + 340)
+        puzzleBoxElem.css("top", gameCanvasPos.top + 342)
                      .css("left", gameCanvasPos.left + 114);
 
         patternElem = $("#puzzleBox .pattern");

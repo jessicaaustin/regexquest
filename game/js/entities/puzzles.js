@@ -26,7 +26,7 @@ game.puzzles = {
 
             // 3: Find with metacharacters
             //      You there! Stop! I want your brains! ... Wait, why am I saying this?
-            new rq.Zombie("Y23o2u12 4the34re! 4St44op!43 I w7an4t y73ou434r4 b6r34ains! .5.. Wai1t, w7hy 3am I sayi3ng t3his?",
+            new rq.Zombie("Y3o2u12 4the4re! 4St4op!43 I w7an4t y73ou4r4 b6r3ains! .5.. Wai1t, w7hy 3am I sayi3ng t3his?",
                           /\d/g ),
 
             // 4: "one of": [ ... ] or (...|...|...)
@@ -34,15 +34,15 @@ game.puzzles = {
             new rq.Zombie("Yqvzxonne? Iqsz thaxt yqou?z qWhxerqe am Iz? Wxhaqt is gxoingz ozqnx?",
                           /[zxq]/g ),
 
-            // 5: Wildcard (.*) and "exactly n" {n}
-            //      Everyone is acting so strange since Jonas came back from the woods the other day.
-            new rq.Zombie("EvBL90deryone is acting so straBLdpwnge since Jonas came back fromBLdj3 the wooBLqdsds the other dBLuiray.",
-                          /BL\w{3}/g ),
-
-            // 6: Sub-expression, escape literal, optional char
+            // 5: Sub-expression, escape literal, optional char
             //      Did you hear the strange sounds coming from the woods?
             new rq.Zombie("Did you hea(grr)r the str(grrr)ange sounds comi(grrr)ng from the woods?",
                           /\(grrr?\)/g ),
+
+            // 6: Wildcard (.*) and "exactly n" {n}
+            //      Everyone is acting so strange since Jonas came back from the woods the other day.
+            new rq.Zombie("EvBL90deryone is acting so straBLdpwnge since Jonas came back fromBLdj3 the wooBLqdsds the other dBLuiray.",
+                          /BL\w{3}/g ),
 
             // 7: Range
             //      Oh? A tasty treat? Come here for just a minute...
