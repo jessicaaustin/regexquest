@@ -12,6 +12,7 @@ MVP:
 
 later:
 * make a list of common scenarios where developers use regexps, and update/add puzzles to match this list
+* add analytics, to see which patterns people are actually trying
 * Add fog effect to map
 * Add levels inside the houses
 * add more levels
