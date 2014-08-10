@@ -85,7 +85,7 @@ var game = {
         game.cutsceneManager = new game.CutsceneManager();
 
         // Start the game.
-        me.state.change(me.state.PLAY);  // TODO change back to MENU
+        me.state.change(me.state.MENU);
 
         // enable fading state transitions
         me.state.transition("fade", "000000", 1000);

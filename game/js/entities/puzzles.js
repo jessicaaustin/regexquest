@@ -9,8 +9,6 @@ game.puzzles = {
 
         new Array().concat(
 
-            // TODO add corresponding hints for the early puzzles
-
             // 1: Single character find
             new rq.Zombie("kHkekklpk mkkkekk, Ikkk've beekkkn infkkkekctkked!kk",
                           /k/g),

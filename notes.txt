@@ -7,7 +7,6 @@ MVP:
 * Finish up puzzles on level 1
 * code
 ** can some of the more complex logic be extracted into a library and tested?
-** clean up javascript
 ** Reduce size of audio files for faster loading
 ** look over TODOs
 
