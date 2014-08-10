@@ -14,15 +14,15 @@ game.puzzles = {
                           /k/g),
 
             // 2: Single character find, case insensitive
-            new rq.Zombie("GIg vigsgited DGrggg. gM. gyegGstergGday aGnGd ngowgg eGveryGogne logogksG sgo deGgliGgcGiogus.G..",
+            new rq.Zombie("gWhy Gdoges eGveryGogne logogk sgo deGgliGgcGiogus.G..",
                           /g/gi),
 
             // 3: Find with metacharacters
-            new rq.Zombie("Y23o2u12 4the34re! 4St44op!43 I w7an4t y73ou434r4 b6r34ains! .5.. W7a87it 76a m57i768nute, w7h6y 983am I6 s987ayi3ng t3h0i8s?",
+            new rq.Zombie("Y23o2u12 4the34re! 4St44op!43 I w7an4t y73ou434r4 b6r34ains! .5.. W7a8it 7a m7i8nute, w7hy 3am I6 s97ayi3ng t3h0is?",
                           /\d/g ),
 
             // 4: "one of": [ ... ] or (...|...|...)
-            new rq.Zombie("jHaqzve youx seezqxn xDzr.z Mxq. axrounzd? He hqzasn't exqen in hiqs laz siqnce thxe xaccident qa qqqfew dayqs qxago.x",
+            new rq.Zombie("Yqvzxonne? Iqsz thaxt yqou?z qWhxerqe am Iz? Wxhaqt is gxoingz ozqnx?",
                           /[zxq]/g ),
 
             // 5: TODO: add
@@ -35,7 +35,7 @@ game.puzzles = {
             new rq.Zombie("Todo: Add puzzle 7",
                           /7/g ),
             // 8: TODO: add
-            new rq.Zombie("Todo: Add puzzle 8 (Yvonne is locked up in her house! You should go see her!)",
+            new rq.Zombie("Todo: Add puzzle 8 (Yvonne is locked up in her house! Now that we are all cured you should go see her!)",
                           /8/g )
         )
 
