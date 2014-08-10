@@ -1,9 +1,7 @@
 game.PlayScreen = me.ScreenObject.extend({
 
-    setupBackgroundMusic: function() {
-        me.audio.playTrack("dst-beyondtheseforests");
+    setupBackgroundMusicHandler: function() {
         game.settings.soundOn = true;
-
         this.soundHandler = me.event.subscribe(me.event.KEYDOWN, function (action, keyCode, edge) {
            if (action === "toggleSound") {
               if (game.settings.soundOn) {
@@ -17,17 +15,26 @@ game.PlayScreen = me.ScreenObject.extend({
         });
     },
 
-	/**
-	 *  action to perform on state change
-	 */
-	onResetEvent: function() {
-
+    setupLevelOne: function() {
         me.levelDirector.loadLevel("area01");
+        game.data.numVillagers = game.puzzles.puzzles[game.data.currentLevel].length;
 
-        this.setupBackgroundMusic();
+        me.audio.playTrack("dst-beyondtheseforests", 0.8);
+    },
 
+	onResetEvent: function() {
         game.data.health = 10;
         game.data.numVillagersSaved = 0;
+
+        switch(game.data.currentLevel) {
+            case 0:
+                this.setupLevelOne();
+                break;
+            default:
+                console.error('No level ' + game.data.currentLevel);
+        }
+
+        this.setupBackgroundMusicHandler();
 
 		this.healthBar = new game.HUD.HealthBar();
 		me.game.world.addChild(this.healthBar);

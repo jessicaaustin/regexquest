@@ -103,10 +103,14 @@ game.PuzzleGUI = Object.extend({
         }
     },
 
-    userUpdate: function(event) {
+    resetResultsArea: function() {
         $("#wrongAnswer").hide();
         $("#rightAnswer").hide();
         resultElem.text("");
+    },
+
+    userUpdate: function(event) {
+        this.resetResultsArea();
 
         // check for enter or esc key press
         var code = (event.which);
@@ -129,6 +133,7 @@ game.PuzzleGUI = Object.extend({
 
         this.locked = false;
         this.clearRegExp();
+        this.resetResultsArea();
         this.show();
     }
 

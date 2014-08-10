@@ -34,14 +34,18 @@
 		<script type="text/javascript" src="js/entities/player.js"></script>
 		<script type="text/javascript" src="js/entities/villager.js"></script>
 		<script type="text/javascript" src="js/entities/heartitem.js"></script>
+		<script type="text/javascript" src="js/entities/door.js"></script>
+		<script type="text/javascript" src="js/entities/sign.js"></script>
 		<script type="text/javascript" src="js/entities/HUD.js"></script>
 		<script type="text/javascript" src="js/entities/helpDialog.js"></script>
+		<script type="text/javascript" src="js/entities/cutsceneManager.js"></script>
 		<script type="text/javascript" src="js/entities/puzzles.js"></script>
 		<script type="text/javascript" src="js/entities/puzzlegui.js"></script>
 
 		<script type="text/javascript" src="js/screens/title.js"></script>
-		<script type="text/javascript" src="js/screens/play.js"></script>
-		<script type="text/javascript" src="js/screens/gameOver.js"></script>
+        <script type="text/javascript" src="js/screens/openingCutscene.js"></script>
+        <script type="text/javascript" src="js/screens/play.js"></script>
+        <script type="text/javascript" src="js/screens/gameOver.js"></script>
 		<!-- /build -->
 		<!-- Bootstrap & Mobile optimization tricks -->
 		<script type="text/javascript">
@@ -76,7 +80,7 @@
 		</script>
 
         <!--TODO: handle box position when screen size is not the default-->
-        <div id="puzzleBox" class="dialog" style="display:none;">
+        <div id="puzzleBox" style="display:none;">
             <div id="zombieText"></div>
             <div class="resultSection">
                 <img src="img/wronganswer.png" id="wrongAnswer" style="display:none;"/>
@@ -151,6 +155,27 @@
                 Art by <a href="http://opengameart.org/users/buch" target="_blank">Buch</a>. <br/>
                 Available at
                 <a href="http://opengameart.org/content/ui-elements" target="_blank">OpenGameArt.org</a>
+            </p>
+
+            <h4>Book</h4>
+            <p>
+                Art by <a href="http://opengameart.org/users/yd" target="_blank">yd</a>. <br/>
+                Available at
+                <a href="http://opengameart.org/content/fantasy-book" target="_blank">OpenGameArt.org</a>
+            </p>
+
+            <h4>Parchment</h4>
+            <p>
+                Art by <a href="http://opengameart.org/users/cron" target="_blank">cron</a>. <br/>
+                Available at
+                <a href="http://opengameart.org/content/old-parchment-paper" target="_blank">OpenGameArt.org</a>
+            </p>
+
+            <h4>Signs</h4>
+            <p>
+                Art by <a href="http://opengameart.org/users/nemisys" target="_blank">Nemisys</a>. <br/>
+                Available at
+                <a href="http://opengameart.org/content/lpc-sign-post" target="_blank">OpenGameArt.org</a>
             </p>
 
             <h3>Music</h3>

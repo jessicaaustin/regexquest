@@ -70,25 +70,16 @@ a {
     color: #cc0000;
 }
 
-/** Dialogs **/
+/** PuzzleBox **/
 
-.dialog {
+#puzzleBox {
     color: black;
-    background-color: #66CC66;
     position: absolute;
 
     /* Need consistent font size to match the game */
     font-family: "Arial";
     font-size: 16px;
-}
 
-.dialog a {
-    color: black;
-}
-
-/** PuzzleBox **/
-
-#puzzleBox {
     width: 392px;
     height: 112px;
     padding: 10px;
@@ -103,7 +94,7 @@ a {
 }
 
 #puzzleBox .resultSection {
-    height: 24px;
+    height: 22px;
 }
 
 #puzzleBox .inputSection {

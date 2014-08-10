@@ -43,26 +43,36 @@ game.PlayerEntity = me.ObjectEntity.extend({
 
     update: function(dt) {
 
-        if (this.inPuzzle) {
+        if (this.inPuzzle || this.waitingForDoor) {
             // prevent movement
             return false;
         }
 
-        if (me.input.isKeyPressed('left')) {
-            this.direction = "left";
-            this.vel.x -= this.accel.x * me.timer.tick;
-        } else if (me.input.isKeyPressed('right')) {
-            this.direction = "right";
-            this.vel.x += this.accel.x * me.timer.tick;
-        } else if (me.input.isKeyPressed('up')) {
-            this.direction = "up";
-            this.vel.y -= this.accel.x * me.timer.tick;
-        } else if (me.input.isKeyPressed('down')) {
-            this.direction = "down";
-            this.vel.y += this.accel.x * me.timer.tick;
+        if (this.enteringDoor) {
+
+            // assuming all doors are entered going "up"
+            this.vel.y = -1*this.maxVel.x * me.timer.tick;
+
         } else {
-            this.vel.x = 0;
-            this.vel.y = 0;
+
+            // get movement from keyboard
+            if (me.input.isKeyPressed('left')) {
+                this.direction = "left";
+                this.vel.x -= this.accel.x * me.timer.tick;
+            } else if (me.input.isKeyPressed('right')) {
+                this.direction = "right";
+                this.vel.x += this.accel.x * me.timer.tick;
+            } else if (me.input.isKeyPressed('up')) {
+                this.direction = "up";
+                this.vel.y -= this.accel.x * me.timer.tick;
+            } else if (me.input.isKeyPressed('down')) {
+                this.direction = "down";
+                this.vel.y += this.accel.x * me.timer.tick;
+            } else {
+                this.vel.x = 0;
+                this.vel.y = 0;
+            }
+
         }
 
         if(this.vel.y == 0 && this.vel.x == 0) {
@@ -76,15 +86,6 @@ game.PlayerEntity = me.ObjectEntity.extend({
 
         // check for collision
         var collision = me.game.world.collide(this);
-
-        if (collision) {
-            // if we collide with an enemy
-            if (collision.obj.type == me.game.ENEMY_OBJECT) {
-                // bounce back
-                this.vel.y = -1*collision.y*this.maxVel.y * me.timer.tick;
-                this.vel.x = -1*collision.x*this.maxVel.x * me.timer.tick;
-            }
-        }
  
         // update animation if necessary
         if (this.vel.x!=0 || this.vel.y!=0) {
@@ -120,6 +121,19 @@ game.PlayerEntity = me.ObjectEntity.extend({
 
     onPuzzleEscape: function() {
         this.endPuzzle();
+    },
+
+    waitForDoor: function() {
+        this.waitingForDoor = true;
+    },
+
+    startEnteringDoor: function() {
+        this.waitingForDoor = false;
+        this.enteringDoor = true;
+    },
+
+    finishEnteringDoor: function() {
+        this.enteringDoor = false;
     }
 
 });

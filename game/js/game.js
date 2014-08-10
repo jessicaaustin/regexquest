@@ -2,15 +2,18 @@
 var game = {
  
     data : {
+        currentLevel: 0,
         health: 0,
         maxHealth: 16,
-        numVillagers: 8, // TODO this is duplicated across Tiled and puzzles.js
+        numVillagers: 0,
         numVillagersSaved: 0
     },
 
     settings : {
         soundOn: false
     },
+
+    doors: {},
 
     puzzlegui: null,
      
@@ -41,20 +44,27 @@ var game = {
  
         // Initialize melonJS and display a loading screen.
         me.state.change(me.state.LOADING);
-    },
 
+        // add custom states
+        this.STATE_OPENING_CUTSCENE = me.state.USER + 0;
+        this.STATE_TO_BE_CONTINUED = me.state.USER + 1;
+    },
 
 
     // Run on game resources loaded.
     "loaded" : function () {
         me.state.set(me.state.MENU, new game.TitleScreen());
+        me.state.set(this.STATE_OPENING_CUTSCENE, new game.OpeningCutscene());
         me.state.set(me.state.PLAY, new game.PlayScreen());
+        me.state.set(this.STATE_TO_BE_CONTINUED, new game.ToBeContinuedScreen());
         me.state.set(me.state.GAMEOVER, new game.GameOverScreen());
 
         // register our entities
         me.pool.register("mainPlayer", game.PlayerEntity);
         me.pool.register("ZombieVillager", game.ZombieVillager);
         me.pool.register("HeartItem", game.HeartItem);
+        me.pool.register("Door", game.Door);
+        me.pool.register("Sign", game.Sign);
 
         // player movement
         me.input.bindKey(me.input.KEY.LEFT,  "left");
@@ -71,7 +81,13 @@ var game = {
         // initialize the PuzzleBox
         game.puzzlegui = new game.PuzzleGUI();
 
+        // Start up cutscene manager
+        game.cutsceneManager = new game.CutsceneManager();
+
         // Start the game.
         me.state.change(me.state.MENU);
+
+        // enable fading state transitions
+        me.state.transition("fade", "000000", 1000);
     }
 };
