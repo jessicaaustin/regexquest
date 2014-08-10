@@ -9,6 +9,7 @@ game.CutsceneManager = Object.extend({
 	},
 
 	level01AllVillagersSaved: function() {
+        setTimeout(function() { me.audio.play("levelUp"); }, 500);
         game.doors["yvonneHouse"].unlock();
 	}
 

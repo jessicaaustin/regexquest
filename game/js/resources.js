@@ -55,5 +55,6 @@ game.resources = [
     {name: "zombie3", type: "audio", src: "data/sfx/"},
     {name: "heartIncrease", type: "audio", src: "data/sfx/"},
     {name: "heartDecrease", type: "audio", src: "data/sfx/"},
-    {name: "villagerHealed", type: "audio", src: "data/sfx/"}
+    {name: "villagerHealed", type: "audio", src: "data/sfx/"},
+    {name: "levelup", type: "audio", src: "data/sfx/"}
 ];
