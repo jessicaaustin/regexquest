@@ -61,6 +61,24 @@
                 assertTrue(zombie.checkMatch(/colou?r/g));
             });
 
+            test("1.4 -- exactly n chars", function() {
+                var zombie = new rq.Zombie("EvBL90deryone is acting so straBLdpwnge", /BL\w{3}/g );
+                assertArrayEquals(["BL90d","BLdpw"], zombie.infectedText());
+                assertTrue(zombie.checkMatch(/BL\w{3}/g));
+                assertTrue(zombie.checkMatch(/BL(\w){3}/g));
+                assertTrue(zombie.checkMatch(/BL.{3}/g));
+                assertFalse(zombie.checkMatch(/BL(.*){3}/g));
+                assertTrue(zombie.checkMatch(/BL[\w]{3}/g));
+                assertTrue(zombie.checkMatch(/BL[a-z0-9]{3}/g));
+                assertArrayEquals([
+                    {text: "Ev", infected: false},
+                    {text: "BL90d", infected: true},
+                    {text: "eryone is acting so stra", infected: false},
+                    {text: "BLdpw", infected: true},
+                    {text: "nge", infected: false}
+                ], zombie.zombieTextArray());
+            });
+
             test("2.0 -- zombie text", function() {
                 assertArrayEquals([
                     {text: " ", infected: false},

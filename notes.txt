@@ -4,15 +4,17 @@ TODOs:
 ======
 
 MVP:
-* Finish up puzzles on level 1
 * code
 ** can some of the more complex logic be extracted into a library and tested?
 ** look over TODOs
+** go over and clean up/clarify
+* test in firefox, safari, and IE (javascript RegExp implementation can vary cross-browser)
 
 clean up demo/tests
 * remove the demo/ folder (just need the game)
 
 later:
+* make a list of common scenarios where developers use regexps, and update/add puzzles to match this list
 * Add fog effect to map
 * Add levels inside the houses
 * add more levels
