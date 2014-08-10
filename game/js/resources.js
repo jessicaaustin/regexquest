@@ -28,9 +28,13 @@ game.resources = [
     {name: "doorClosed", type: "image", src: "data/img/sprite/doorClosed.png"},
     {name: "doorAnimation", type: "image", src: "data/img/sprite/doorAnimation.png"},
     {name: "doorOpen", type: "image", src: "data/img/sprite/doorOpen.png"},
+    {name: "sign", type: "image", src: "data/img/sprite/sign.png"},
     {name: "zombieBar", type: "image", src: "data/img/sprite/zombieBar.png"},
     {name: "singleZombie", type: "image", src: "data/img/sprite/singleZombie.png"},
     {name: "singleVillager", type: "image", src: "data/img/sprite/singleVillager.png"},
+    // signs
+    {name: "yvonneHouseSign", type: "image", src: "data/img/signs/yvonneHouse.png"},
+
 
     /**
      * Maps
