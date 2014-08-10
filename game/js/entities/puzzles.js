@@ -59,7 +59,7 @@ game.puzzles = {
             game.puzzles.zombiesToPuzzles[zombieGUID] = puzzle;
             game.puzzles.currentRound++;
         }
-        return puzzle.zombie;
+        return puzzle;
     }
 
 };
