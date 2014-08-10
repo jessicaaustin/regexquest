@@ -25,6 +25,7 @@ game.Door = me.ObjectEntity.extend({
 
         // this is given in Tiled
         this.destination = settings.destination;
+        game.doors[this.destination] = this;
 
         this.lock();
         this.opening = false;

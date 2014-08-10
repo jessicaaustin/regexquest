@@ -37,7 +37,7 @@ game.puzzles = {
             new rq.Zombie("Todo: Add puzzle 7",
                           /7/g ),
             // 8: TODO: add
-            new rq.Zombie("Todo: Add puzzle 8",
+            new rq.Zombie("Todo: Add puzzle 8 (Yvonne is locked up in her house! You should go see her!)",
                           /8/g )
         )
 

@@ -4,8 +4,7 @@ TODOs:
 ======
 
 MVP:
-* game
-** add help/tutorial dialogs to explain how the game works
+* Finish up puzzles on level 1
 * code
 ** can some of the more complex logic be extracted into a library and tested?
 ** clean up javascript
@@ -13,7 +12,6 @@ MVP:
 ** look over TODOs
 
 clean up demo/tests
-* Have the github.io site go directly to the game (with link to tests)
 * remove the demo/ folder (just need the game)
 
 later:

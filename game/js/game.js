@@ -13,6 +13,8 @@ var game = {
         soundOn: false
     },
 
+    doors: {},
+
     puzzlegui: null,
      
     // Run on page load.
@@ -62,6 +64,7 @@ var game = {
         me.pool.register("ZombieVillager", game.ZombieVillager);
         me.pool.register("HeartItem", game.HeartItem);
         me.pool.register("Door", game.Door);
+        me.pool.register("Sign", game.Sign);
 
         // player movement
         me.input.bindKey(me.input.KEY.LEFT,  "left");
@@ -78,8 +81,11 @@ var game = {
         // initialize the PuzzleBox
         game.puzzlegui = new game.PuzzleGUI();
 
+        // Start up cutscene manager
+        game.cutsceneManager = new game.CutsceneManager();
+
         // Start the game.
-        me.state.change(me.state.MENU);
+        me.state.change(me.state.PLAY);  // TODO change back to MENU
 
         // enable fading state transitions
         me.state.transition("fade", "000000", 1000);
