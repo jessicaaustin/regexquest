@@ -4,6 +4,7 @@
  *
  * TODO what is the best practice for transitioning between areas?
  * for example, see http://git.kodewerx.org/neverwell-moor/
+ * or this example: https://github.com/Kibo/melonjs-cookbook/blob/master/cookbook/gate/
  */
 game.Door = me.ObjectEntity.extend({
 
