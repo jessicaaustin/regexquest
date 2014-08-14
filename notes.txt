@@ -9,6 +9,7 @@ MVP:
 ** look over TODOs
 ** go over and clean up/clarify
 * test in firefox, safari, and IE (javascript RegExp implementation can vary cross-browser)
+* add boilerplate deployment stuff back in
 
 later:
 * make a list of common scenarios where developers use regexps, and update/add puzzles to match this list
@@ -19,54 +20,72 @@ later:
 * add mutants
 
 
+Narrative Ideas:
+===============
+
+(spoilers ahead :))
+
+end of level 1:
+  you meet yvonne, and she tells you a bit more about the sickness
+  she thinks she can cure it... she just needs to find some Ancient Scrolls or whatever... but these have been obfuscated
+  at this point, she asks if you can decode one of them 
+      it's a find and replace puzzle, where there are many sequential steps to de-obfuscate it
+  once you get that one, she says there are N more scattered around the kingdom
+  if you can find them all... you can cure everyone!
+ after she reveals this, there's a crash and then some henchmen come in and kidnap yvonne
+  you (milo) run after, but they get away....
+  (in future: learn that these are the henchmen of Dr. M, and he started the virus on purpose, to create an army of zombies to do his bidding)
+  to win the game, you find all the scrolls and rescue yvonne
+  (ugh... hate the gender stereotypes here... maybe can have something other than a damsel in distress?)
+
 
 Thoughts/Ideas:
 ===============
 
+Types of puzzles:
+
 zombie:
  - has a bunch of text, with "infectious" text interspersed 
  - to "cure" a zombie, remove the infected text
- - may take multiple hits to cure a zombie
  - teaches basics of matching, since you don't have to replace
 
 mutant:
  - similar to zombie, but you need to replace infectious text with something else, instead of just "removing" (matching) it
- - more advanced, can basically increase the complexity by applying many regexes
+ - teaches backreferences
+ - expands the possible developer scenarios
 
-
-it's not exactly turn-based--the monster will attack you after a certain amount of time. so being able to create regexps faster is what matters.
-
-
-one or more baddies
- - each has some text, with certain parts highlighted
- - may or may not be able to get all baddies with single regexp
-   - need special equipment to fight multiple at once
- - to fight, type a regexp
- - can narrow down the string with multiple regexps, beat it by narrowing down to selected text
- - each time you "strike", the baddie strikes back
-
-
-bosses:
- - transform a large piece of text into another (will definitely require multiple tries)
+healing scroll (working name):
+ - multiple find replaces over a multi-line document
+ - basically, these are bosses at the end of the level
+ - quizzes knowledge learned throughout the level
+ - closest of all to developer regex task 
 
 bonus games:
  - timed stuff
  - opposite game: baddies have regexps, you need to write text
 
 
-game has different stages, with new types of baddies per stage
-- exact match
-- one or more chars
-- optional chars
-- digits / words / spaces
+
+Developer use cases:
+
+Level One:
+ - simple text matching
+Level Two:
+ - match and replace
+Level Three:
+ - bash-style regexes
+Level Four:
+ - regexes over XML
+Level Five:
+ - ???
+???
 
 
-problems:
-- need some way to discourage conditionals (/cat|hat/)
-   - maybe fewer characters => more hit points?
+
+Issues:
+
+Is there some way to encourage the "optimal" regex?
+  For example, to match "cat" and "hat", the user could choose /\wat/ or /(cat|hat)/ -- the former is better
+  Maybe award a bonus of some kind of using the minimal number of characters for a puzzle? (similar to World of Goo)
 
 
-Function.prototype.method = function (name, func) {
-    this.prototype[name] = func;
-    return this;
-}
