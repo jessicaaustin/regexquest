@@ -1,4 +1,4 @@
-RegexQuest v.0.1
+RegexQuest v0.1
 ================
 
 RegexQuest is an rpg-style game where you fight zombies and mutants by solving regular expression puzzles. It is built using melonJS and jQuery.
