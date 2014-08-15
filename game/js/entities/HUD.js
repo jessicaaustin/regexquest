@@ -84,8 +84,8 @@ game.HUD.HealthBar = me.ObjectContainer.extend({
 
 		this.collidable = false;
 
-		// make sure our object is always drawn on top
-		this.z = Infinity;
+        // draw on top of the world
+		this.z = 10000;
 
         this.initHearts(10, 10);
 	}
@@ -162,8 +162,8 @@ game.HUD.ZombieVillagerBar = me.ObjectContainer.extend({
 
 		this.collidable = false;
 
-		// make sure our object is always drawn on top
-		this.z = Infinity;
+        // draw on top of the world
+		this.z = 10000;
 
         this.initZombieVillagers(520, 11);
 	}
