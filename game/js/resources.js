@@ -24,6 +24,8 @@ game.resources = [
     {name: "heartItem", type: "image", src: "data/img/sprite/heartItem.png"},
     // sprites
     {name: "heartBar", type: "image", src: "data/img/sprite/heartBar.png"},
+    {name: "heartBarHealthDecrease", type: "image", src: "data/img/sprite/heartBarHealthDecrease.png"},
+    {name: "heartBarHealthIncrease", type: "image", src: "data/img/sprite/heartBarHealthIncrease.png"},
     {name: "heart", type: "image", src: "data/img/sprite/heart.png"},
     {name: "doorClosed", type: "image", src: "data/img/sprite/doorClosed.png"},
     {name: "doorAnimation", type: "image", src: "data/img/sprite/doorAnimation.png"},
