@@ -10,10 +10,10 @@ game.HUD.HealthBar = me.ObjectContainer.extend({
     initHearts: function(x, y) {
 
         // add background bar
-        var heartBar = new me.SpriteObject(x, y, me.loader.getImage("heartBar"), 151, 47);
-        heartBar.floating = true;
-        heartBar.z = 2;
-        this.addChild(heartBar);
+        this.heartBar = new me.SpriteObject(x, y, me.loader.getImage("heartBar"), 151, 47);
+        this.heartBar.floating = true;
+        this.heartBar.z = 2;
+        this.addChild(this.heartBar);
         x += 7; // account for border
         y += 6;
 
@@ -50,6 +50,14 @@ game.HUD.HealthBar = me.ObjectContainer.extend({
 
     },
 
+    updateBackgroundBar: function(imageName) {
+        this.heartBar.image = me.loader.getImage(imageName);
+        var thisObj = this;
+        setTimeout(function() {
+            thisObj.heartBar.image = me.loader.getImage("heartBar");
+        }, 2000);
+    },
+
 	update : function () {
 	    // only update when health changes
 		if (this.health !== game.data.health) {
@@ -59,13 +67,14 @@ game.HUD.HealthBar = me.ObjectContainer.extend({
                 for (var i=this.health; i<game.data.health; i++) {
                     me.audio.play("heartIncrease", false, null, 0.2);
                     this.hearts[i].alpha = this.fullAlpha;
+                    this.updateBackgroundBar("heartBarHealthIncrease");
                 }
 		    } else {
 		        // lost health
                 for (var i=game.data.health; i<this.health; i++) {
                     me.audio.play("heartDecrease", false, null, 0.8);
                     this.hearts[i].alpha = this.emptyAlpha;
-                    // TODO add flickering
+                    this.updateBackgroundBar("heartBarHealthDecrease");
                 }
 		    }
 
