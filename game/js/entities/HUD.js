@@ -55,7 +55,7 @@ game.HUD.HealthBar = me.ObjectContainer.extend({
         var thisObj = this;
         setTimeout(function() {
             thisObj.heartBar.image = me.loader.getImage("heartBar");
-        }, 2000);
+        }, 1500);
     },
 
 	update : function () {
