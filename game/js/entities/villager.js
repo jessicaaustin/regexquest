@@ -36,17 +36,19 @@
 
          // puzzle setup
          this.inPuzzle = false;
+         this.isInfected = true;
      },
 
      onCollision : function (res, obj) {
-        me.audio.play("zombie2");
-        this.startPuzzle(obj);
+        if (this.isInfected && !this.inPuzzle) {
+            me.audio.play("zombie2");
+            this.startPuzzle(obj);
+        }
      },
 
     startPuzzle: function(player) {
 
         this.inPuzzle = true;
-        this.collidable = false; // prevent collision loop
 
         player.startPuzzle();
 
@@ -62,9 +64,9 @@
             me.event.publish("/level01/allVillagersSaved");
         }
 
-        // turn into a non-collidable sprite
+        // turn into a normal villager
         this.inPuzzle = false;
-        this.collidable = false;
+        this.isInfected = false;
         this.type = me.game.ACTION_OBJECT;
     },
 
@@ -73,17 +75,15 @@
     },
 
     onPuzzleEscape: function() {
-        this.inPuzzle = false;
-
         me.audio.play("zombie3");
 
-        // flicker and make un-collidable for a while to
+        // flicker and disable for a while to
         // allow the player to escape if need be
         var flickerTime = 2000;
         this.renderable.flicker(flickerTime)
         var thisObj = this;
         setTimeout(function() {
-            thisObj.collidable = true;
+            thisObj.inPuzzle = false;
         }, flickerTime);
     },
 
