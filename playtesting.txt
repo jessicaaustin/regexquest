@@ -1,0 +1,19 @@
+
+Playtesting Notes:
+
+v0.1
+sysadmin, very familiar with regexes (couldn't watch him play, but asked for feedback afterwards)
+   didn't find the Book of Healing immediately
+   agrees that it's a fun way to gain fluency, and that gaining fluency is an important goal
+   likes the idea of progressively more complicated puzzles, while reinforcing the basics
+   "You could possibly have some notion of an optimal regex vs something that works, but could be improved, at least for
+    more complex things. So, rather than curing entirely, a clunky regexp might just put it into remission until the
+    person comes up with a better one."
+
+v0.1
+student, hasn't heard of regular expressions before, but I gave him a walkthrough (in person)
+   referenced the Book of Healing all the time
+   spaces aren't obvious -- maybe underscore them? (but want to avoid confusion with actual underscores...)
+   BUG: in firefox on windows, the book of healing is showing up BEHIND the HUD
+   it would be great to be able to review the puzzles after completion -- maybe when you talk to the villager?
+   need to have a visual cue when you lose health -- if the sound is off then you don't really notice it happening
