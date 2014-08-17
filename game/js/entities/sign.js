@@ -31,7 +31,6 @@ game.Sign = me.ObjectEntity.extend({
 
     update: function(dt) {
         // hide sign if we're moving away from it
-        // TODO: this method is still very intensive when actually viewing the sign... is there a better way?
         if (this.viewingSign) {
             this.signViewer.hide(this.signName);
             this.viewingSign = false;
@@ -73,6 +72,9 @@ game.SignViewer = me.ObjectContainer.extend({
 
 	hide: function(signName) {
         this.removeChild(this.signs[signName]);
-	}
+	},
 
+	update : function () {
+	    return false;
+	}
 });
