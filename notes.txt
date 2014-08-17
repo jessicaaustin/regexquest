@@ -4,9 +4,7 @@ TODOs:
 MVP:
 * code
 ** can some of the more complex logic be extracted into a library and tested?
-** look over TODOs
-** go over and clean up/clarify
-* test in firefox, safari, and IE
+* test in -firefox-, safari, and IE
 * add boilerplate deployment stuff back in
 
 later:
