@@ -1,9 +1,11 @@
-
 /**
  * Villagers, which have unfortunately been turned into zombies.
  */
- game.ZombieVillager = me.ObjectEntity.extend({
-     init: function(x, y, settings) {
+game.ZombieVillager = me.ObjectEntity.extend({
+
+    solvedPuzzle: null,
+
+    init: function(x, y, settings) {
 
         // sprite params
         settings.image = "zombie";
@@ -37,14 +39,22 @@
          // puzzle setup
          this.inPuzzle = false;
          this.isInfected = true;
-     },
+    },
 
-     onCollision : function (res, obj) {
-        if (this.isInfected && !this.inPuzzle) {
+    onCollision : function (res, obj) {
+        if (this.inPuzzle) {
+            return;
+        }
+
+        if (this.isInfected) {
             me.audio.play("zombie2");
             this.startPuzzle(obj);
+        } else {
+            this.viewingDialogue = true;
+            game.puzzlegui.showSolvedPuzzle(this.solvedPuzzle);
         }
-     },
+
+    },
 
     startPuzzle: function(player) {
 
@@ -55,28 +65,7 @@
         game.puzzlegui.setupPuzzle(player, this);
     },
 
-    onPuzzleSuccess: function() {
-        // update the sprite to be a random villager
-        me.audio.play("villagerHealed");
-        this.renderable.image=me.loader.getImage("villager" + Math.randomInt(1,4));
-        game.data.numVillagersSaved++;
-        if (game.data.numVillagersSaved == game.data.numVillagers) {
-            me.event.publish("/level01/allVillagersSaved");
-        }
-
-        // turn into a normal villager
-        this.inPuzzle = false;
-        this.isInfected = false;
-        this.type = me.game.ACTION_OBJECT;
-    },
-
-    onPuzzleFail: function() {
-        // Do nothing until the player succeeds or runs away
-    },
-
-    onPuzzleEscape: function() {
-        me.audio.play("zombie3");
-
+    delayedDisablePuzzle: function() {
         // flicker and disable for a while to
         // allow the player to escape if need be
         var flickerTime = 2000;
@@ -87,27 +76,54 @@
         }, flickerTime);
     },
 
+    onPuzzleSuccess: function(puzzle) {
+        me.audio.play("villagerHealed");
+        // update the sprite to be a random villager
+        this.renderable.image=me.loader.getImage("villager" + Math.randomInt(1,4));
+        game.data.numVillagersSaved++;
+        if (game.data.numVillagersSaved == game.data.numVillagers) {
+            me.event.publish("/level01/allVillagersSaved");
+        }
+
+        // turn into a normal villager
+        this.isInfected = false;
+        this.viewingDialogue = false;
+        this.solvedPuzzle = puzzle;
+        this.type = me.game.ACTION_OBJECT;
+        this.delayedDisablePuzzle();
+    },
+
+    onPuzzleFail: function() {
+        // Do nothing until the player succeeds or runs away
+    },
+
+    onPuzzleEscape: function() {
+        me.audio.play("zombie3");
+        this.delayedDisablePuzzle();
+    },
+
      update: function(dt) {
-         if (!this.inViewport || this.inPuzzle) {
+        if (!this.inViewport || (this.isInfected && this.inPuzzle)) {
             // prevent movement
             return false;
-         }
+        }
+
+        // hide dialogue if we're moving away from the villager
+        if (this.viewingDialogue && !me.game.world.collide(this)) {
+            game.puzzlegui.hideSolvedPuzzle();
+            this.viewingDialogue = false;
+        }
 
          // update position
-         if (this.alive) {
-             if (this.walkLeft && this.pos.x <= this.startX) {
-                 this.walkLeft = false;
-                this.renderable.setCurrentAnimation("right");
-             } else if (!this.walkLeft && this.pos.x >= this.endX) {
-                 this.walkLeft = true;
-                this.renderable.setCurrentAnimation("left");
-             }
-             // make it walk
-             this.vel.x += (this.walkLeft) ? -this.accel.x * me.timer.tick : this.accel.x * me.timer.tick;
-
-         } else {
-             this.vel.x = 0;
+         if (this.walkLeft && this.pos.x <= this.startX) {
+             this.walkLeft = false;
+            this.renderable.setCurrentAnimation("right");
+         } else if (!this.walkLeft && this.pos.x >= this.endX) {
+             this.walkLeft = true;
+            this.renderable.setCurrentAnimation("left");
          }
+         // make it walk
+         this.vel.x += (this.walkLeft) ? -this.accel.x * me.timer.tick : this.accel.x * me.timer.tick;
 
          // check and update movement
          this.updateMovement();

@@ -80,7 +80,7 @@
 		</script>
 
         <!--TODO: handle box position when screen size is not the default-->
-        <div id="puzzleBox" style="display:none;">
+        <div id="puzzleBox" class="puzzleDialog" style="display:none;">
             <div id="zombieText"></div>
             <div class="resultSection">
                 <img src="img/wronganswer.png" id="wrongAnswer" style="display:none;"/>
@@ -92,6 +92,13 @@
                 <input type="text" class="pattern" value=""/>
                 /
                 <input type="text" class="regexpFlags" value=""/>
+            </div>
+        </div>
+        <div id="puzzleBoxAnswered" class="puzzleDialog"  style="display:none;">
+            <div id="cleanedZombieText"></div>
+            <div class="answer">
+                <div id="regexAnswered"></div>
+                <div id="originalZombieText"></div>
             </div>
         </div>
 

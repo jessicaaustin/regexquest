@@ -1,7 +1,10 @@
 
 Playtesting Notes:
+==================
 
 v0.1
+----
+
 sysadmin, very familiar with regexes (couldn't watch him play, but asked for feedback afterwards)
    didn't find the Book of Healing immediately
    agrees that it's a fun way to gain fluency, and that gaining fluency is an important goal
@@ -10,7 +13,6 @@ sysadmin, very familiar with regexes (couldn't watch him play, but asked for fee
     more complex things. So, rather than curing entirely, a clunky regexp might just put it into remission until the
     person comes up with a better one."
 
-v0.1
 student, hasn't heard of regular expressions before, but I gave him a walkthrough (in person)
    referenced the Book of Healing all the time
    spaces aren't obvious -- maybe underscore them? (but want to avoid confusion with actual underscores...)

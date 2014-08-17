@@ -1,5 +1,3 @@
-
-
 TODOs:
 ======
 
@@ -8,7 +6,7 @@ MVP:
 ** can some of the more complex logic be extracted into a library and tested?
 ** look over TODOs
 ** go over and clean up/clarify
-* test in firefox, safari, and IE (javascript RegExp implementation can vary cross-browser)
+* test in firefox, safari, and IE
 * add boilerplate deployment stuff back in
 
 later:
