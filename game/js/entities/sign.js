@@ -30,12 +30,14 @@ game.Sign = me.ObjectEntity.extend({
     },
 
     update: function(dt) {
-        var collision = me.game.world.collide(this);
         // hide sign if we're moving away from it
-        if (this.viewingSign && !collision) {
+        // TODO: this method is still very intensive when actually viewing the sign... is there a better way?
+        if (this.viewingSign) {
             this.signViewer.hide(this.signName);
             this.viewingSign = false;
+            return true;
         }
+        return false;
     }
 
 });
