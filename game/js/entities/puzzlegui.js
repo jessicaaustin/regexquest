@@ -4,6 +4,7 @@
 game.PuzzleGUI = Object.extend({
 
     puzzleBoxElem: null,
+    puzzleBoxAnsweredElem: null,
 
     patternElem: null,
     modifiersElem: null,
@@ -18,10 +19,13 @@ game.PuzzleGUI = Object.extend({
 
     init: function() {
         puzzleBoxElem = $("#puzzleBox");
+        puzzleBoxAnsweredElem = $("#puzzleBoxAnswered");
 
         gameCanvasPos = me.video.getPos();
         puzzleBoxElem.css("top", gameCanvasPos.top + 342)
                      .css("left", gameCanvasPos.left + 114);
+        puzzleBoxAnsweredElem.css("top", gameCanvasPos.top + 342)
+                             .css("left", gameCanvasPos.left + 114);
 
         patternElem = $("#puzzleBox .pattern");
         modifiersElem = $("#puzzleBox .regexpFlags");
@@ -71,7 +75,7 @@ game.PuzzleGUI = Object.extend({
             puzzleBoxElem.delay( 2500 ).fadeOut( 250 );
 
             this.playerEntity.onPuzzleSuccess();
-            this.zombieEntity.onPuzzleSuccess();
+            this.zombieEntity.onPuzzleSuccess(this.puzzle);
 
             // prevent multiple successes
             this.locked = true;
@@ -94,8 +98,9 @@ game.PuzzleGUI = Object.extend({
     },
 
     checkAnswer: function() {
-        resultElem.text(this.puzzle.whatMatched(this.createRegExp()).join(" "));
-        if (this.puzzle.checkMatch(this.createRegExp())) {
+        var regex = this.createRegExp();
+        resultElem.text(this.puzzle.whatMatched(regex).join(" "));
+        if (this.puzzle.checkMatch(regex)) {
             this.showResult(true);
         } else {
             this.showResult(false);
@@ -132,6 +137,21 @@ game.PuzzleGUI = Object.extend({
         this.clearRegExp();
         this.resetResultsArea();
         this.show();
+    },
+
+    showSolvedPuzzle: function(puzzle) {
+        if (puzzleBoxAnsweredElem.css("display")!=="none") {
+            return;
+        }
+
+        $("#originalZombieText").html(puzzle.zombieText());
+        $("#regexAnswered").html(puzzle.latestRegex);
+        $("#cleanedZombieText").html(puzzle.uninfectedText);
+        puzzleBoxAnsweredElem.show();
+    },
+
+    hideSolvedPuzzle: function() {
+        puzzleBoxAnsweredElem.hide();
     }
 
 });

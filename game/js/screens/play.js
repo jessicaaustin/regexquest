@@ -19,7 +19,7 @@ game.PlayScreen = me.ScreenObject.extend({
         me.levelDirector.loadLevel("area01");
         game.data.numVillagers = game.puzzles.puzzles[game.data.currentLevel].length;
 
-        me.audio.playTrack("dst-beyondtheseforests", 0.8);
+        me.audio.playTrack("dst-beyondtheseforests", 0.4);
     },
 
 	onResetEvent: function() {

@@ -44,7 +44,8 @@ rq.Zombie = function(fullText, infection) {
     };
 
     this.checkMatch = function(regex) {
-        return rq.util.stringArraysEqual(this.infectedText(), fullText.match(regex));
+        this.latestRegex = regex;
+        return rq.util.stringArraysEqual(this.infectedText(), fullText.match(this.latestRegex));
     };
 
     this.whatMatched = function(regex) {
@@ -55,8 +56,10 @@ rq.Zombie = function(fullText, infection) {
         return matches;
     };
 
+    this.uninfectedText = fullText.split(infection);
+
     this.zombieTextArray = function() {
-        var uninfectedText = fullText.split(infection);
+        var uninfectedText = this.uninfectedText;
         if (uninfectedText[0] == "") {
             uninfectedText.remove(0);
         }
