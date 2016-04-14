@@ -21,7 +21,8 @@ var game = {
     "onload" : function () {
  
         // Initialize the video.
-        if (!me.video.init("screen", 640, 480, true)) {
+        var highDPI = me.device.getPixelRatio() > 1;
+        if (!me.video.init("screen", 640, 480, true, highDPI ? 2 : 1)) {
             alert("Your browser does not support HTML5 canvas.");
             return;
         }
